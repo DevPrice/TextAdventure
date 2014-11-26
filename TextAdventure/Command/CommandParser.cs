@@ -31,13 +31,13 @@ namespace TextAdventure.Command
 
             List<ICommand> commandsFound = GetCommandsByAlias(commandName);
 
-            if (commandsFound.Count == 0)
-                throw new CommandNotFoundException(commandName);
-
-            //if (commandsFound.Count == 1)
+            if (commandsFound.Count == 1)
                 return commandsFound[0];
 
-            //throw new Exception(String.Format("Found multiple commands by alias: {0}", commandName));
+            if (commandsFound.Count == 0)
+                throw new CommandNotFoundException(commandName);
+            else
+                throw new SharedAliasException(commandName);
         }
 
         private ICommand GetCommandByName(string name)
