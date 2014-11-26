@@ -24,7 +24,6 @@ namespace TextAdventure.Command
 
         public override ICommand Create(string[] args)
         {
-
             return new CommandStatus(new Player());
         }
     }
