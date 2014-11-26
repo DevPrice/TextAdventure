@@ -47,7 +47,9 @@
     <Compile Include="Command\CommandParser.cs" />
     <Compile Include="Command\CommandStatus.cs" />
     <Compile Include="Command\ICommand.cs" />
+    <Compile Include="Command\ICommandSender.cs" />
     <Compile Include="Command\SharedAliasException.cs" />
+    <Compile Include="Command\UsageException.cs" />
     <Compile Include="Entity\EntityAttributes.cs" />
     <Compile Include="Entity\EntityBase.cs" />
     <Compile Include="Entity\EntityRat.cs" />

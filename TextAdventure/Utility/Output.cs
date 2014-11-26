@@ -22,5 +22,10 @@ namespace TextAdventure.Utility
         {
             Write(value + Environment.NewLine);
         }
+
+        public static void WriteLine(string value, params string[] args)
+        {
+            WriteLine(String.Format(value, args));
+        }
     }
 }

@@ -13,12 +13,19 @@ namespace TextAdventure.Command
         public CommandStatus(Player p)
             : base(p)
         {
-            
+            Name = "status";
+            Aliases.Add("hp");
         }
 
-        public override void Execute()
+        public override void Execute(ICommandSender sender)
         {
             Output.WriteLine(String.Format("HP: {0}", Target.Hp));
+        }
+
+        public override ICommand Create(string[] args)
+        {
+
+            return new CommandStatus(new Player());
         }
     }
 }

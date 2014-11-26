@@ -11,6 +11,7 @@ namespace TextAdventure.Command
     {
         public string Name { get; protected set; }
         public List<string> Aliases { get; protected set; }
+        public CommandPermission RequiredPermission { get; protected set; }
         public bool Hidden { get; set; }
 
         public CommandBase()
@@ -18,7 +19,9 @@ namespace TextAdventure.Command
             Aliases = new List<string>();
         }
 
-        public abstract void Execute();
+        public abstract void Execute(ICommandSender sender);
+
+        public abstract ICommand Create(string[] args);
     }
 
     public abstract class CommandBase<T> : CommandBase
@@ -30,4 +33,6 @@ namespace TextAdventure.Command
             Target = target;
         }
     }
+
+    public enum CommandPermission { None, User, Admin }
 }

@@ -15,9 +15,14 @@ namespace TextAdventure.Command
             Aliases.Add("exit");
         }
 
-        public override void Execute()
+        public override void Execute(ICommandSender sender)
         {
             Environment.Exit(Environment.ExitCode);
+        }
+
+        public override ICommand Create(string[] args)
+        {
+            return new CommandQuit();
         }
     }
 }

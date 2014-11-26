@@ -27,12 +27,12 @@ namespace TextAdventure.Command
             ICommand commandObj = GetCommandByName(commandName);
 
             if (commandObj != null)
-                return commandObj;
+                return commandObj.Create(args);
 
             List<ICommand> commandsFound = GetCommandsByAlias(commandName);
 
             if (commandsFound.Count == 1)
-                return commandsFound[0];
+                return commandsFound[0].Create(args);
 
             if (commandsFound.Count == 0)
                 throw new CommandNotFoundException(commandName);
