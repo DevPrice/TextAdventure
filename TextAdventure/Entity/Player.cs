@@ -10,6 +10,8 @@ namespace TextAdventure.Entity
 {
     public class Player : EntityBase, ICommandSender
     {
+        public CommandPermission Permission { get; set; }
+
         public Player()
         {
             Name = "You";
