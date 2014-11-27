@@ -19,7 +19,7 @@ namespace TextAdventure.Command
 
         public override void Execute(ICommandSender sender)
         {
-            Output.WriteLine(String.Format("HP: {0}", Target.Hp));
+            Output.WriteLine("HP: {0}", Target.Hp);
         }
 
         public override ICommand Create(string[] args)
