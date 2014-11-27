@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\Behavior.cs" />
+    <Compile Include="Behaviors\IBehavior.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CommandNotFoundException.cs" />
     <Compile Include="Commands\CommandQuit.cs" />
