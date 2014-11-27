@@ -7,14 +7,14 @@ using TextAdventure.World;
 
 namespace TextAdventure.Command
 {
-    public abstract class CommandBase : ICommand
+    public abstract class Command : ICommand
     {
         public string Name { get; protected set; }
         public List<string> Aliases { get; protected set; }
         public CommandPermission RequiredPermission { get; protected set; }
         public bool Hidden { get; set; }
 
-        public CommandBase()
+        public Command()
         {
             Aliases = new List<string>();
         }
@@ -24,7 +24,7 @@ namespace TextAdventure.Command
         public abstract ICommand Create(string[] args);
     }
 
-    public abstract class CommandBase<T> : CommandBase
+    public abstract class CommandBase<T> : Command
     {
         public T Target { get; protected set; }
 

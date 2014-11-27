@@ -8,10 +8,9 @@ using TextAdventure.Utility;
 
 namespace TextAdventure.Command
 {
-    public class CommandStatus : CommandBase<Player>
+    public class CommandStatus : Command
     {
-        public CommandStatus(Player p)
-            : base(p)
+        public CommandStatus()
         {
             Name = "status";
             Aliases.Add("hp");
@@ -19,12 +18,13 @@ namespace TextAdventure.Command
 
         public override void Execute(ICommandSender sender)
         {
-            Output.WriteLine("HP: {0}", Target.Hp);
+            if (sender is Player)
+                Output.WriteLine("HP: {0}", ((Player)sender).Hp);
         }
 
         public override ICommand Create(string[] args)
         {
-            return new CommandStatus(new Player());
+            return new CommandStatus();
         }
     }
 }

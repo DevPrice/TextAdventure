@@ -7,7 +7,7 @@ using TextAdventure.World;
 
 namespace TextAdventure.Command
 {
-    public class CommandQuit : CommandBase
+    public class CommandQuit : Command
     {
         public CommandQuit()
         {

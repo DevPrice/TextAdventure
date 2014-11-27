@@ -41,19 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\CommandBase.cs" />
-    <Compile Include="Command\CommandNotFoundException.cs" />
-    <Compile Include="Command\CommandQuit.cs" />
-    <Compile Include="Command\CommandParser.cs" />
-    <Compile Include="Command\CommandStatus.cs" />
-    <Compile Include="Command\ICommand.cs" />
-    <Compile Include="Command\ICommandSender.cs" />
-    <Compile Include="Command\SharedAliasException.cs" />
-    <Compile Include="Command\UsageException.cs" />
-    <Compile Include="Entity\EntityAttributes.cs" />
-    <Compile Include="Entity\EntityBase.cs" />
-    <Compile Include="Entity\EntityRat.cs" />
-    <Compile Include="Entity\Player.cs" />
+    <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\CommandNotFoundException.cs" />
+    <Compile Include="Commands\CommandQuit.cs" />
+    <Compile Include="Commands\CommandParser.cs" />
+    <Compile Include="Commands\CommandStatus.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\ICommandSender.cs" />
+    <Compile Include="Commands\SharedAliasException.cs" />
+    <Compile Include="Commands\UsageException.cs" />
+    <Compile Include="Entities\EntityAttributes.cs" />
+    <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\EntityRat.cs" />
+    <Compile Include="Entities\Player.cs" />
+    <Compile Include="Items\Item.cs" />
     <Compile Include="TextAdventure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ExtensionMethods.cs" />

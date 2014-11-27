@@ -8,7 +8,7 @@ using TextAdventure.World;
 
 namespace TextAdventure.Entity
 {
-    public abstract class EntityBase
+    public abstract class Entity
     {
         public string Name { get; set; }
         public EntityAttributes Attributes { get; set; }
@@ -23,9 +23,10 @@ namespace TextAdventure.Entity
             }
         }
 
-        public EntityBase()
+        public Entity()
         {
             Attributes = new EntityAttributes();
+            Hp = Attributes.MaxHp;
         }
     }
 

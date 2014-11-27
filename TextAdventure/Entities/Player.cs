@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextAdventure.Command;
 using TextAdventure.World;
 
 namespace TextAdventure.Entity
 {
-    public class EntityRat : EntityBase
+    public class Player : Entity, ICommandSender
     {
-        public EntityRat()
+        public CommandPermission Permission { get; set; }
+
+        public Player()
         {
-            Hp = Attributes.MaxHp = 4;
+            Name = "You";
         }
     }
 }
