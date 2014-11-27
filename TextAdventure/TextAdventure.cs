@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextAdventure.Command;
-using TextAdventure.Entity;
+using TextAdventure.Commands;
+using TextAdventure.Entities;
 using TextAdventure.Utility;
 using TextAdventure.World;
 

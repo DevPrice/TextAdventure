@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.World;
 
-namespace TextAdventure.Entity
+namespace TextAdventure.Entities
 {
     public class EntityRat : Entity
     {

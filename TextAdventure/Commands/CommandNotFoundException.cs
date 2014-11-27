@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TextAdventure.Command
+namespace TextAdventure.Commands
 {
     public class CommandNotFoundException : Exception
     {

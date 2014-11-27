@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.World;
 
-namespace TextAdventure.Command
+namespace TextAdventure.Commands
 {
     public class CommandQuit : Command
     {

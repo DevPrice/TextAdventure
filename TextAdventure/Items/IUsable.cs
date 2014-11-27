@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextAdventure.Entities;
 
-namespace TextAdventure.Commands
+namespace TextAdventure.Items
 {
-    public class UsageException : Exception
+    public interface IUsable
     {
-
+        void Use(Entity user);
     }
 }

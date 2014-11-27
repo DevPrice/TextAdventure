@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextAdventure.Entity;
+using TextAdventure.Entities;
 using TextAdventure.Utility;
 
-namespace TextAdventure.Command
+namespace TextAdventure.Commands
 {
     public class CommandStatus : Command
     {

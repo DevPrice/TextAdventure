@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TextAdventure.Utility;
 using TextAdventure.World;
 
-namespace TextAdventure.Entity
+namespace TextAdventure.Entities
 {
     public abstract class Entity
     {
