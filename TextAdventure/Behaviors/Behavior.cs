@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace TextAdventure.Behaviors
 {
-    public class Behavior : IBehavior
+    public class Behavior : IBehavior, IComparable
     {
         public int Priority { get; set; }
         public bool Active { get; protected set; }
         public int Mask { get; set; }
 
-        public bool ShouldUpdate
+        public virtual bool ShouldUpdate
         {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
         public virtual void Start()
@@ -30,6 +30,14 @@ namespace TextAdventure.Behaviors
         public virtual void Stop()
         {
 
+        }
+
+        public int CompareTo(object obj)
+        {
+            if (obj is Behavior)
+                return Priority.CompareTo(((Behavior)obj).Priority);
+
+            throw new ArgumentException("Object is not a Behavior.");
         }
     }
 }

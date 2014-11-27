@@ -17,6 +17,7 @@ namespace TextAdventure.Commands
         public Command()
         {
             Aliases = new List<string>();
+            RequiredPermission = CommandPermission.User;
         }
 
         public abstract void Execute(ICommandSender sender);
