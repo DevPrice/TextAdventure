@@ -14,15 +14,17 @@ namespace TextAdventure.World
         public string Identifier { get; set; }
         public string Description { get; set; }
 
-        public Path(IMapNode from, IMapNode to)
+        public Path(string identifier, IMapNode from, IMapNode to)
         {
             From = from;
             To = to;
+            Identifier = identifier;
+            Description = "A path.";
         }
 
         public void Examine()
         {
-            Output.WriteLine(Description ?? "A path.");
+            Output.WriteLine("[{0}]: {1}", Identifier, Description);
         }
     }
 }

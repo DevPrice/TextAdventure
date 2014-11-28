@@ -69,21 +69,17 @@ namespace TextAdventure.World
 
             List<Path> pathsFrom = new List<Path>();
 
-            // North path
             if (nodePos.Y > 0)
-                pathsFrom.Add(new Path(node, Tiles[nodePos.X, nodePos.Y - 1]));
+                pathsFrom.Add(new Path("north", node, Tiles[nodePos.X, nodePos.Y - 1]));
 
-            // South path
             if (nodePos.Y < Height - 1)
-                pathsFrom.Add(new Path(node, Tiles[nodePos.X, nodePos.Y + 1]));
+                pathsFrom.Add(new Path("south", node, Tiles[nodePos.X, nodePos.Y + 1]));
 
-            // West path
             if (nodePos.X > 0)
-                pathsFrom.Add(new Path(node, Tiles[nodePos.X - 1, nodePos.Y]));
+                pathsFrom.Add(new Path("west", node, Tiles[nodePos.X - 1, nodePos.Y]));
 
-            // East path
             if (nodePos.X < Width - 1)
-                pathsFrom.Add(new Path(node, Tiles[nodePos.X + 1, nodePos.Y]));
+                pathsFrom.Add(new Path("east", node, Tiles[nodePos.X + 1, nodePos.Y]));
 
             return pathsFrom;
         }

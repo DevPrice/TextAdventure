@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Entities;
+using TextAdventure.Utility;
 using TextAdventure.World;
 
 namespace TextAdventure.Commands
@@ -23,6 +24,15 @@ namespace TextAdventure.Commands
             base.Execute();
 
             Target.Examine();
+
+            if (Target is IMapNode)
+            {
+                Output.WriteLine();
+                foreach (Path path in World.Map.GetPathsFrom((IMapNode)Target))
+                {
+                    path.Examine();
+                }
+            }
         }
         
         public override ICommand Create(ICommandSender sender, string[] args)
