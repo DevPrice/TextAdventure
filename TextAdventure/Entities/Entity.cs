@@ -32,6 +32,12 @@ namespace TextAdventure.Entities
             Inventory = new List<Item>();
         }
 
+        public Entity(int hp)
+            : this()
+        {
+            Hp = Attributes.MaxHp = hp;
+        }
+
         public void Examine()
         {
             throw new NotImplementedException();

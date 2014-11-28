@@ -14,6 +14,7 @@ namespace TextAdventure.Entities
         public CommandPermission Permission { get; set; }
 
         public Player()
+            : base(10)
         {
             Name = "You";
             Permission = CommandPermission.User;
