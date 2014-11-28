@@ -16,6 +16,7 @@ namespace TextAdventure.Items
         public Item(string name)
         {
             Name = name;
+            Description = "A " + Name + ".";
         }
 
         public void Examine()

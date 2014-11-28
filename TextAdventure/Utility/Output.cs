@@ -13,6 +13,11 @@ namespace TextAdventure.Utility
             Console.Write(value);
         }
 
+        public static void Write(string value, params object[] args)
+        {
+            Write(String.Format(value, args));
+        }
+
         public static void WriteLine()
         {
             WriteLine(String.Empty);

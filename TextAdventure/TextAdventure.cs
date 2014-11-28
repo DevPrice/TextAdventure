@@ -21,7 +21,7 @@ namespace TextAdventure
             world.Map.EntryNode.Entities.Add(player);
 
             List<Command> commands = new List<Command>();
-            commands.Add(new CommandHelp(world, null, commands));
+            commands.Add(new CommandHelp(world, null, commands, null));
             commands.Add(new CommandStatus(world, null, null));
             commands.Add(new CommandLook(world, null, null));
             commands.Add(new CommandMove(world, null, null));

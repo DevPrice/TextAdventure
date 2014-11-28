@@ -16,7 +16,7 @@ namespace TextAdventure.Commands
         public ICommandSender Sender { get; private set; }
         public CommandPermission RequiredPermission { get; protected set; }
         public bool Hidden { get; set; }
-        public GameWorld World { get; private set; }
+        protected GameWorld World { get; private set; }
 
         public Command(GameWorld world, ICommandSender sender)
         {

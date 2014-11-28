@@ -9,7 +9,7 @@ using TextAdventure.World;
 
 namespace TextAdventure.Entities
 {
-    public abstract class Entity
+    public abstract class Entity : IExaminable
     {
         public string Name { get; set; }
         public EntityAttributes Attributes { get; set; }
@@ -30,6 +30,11 @@ namespace TextAdventure.Entities
             Attributes = new EntityAttributes();
             Hp = Attributes.MaxHp;
             Inventory = new List<Item>();
+        }
+
+        public void Examine()
+        {
+            throw new NotImplementedException();
         }
     }
 

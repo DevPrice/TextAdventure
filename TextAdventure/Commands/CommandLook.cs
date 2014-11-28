@@ -32,24 +32,59 @@ namespace TextAdventure.Commands
             if (Target is IMapNode)
             {
                 Output.WriteLine();
-                
-                foreach (Item item in ((IMapNode)Target).Items)
-                {
-                    Output.WriteLine("{0} ", item.Name.ToUpper());
-                }
 
-                Output.WriteLine();
+                ListItems();
+
                 foreach (Path path in World.Map.GetPathsFrom((IMapNode)Target))
                 {
                     path.Examine();
                 }
             }
         }
+
+        private void ListItems()
+        {
+            foreach (Item item in ((IMapNode)Target).Items)
+            {
+                Output.Write("You see a {0} on the ground.", item.Name);
+            }
+
+            if (((IMapNode)Target).Items.Count > 0)
+            {
+                Output.WriteLine();
+                Output.WriteLine();
+            }
+        }
+
+        private void ListEntities()
+        {
+            foreach (Entity entity in ((IMapNode)Target).Entities)
+            {
+                Output.Write("You see a {0}.", entity.Name);
+            }
+
+            if (((IMapNode)Target).Entities.Count > 0)
+            {
+                Output.WriteLine();
+                Output.WriteLine();
+            }
+        }
         
         public override ICommand Create(ICommandSender sender, string[] args)
         {
             if (sender is Player)
-                return new CommandLook(World, sender, World.Map.LocationOf((Player)sender));
+            {
+                IMapNode currentNode = World.Map.LocationOf((Player)sender);
+
+                if (args.Length < 2)
+                    return new CommandLook(World, sender, currentNode);
+
+                foreach (Item item in currentNode.Items)
+                {
+                    if (item.Name.Equals(args[1], StringComparison.CurrentCultureIgnoreCase))
+                        return new CommandLook(World, sender, item);
+                }
+            }
 
             throw new UsageException();
         }
