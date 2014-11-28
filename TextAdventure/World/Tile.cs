@@ -3,11 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextAdventure.Entities;
+using TextAdventure.Items;
+using TextAdventure.Utility;
 
 namespace TextAdventure.World
 {
-    public class Tile
+    public class Tile : IMapNode
     {
 
+        public List<Entity> Entities { get; private set; }
+
+        public List<Item> Items { get; private set; }
+
+        public Tile()
+        {
+            Entities = new List<Entity>();
+            Items = new List<Item>();
+        }
+
+        public void Examine()
+        {
+            Output.WriteLine("You are on a tile.");
+        }
     }
 }
