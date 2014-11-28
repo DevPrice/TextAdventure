@@ -9,22 +9,123 @@ namespace TextAdventure.World
 {
     public class GridMap : IGameMap
     {
-        public IMapNode LocationOf(Entity entity)
+        public Tile[,] Tiles { get; private set; }
+        public readonly int Width;
+        public readonly int Height;
+
+        public IMapNode EntryNode
         {
-            return new Tile();
+            get { return Tiles[0, 0]; }
         }
 
-        public List<IMapNode> GetPathsFrom(IMapNode node)
+        public GridMap(int width, int height)
+        {
+            Tiles = new Tile[width, height];
+            Width = width;
+            Height = height;
+        }
+
+        public static GridMap Generate(Random random)
+        {
+            return Generate(random, random.Next(10, 20), random.Next(10, 20));
+        }
+
+        public static GridMap Generate(Random random, int width, int height)
+        {
+            GridMap map = new GridMap(width, height);
+
+
+            for (int y = 0; y < map.Height; y++)
+            {
+                for (int x = 0; x < map.Width; x++)
+                {
+                    map.Tiles[x, y] = new Tile();
+                }
+            }
+
+            return map;
+        }
+
+        public IMapNode LocationOf(Entity entity)
+        {
+            foreach (Tile tile in Tiles)
+            {
+                if (tile.Entities.Contains(entity))
+                    return tile;
+            }
+
+            return null;
+        }
+
+        public List<Path> GetPathsFrom(IMapNode node)
         {
             if (node == null || !(node is Tile))
                 throw new ArgumentException("Node is not a tile.");
 
-            throw new NotImplementedException();
+            Point nodePos = GetPosition(node);
+
+            if (nodePos.X < 0)
+                throw new ArgumentException("Node not part of this map.");
+
+            List<Path> pathsFrom = new List<Path>();
+
+            // North path
+            if (nodePos.Y > 0)
+                pathsFrom.Add(new Path(node, Tiles[nodePos.X, nodePos.Y - 1]));
+
+            // South path
+            if (nodePos.Y < Height - 1)
+                pathsFrom.Add(new Path(node, Tiles[nodePos.X, nodePos.Y + 1]));
+
+            // West path
+            if (nodePos.X > 0)
+                pathsFrom.Add(new Path(node, Tiles[nodePos.X - 1, nodePos.Y]));
+
+            // East path
+            if (nodePos.X < Width - 1)
+                pathsFrom.Add(new Path(node, Tiles[nodePos.X + 1, nodePos.Y]));
+
+            return pathsFrom;
         }
 
-        public static GridMap Generate(int width, int height)
+        private Point GetPosition(IMapNode node)
         {
-            return new GridMap();
+            Point nodePos = new Point(-1, -1);
+
+            for (int y = 0; y < Height; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    if (Tiles[x, y] == node)
+                    {
+                        nodePos = new Point(x, y);
+                        break;
+                    }
+                }
+
+                if (nodePos.X < 0)
+                    break;
+            }
+
+            return nodePos;
+        }
+
+
+        public List<Path> FindPath(IMapNode from, IMapNode to)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    struct Point
+    {
+        public readonly int X;
+        public readonly int Y;
+
+        public Point(int x, int y)
+        {
+            X = x;
+            Y = y;
         }
     }
 }

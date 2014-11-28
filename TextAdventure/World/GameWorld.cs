@@ -30,7 +30,7 @@ namespace TextAdventure.World
 
         public static GameWorld Generate(Random random)
         {
-            IGameMap map = GridMap.Generate(random.Next(10, 20), random.Next(10, 20));
+            IGameMap map = GridMap.Generate(random);
             return new GameWorld(map);
         }
     }

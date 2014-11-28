@@ -11,6 +11,7 @@ namespace TextAdventure.World
     {
         public IMapNode From { get; private set; }
         public IMapNode To { get; private set; }
+        public string Identifier { get; set; }
         public string Description { get; set; }
 
         public Path(IMapNode from, IMapNode to)

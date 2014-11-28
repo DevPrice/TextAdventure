@@ -18,6 +18,7 @@ namespace TextAdventure
 
             Player player = new Player();
             world.Players.Add(player);
+            world.Map.EntryNode.Entities.Add(player);
 
             List<Command> commands = new List<Command>();
             commands.Add(new CommandHelp(world, null, commands));

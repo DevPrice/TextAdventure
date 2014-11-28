@@ -9,8 +9,12 @@ namespace TextAdventure.World
 {
     public interface IGameMap
     {
+        IMapNode EntryNode { get; }
+
         IMapNode LocationOf(Entity player);
 
-        List<IMapNode> GetPathsFrom(IMapNode node);
+        List<Path> GetPathsFrom(IMapNode node);
+
+        List<Path> FindPath(IMapNode from, IMapNode to);
     }
 }
