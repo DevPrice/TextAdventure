@@ -13,32 +13,33 @@ namespace TextAdventure.Commands
         public List<string> Aliases { get; protected set; }
         public string Description { get; protected set; }
         public string Usage { get; protected set; }
+        public ICommandSender Sender { get; private set; }
         public CommandPermission RequiredPermission { get; protected set; }
         public bool Hidden { get; set; }
         public GameWorld World { get; private set; }
 
-        public Command(GameWorld world)
+        public Command(GameWorld world, ICommandSender sender)
         {
             Aliases = new List<string>();
             RequiredPermission = CommandPermission.User;
             World = world;
         }
 
-        public virtual void Execute(ICommandSender sender)
+        public virtual void Execute()
         {
-            if ((int)sender.Permission < (int)RequiredPermission)
-                throw new InsufficientPermissionException(sender);
+            if ((int)Sender.Permission < (int)RequiredPermission)
+                throw new InsufficientPermissionException(Sender);
         }
 
-        public abstract ICommand Create(string[] args);
+        public abstract ICommand Create(ICommandSender sender, string[] args);
     }
 
     public abstract class Command<T> : Command
     {
         public T Target { get; private set; }
 
-        public Command(GameWorld world, T target)
-            : base(world)
+        public Command(GameWorld world, ICommandSender sender, T target)
+            : base(world, sender)
         {
             Target = target;
         }

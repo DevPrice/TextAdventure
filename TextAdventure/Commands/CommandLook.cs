@@ -9,17 +9,17 @@ namespace TextAdventure.Commands
 {
     public class CommandLook : Command<IExaminable>
     {
-        public CommandLook(GameWorld world, IExaminable lookAt)
-            : base(world, lookAt)
+        public CommandLook(GameWorld world, ICommandSender sender, IExaminable lookAt)
+            : base(world, sender, lookAt)
         {
             Name = "look";
             Aliases.Add("examine");
             Aliases.Add("view");
         }
         
-        public override ICommand Create(string[] args)
+        public override ICommand Create(ICommandSender sender, string[] args)
         {
-            return new CommandLook(World, null);
+            return new CommandLook(World, sender, null);
         }
     }
 }

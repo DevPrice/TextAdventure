@@ -10,19 +10,19 @@ namespace TextAdventure.Commands
 {
     class CommandHelp : Command<IEnumerable<ICommand>>
     {
-        public CommandHelp(GameWorld world, IEnumerable<ICommand> commands)
-            : base(world, commands)
+        public CommandHelp(GameWorld world, ICommandSender sender, IEnumerable<ICommand> commands)
+            : base(world, sender, commands)
         {
             Name = "help";
             Aliases.Add("?");
         }
 
-        public override void Execute(ICommandSender sender)
+        public override void Execute()
         {
-            base.Execute(sender);
+            base.Execute();
 
 
-            ListCommands(sender);
+            ListCommands(Sender);
         }
 
         private void ListCommands(ICommandSender sender)
@@ -41,9 +41,9 @@ namespace TextAdventure.Commands
             Output.WriteLine("Type 'help [command]' for more information about a command.");
         }
 
-        public override ICommand Create(string[] args)
+        public override ICommand Create(ICommandSender sender, string[] args)
         {
-            return new CommandHelp(World, Target);
+            return new CommandHelp(World, sender, Target);
         }
     }
 }

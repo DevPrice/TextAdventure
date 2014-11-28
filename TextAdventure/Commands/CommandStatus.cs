@@ -11,24 +11,24 @@ namespace TextAdventure.Commands
 {
     public class CommandStatus : Command
     {
-        public CommandStatus(GameWorld world)
-            : base(world)
+        public CommandStatus(GameWorld world, ICommandSender sender)
+            : base(world, sender)
         {
             Name = "status";
             Aliases.Add("hp");
         }
 
-        public override void Execute(ICommandSender sender)
+        public override void Execute()
         {
-            base.Execute(sender);
+            base.Execute();
 
-            if (sender is Player)
-                Output.WriteLine("HP: {0}", ((Player)sender).Hp);
+            if (Sender is Player)
+                Output.WriteLine("HP: {0}", ((Player)Sender).Hp);
         }
 
-        public override ICommand Create(string[] args)
+        public override ICommand Create(ICommandSender sender, string[] args)
         {
-            return new CommandStatus(World);
+            return new CommandStatus(World, sender);
         }
     }
 }

@@ -9,23 +9,23 @@ namespace TextAdventure.Commands
 {
     public class CommandQuit : Command
     {
-        public CommandQuit(GameWorld world)
-            : base(world)
+        public CommandQuit(GameWorld world, ICommandSender sender)
+            : base(world, sender)
         {
             Name = "quit";
             Aliases.Add("exit");
         }
 
-        public override void Execute(ICommandSender sender)
+        public override void Execute()
         {
-            base.Execute(sender);
+            base.Execute();
 
             Environment.Exit(Environment.ExitCode);
         }
 
-        public override ICommand Create(string[] args)
+        public override ICommand Create(ICommandSender sender, string[] args)
         {
-            return new CommandQuit(World);
+            return new CommandQuit(World, sender);
         }
     }
 }

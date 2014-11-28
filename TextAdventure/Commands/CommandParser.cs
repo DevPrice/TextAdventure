@@ -15,7 +15,7 @@ namespace TextAdventure.Commands
             Commands = commands;
         }
 
-        public ICommand Parse(string command)
+        public ICommand Parse(ICommandSender sender, string command)
         {
             if (command == null)
                 return null;
@@ -27,12 +27,12 @@ namespace TextAdventure.Commands
             ICommandFactory commandFactory = GetCommandByName(commandName);
 
             if (commandFactory != null)
-                return commandFactory.Create(args);
+                return commandFactory.Create(sender, args);
 
             List<Command> factoriesFound = GetCommandsByAlias(commandName);
 
             if (factoriesFound.Count == 1)
-                return factoriesFound[0].Create(args);
+                return factoriesFound[0].Create(sender, args);
 
             if (factoriesFound.Count == 0)
                 throw new CommandNotFoundException(commandName);

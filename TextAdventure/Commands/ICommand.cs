@@ -13,9 +13,10 @@ namespace TextAdventure.Commands
         List<string> Aliases { get; }
         string Description { get; }
         string Usage { get; }
+        ICommandSender Sender { get; }
         CommandPermission RequiredPermission { get; }
         bool Hidden { get; }
 
-        void Execute(ICommandSender sender);
+        void Execute();
     }
 }

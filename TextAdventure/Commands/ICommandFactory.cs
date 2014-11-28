@@ -8,6 +8,6 @@ namespace TextAdventure.Commands
 {
     public interface ICommandFactory
     {
-        ICommand Create(string[] args);
+        ICommand Create(ICommandSender sender, string[] args);
     }
 }

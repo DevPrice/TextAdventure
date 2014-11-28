@@ -17,9 +17,9 @@ namespace TextAdventure
             GameWorld world = new GameWorld();
 
             List<Command> commands = new List<Command>();
-            commands.Add(new CommandHelp(world, commands));
-            commands.Add(new CommandStatus(world));
-            commands.Add(new CommandQuit(world));
+            commands.Add(new CommandHelp(world, null, commands));
+            commands.Add(new CommandStatus(world, null));
+            commands.Add(new CommandQuit(world, null));
 
             CommandParser parser = new CommandParser(commands);
 
@@ -32,11 +32,11 @@ namespace TextAdventure
 
                 try
                 {
-                    ICommand command = parser.Parse(Console.ReadLine());
+                    ICommand command = parser.Parse(player, Console.ReadLine());
 
                     try
                     {
-                        command.Execute(player);
+                        command.Execute();
                     }
                     catch (UsageException)
                     {
