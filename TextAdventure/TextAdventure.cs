@@ -14,13 +14,15 @@ namespace TextAdventure
     {
         static void Main(string[] args)
         {
-            List<ICommand> commands = new List<ICommand>();
-            commands.Add(new CommandQuit());
-            commands.Add(new CommandStatus());
+            GameWorld world = new GameWorld();
+
+            List<Command> commands = new List<Command>();
+            commands.Add(new CommandHelp(world, commands));
+            commands.Add(new CommandStatus(world));
+            commands.Add(new CommandQuit(world));
 
             CommandParser parser = new CommandParser(commands);
 
-            GameWorld world = new GameWorld();
             Player player = new Player();
 
             while (true)
@@ -44,6 +46,10 @@ namespace TextAdventure
                 catch (CommandNotFoundException)
                 {
                     Output.WriteLine("Invalid command.");
+                }
+                catch (InsufficientPermissionException)
+                {
+                    Output.WriteLine("Invalid permissions.");
                 }
             }
         }

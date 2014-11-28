@@ -9,7 +9,8 @@ namespace TextAdventure.Commands
 {
     public class CommandQuit : Command
     {
-        public CommandQuit()
+        public CommandQuit(GameWorld world)
+            : base(world)
         {
             Name = "quit";
             Aliases.Add("exit");
@@ -17,12 +18,14 @@ namespace TextAdventure.Commands
 
         public override void Execute(ICommandSender sender)
         {
+            base.Execute(sender);
+
             Environment.Exit(Environment.ExitCode);
         }
 
         public override ICommand Create(string[] args)
         {
-            return new CommandQuit();
+            return new CommandQuit(World);
         }
     }
 }

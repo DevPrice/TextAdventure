@@ -8,9 +8,9 @@ namespace TextAdventure.Commands
 {
     class CommandParser
     {
-        public IEnumerable<ICommand> Commands { get; private set; }
+        public IEnumerable<Command> Commands { get; private set; }
 
-        public CommandParser(IEnumerable<ICommand> commands)
+        public CommandParser(IEnumerable<Command> commands)
         {
             Commands = commands;
         }
@@ -24,25 +24,25 @@ namespace TextAdventure.Commands
             string[] args = command.Split(' ');
             string commandName = args[0];
 
-            ICommand commandObj = GetCommandByName(commandName);
+            Command commandFactory = GetCommandByName(commandName);
 
-            if (commandObj != null)
-                return commandObj.Create(args);
+            if (commandFactory != null)
+                return commandFactory.Create(args);
 
-            List<ICommand> commandsFound = GetCommandsByAlias(commandName);
+            List<Command> factoriesFound = GetCommandsByAlias(commandName);
 
-            if (commandsFound.Count == 1)
-                return commandsFound[0].Create(args);
+            if (factoriesFound.Count == 1)
+                return factoriesFound[0].Create(args);
 
-            if (commandsFound.Count == 0)
+            if (factoriesFound.Count == 0)
                 throw new CommandNotFoundException(commandName);
             else
                 throw new SharedAliasException(commandName);
         }
 
-        private ICommand GetCommandByName(string name)
+        private Command GetCommandByName(string name)
         {
-            foreach (ICommand command in Commands)
+            foreach (Command command in Commands)
             {
                 if (command.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase))
                     return command;
@@ -51,11 +51,11 @@ namespace TextAdventure.Commands
             return null;
         }
 
-        private List<ICommand> GetCommandsByAlias(string name)
+        private List<Command> GetCommandsByAlias(string name)
         {
-            List<ICommand> commandsFound = new List<ICommand>();
+            List<Command> commandsFound = new List<Command>();
 
-            foreach (ICommand command in Commands)
+            foreach (Command command in Commands)
             {
                 foreach (string alias in command.Aliases)
                 {

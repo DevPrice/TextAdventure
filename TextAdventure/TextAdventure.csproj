@@ -44,12 +44,15 @@
     <Compile Include="Behaviors\Behavior.cs" />
     <Compile Include="Behaviors\IBehavior.cs" />
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\CommandHelp.cs" />
     <Compile Include="Commands\CommandNotFoundException.cs" />
     <Compile Include="Commands\CommandQuit.cs" />
     <Compile Include="Commands\CommandParser.cs" />
     <Compile Include="Commands\CommandStatus.cs" />
     <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\ICommandFactory.cs" />
     <Compile Include="Commands\ICommandSender.cs" />
+    <Compile Include="Commands\InsufficientPermissionException.cs" />
     <Compile Include="Commands\SharedAliasException.cs" />
     <Compile Include="Commands\UsageException.cs" />
     <Compile Include="Entities\EntityAttributes.cs" />

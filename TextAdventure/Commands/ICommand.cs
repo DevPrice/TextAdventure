@@ -11,10 +11,11 @@ namespace TextAdventure.Commands
     {
         string Name { get; }
         List<string> Aliases { get; }
+        string Description { get; }
+        string Usage { get; }
         CommandPermission RequiredPermission { get; }
         bool Hidden { get; }
 
         void Execute(ICommandSender sender);
-        ICommand Create(string[] args);
     }
 }
