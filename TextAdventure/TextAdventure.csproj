@@ -45,6 +45,7 @@
     <Compile Include="Behaviors\IBehavior.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CommandHelp.cs" />
+    <Compile Include="Commands\CommandLook.cs" />
     <Compile Include="Commands\CommandNotFoundException.cs" />
     <Compile Include="Commands\CommandQuit.cs" />
     <Compile Include="Commands\CommandParser.cs" />
@@ -57,6 +58,7 @@
     <Compile Include="Commands\UsageException.cs" />
     <Compile Include="Entities\EntityAttributes.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\EntityNPC.cs" />
     <Compile Include="Entities\EntityRat.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Items\IEdible.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="Utility\ExtensionMethods.cs" />
     <Compile Include="Utility\Output.cs" />
     <Compile Include="World\GameWorld.cs" />
+    <Compile Include="World\IExaminable.cs" />
     <Compile Include="World\IGameMap.cs" />
     <Compile Include="World\IMapNode.cs" />
     <Compile Include="World\Tile.cs" />
