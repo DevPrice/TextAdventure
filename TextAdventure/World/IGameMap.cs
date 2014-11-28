@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace TextAdventure.World
 {
-    public class GameWorld
+    public interface IGameMap
     {
-        public IGameMap Map { get; private set; }
+        List<IMapNode> GetNeighbors(IMapNode node);
     }
 }

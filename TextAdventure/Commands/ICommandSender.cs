@@ -8,7 +8,6 @@ namespace TextAdventure.Commands
 {
     public interface ICommandSender
     {
-        string Name { get; }
         CommandPermission Permission { get; }
     }
 }

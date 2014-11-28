@@ -24,7 +24,7 @@ namespace TextAdventure.Commands
             string[] args = command.Split(' ');
             string commandName = args[0];
 
-            Command commandFactory = GetCommandByName(commandName);
+            ICommandFactory commandFactory = GetCommandByName(commandName);
 
             if (commandFactory != null)
                 return commandFactory.Create(args);
