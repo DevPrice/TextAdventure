@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Entities;
+using TextAdventure.Items;
 
 namespace TextAdventure.World
 {
@@ -12,6 +13,8 @@ namespace TextAdventure.World
         IMapNode EntryNode { get; }
 
         IMapNode LocationOf(Entity player);
+
+        IMapNode LocationOf(Item item);
 
         List<Path> GetPathsFrom(IMapNode node);
 

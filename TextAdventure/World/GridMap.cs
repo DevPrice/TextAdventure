@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Entities;
+using TextAdventure.Items;
 
 namespace TextAdventure.World
 {
@@ -51,6 +52,17 @@ namespace TextAdventure.World
             foreach (Tile tile in Tiles)
             {
                 if (tile.Entities.Contains(entity))
+                    return tile;
+            }
+
+            return null;
+        }
+
+        public IMapNode LocationOf(Item item)
+        {
+            foreach (Tile tile in Tiles)
+            {
+                if (tile.Items.Contains(item))
                     return tile;
             }
 

@@ -50,6 +50,7 @@
     <Compile Include="Commands\CommandQuit.cs" />
     <Compile Include="Commands\CommandParser.cs" />
     <Compile Include="Commands\CommandStatus.cs" />
+    <Compile Include="Commands\CommandTake.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ICommandFactory.cs" />
     <Compile Include="Commands\ICommandSender.cs" />
