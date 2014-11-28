@@ -24,6 +24,7 @@ namespace TextAdventure
             commands.Add(new CommandHelp(world, null, commands));
             commands.Add(new CommandStatus(world, null, null));
             commands.Add(new CommandLook(world, null, null));
+            commands.Add(new CommandMove(world, null, null));
             commands.Add(new CommandInventory(world, null, null));
             commands.Add(new CommandTake(world, null, null));
             commands.Add(new CommandQuit(world, null));

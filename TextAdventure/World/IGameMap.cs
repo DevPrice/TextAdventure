@@ -12,7 +12,7 @@ namespace TextAdventure.World
     {
         IMapNode EntryNode { get; }
 
-        IMapNode LocationOf(Entity player);
+        IMapNode LocationOf(Entity entity);
 
         IMapNode LocationOf(Item item);
 

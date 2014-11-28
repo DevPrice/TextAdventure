@@ -111,7 +111,7 @@ namespace TextAdventure.World
                     }
                 }
 
-                if (nodePos.X < 0)
+                if (nodePos.X >= 0)
                     break;
             }
 

@@ -47,6 +47,7 @@
     <Compile Include="Commands\CommandHelp.cs" />
     <Compile Include="Commands\CommandInventory.cs" />
     <Compile Include="Commands\CommandLook.cs" />
+    <Compile Include="Commands\CommandMove.cs" />
     <Compile Include="Commands\CommandNotFoundException.cs" />
     <Compile Include="Commands\CommandQuit.cs" />
     <Compile Include="Commands\CommandParser.cs" />
