@@ -18,7 +18,7 @@ namespace TextAdventure
 
             List<Command> commands = new List<Command>();
             commands.Add(new CommandHelp(world, null, commands));
-            commands.Add(new CommandStatus(world, null));
+            commands.Add(new CommandStatus(world, null, null));
             commands.Add(new CommandQuit(world, null));
 
             CommandParser parser = new CommandParser(commands);

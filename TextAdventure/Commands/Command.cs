@@ -23,6 +23,7 @@ namespace TextAdventure.Commands
             Aliases = new List<string>();
             RequiredPermission = CommandPermission.User;
             World = world;
+            Sender = sender;
         }
 
         public virtual void Execute()

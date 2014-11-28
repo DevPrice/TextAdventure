@@ -9,10 +9,10 @@ using TextAdventure.World;
 
 namespace TextAdventure.Commands
 {
-    public class CommandStatus : Command
+    public class CommandStatus : Command<Entity>
     {
-        public CommandStatus(GameWorld world, ICommandSender sender)
-            : base(world, sender)
+        public CommandStatus(GameWorld world, ICommandSender sender, Entity entity)
+            : base(world, sender, entity)
         {
             Name = "status";
             Aliases.Add("hp");
@@ -22,13 +22,15 @@ namespace TextAdventure.Commands
         {
             base.Execute();
 
-            if (Sender is Player)
-                Output.WriteLine("HP: {0}", ((Player)Sender).Hp);
+            Output.WriteLine("HP: {0}", Target.Hp);
         }
 
         public override ICommand Create(ICommandSender sender, string[] args)
         {
-            return new CommandStatus(World, sender);
+            if (sender is Player)
+                return new CommandStatus(World, sender, (Entity)sender);
+
+            throw new UsageException();
         }
     }
 }
