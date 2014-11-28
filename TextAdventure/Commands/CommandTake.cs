@@ -49,7 +49,7 @@ namespace TextAdventure.Commands
             if (sender is Player && args.Length >= 2)
             {
                 string[] itemNameArr = new string[args.Length - 1];
-                Array.Copy(args, itemNameArr, itemNameArr.Length);
+                Array.Copy(args, 1, itemNameArr, 0, itemNameArr.Length);
                 string itemName = String.Join(" ", itemNameArr);
 
                 IMapNode node = World.Map.LocationOf((Player)sender);
