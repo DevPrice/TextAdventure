@@ -12,6 +12,7 @@ namespace TextAdventureClient
     class TextAdventureClient
     {
         const int DEFAULT_PORT = 53251;
+        const int BROADCAST_PORT = 15235;
         static UdpClient Client;
         static Queue<string> MessageQueue;
 
@@ -21,7 +22,17 @@ namespace TextAdventureClient
 
             while (Client == null || serverEndPoint == null)
             {
-                try
+                Client = new UdpClient(BROADCAST_PORT);
+                IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, BROADCAST_PORT);
+
+                byte[] bytes = Client.Receive(ref endPoint);
+
+                string message = Encoding.Unicode.GetString(bytes);
+
+                if (message.Equals("CTRL:BROADCAST"))
+                    serverEndPoint = endPoint;
+
+                /*try
                 {
                     Console.Write("Enter server IP: ");
                     string serverIp = Console.ReadLine();
@@ -32,7 +43,7 @@ namespace TextAdventureClient
                 catch (FormatException)
                 {
                     Console.WriteLine("Invalid IP address.");
-                }
+                }*/
             }
 
             byte[] connectBytes = Encoding.Unicode.GetBytes(String.Empty);
@@ -64,7 +75,8 @@ namespace TextAdventureClient
 
                 string message = Encoding.Unicode.GetString(bytes);
 
-                Console.WriteLine(message);
+                if (!message.StartsWith("CTRL:"))
+                    Console.WriteLine(message);
             }
         }
     }

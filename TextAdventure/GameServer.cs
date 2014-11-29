@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TextAdventure.Commands;
 using TextAdventure.Entities;
@@ -15,6 +16,7 @@ namespace TextAdventure
     public class GameServer : ICommandSender
     {
         const int DEFAULT_PORT = 53251;
+        const int BROADCAST_PORT = 15235;
         public static UdpClient Client { get; private set; }
         public static List<RemotePlayer> Players { get; private set; }
         public GameWorld World { get; private set; }
@@ -32,6 +34,8 @@ namespace TextAdventure
 
         public void Start()
         {
+            Running = true;
+
             Output.Write("Generating world... ");
             World = GameWorld.Generate();
 
@@ -51,12 +55,14 @@ namespace TextAdventure
 
             Output.WriteLine("Done.");
 
+            Task broadcastTask = new Task(Broadcast);
+            broadcastTask.Start();
+
             Task listenTask = new Task(Listen);
             listenTask.Start();
 
             Output.WriteLine("Listening...");
 
-            Running = true;
             while (Running)
             {
                 Output.Write(">");
@@ -73,7 +79,7 @@ namespace TextAdventure
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, DEFAULT_PORT);
 
-            while (true)
+            while (Running)
             {
                 byte[] bytes = Client.Receive(ref endPoint);
 
@@ -88,13 +94,24 @@ namespace TextAdventure
 
                     player.Name = String.Format("Player {0}", PlayerNum++);
 
-                    Output.WriteLine("Player connected from {0}:{1}", endPoint.Address, endPoint.Port);
+                    Output.WriteLine("Player connected from {0}:{1}.", endPoint.Address, endPoint.Port);
                 }
 
                 string message = Encoding.Unicode.GetString(bytes);
 
                 if (message.Length > 0)
                     CommandEngine.RunCommand(message, player);
+            }
+        }
+
+        private void Broadcast()
+        {
+            while (Running)
+            {
+                byte[] bytes = Encoding.Unicode.GetBytes("CTRL:BROADCAST");
+                Client.Send(bytes, bytes.Length, new IPEndPoint(IPAddress.Broadcast, BROADCAST_PORT));
+
+                Thread.Sleep(1000);
             }
         }
 
