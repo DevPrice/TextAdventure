@@ -92,7 +92,7 @@ namespace TextAdventure
                     World.Players.Add(player);
                     World.Map.EntryNode.Entities.Add(player);
 
-                    player.Name = String.Format("Player {0}", PlayerNum++);
+                    player.Name = String.Format("Player{0}", PlayerNum++);
 
                     Output.WriteLine("Player connected from {0}:{1}.", endPoint.Address, endPoint.Port);
                 }

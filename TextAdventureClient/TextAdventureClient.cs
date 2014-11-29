@@ -31,18 +31,19 @@ namespace TextAdventureClient
 
                 if (message.Equals("CTRL:BROADCAST"))
                     serverEndPoint = endPoint;
-
+                
                 /*try
                 {
                     Console.Write("Enter server IP: ");
                     string serverIp = Console.ReadLine();
 
-                    Client = new UdpClient(0);
-                    serverEndPoint = new IPEndPoint(IPAddress.Parse(serverIp), DEFAULT_PORT);
+                    Client = new UdpClient(0, AddressFamily.InterNetworkV6);
+                    IPAddress[] addresses = Dns.GetHostAddresses(serverIp);
+                    serverEndPoint = new IPEndPoint(addresses[0], DEFAULT_PORT);
                 }
-                catch (FormatException)
+                catch (Exception)
                 {
-                    Console.WriteLine("Invalid IP address.");
+                    Console.WriteLine("Invalid host address.");
                 }*/
             }
 
@@ -69,14 +70,21 @@ namespace TextAdventureClient
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, DEFAULT_PORT);
 
-            while (true)
+            try
             {
-                byte[] bytes = Client.Receive(ref endPoint);
+                while (true)
+                {
+                    byte[] bytes = Client.Receive(ref endPoint);
 
-                string message = Encoding.Unicode.GetString(bytes);
+                    string message = Encoding.Unicode.GetString(bytes);
 
-                if (!message.StartsWith("CTRL:"))
-                    Console.WriteLine(message);
+                    if (!message.StartsWith("CTRL:"))
+                        Console.WriteLine(message);
+                }
+            }
+            catch (SocketException)
+            {
+                Console.WriteLine("Error: Disconnected from server.");
             }
         }
     }
