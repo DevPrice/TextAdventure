@@ -49,12 +49,15 @@ namespace TextAdventure.Commands
             Sender.SendMessage(command.Description);
             Sender.SendMessage();
 
-            Sender.SendMessage("Aliases: ");
+            if (command.Aliases.Count > 0)
+            {
+                Sender.SendMessage("Aliases: ");
 
-            foreach (string alias in command.Aliases)
-                Sender.SendMessage("{0} ", alias);
+                foreach (string alias in command.Aliases)
+                    Sender.SendMessage("{0} ", alias);
 
-            Sender.SendMessage();
+                Sender.SendMessage();
+            }
 
             Sender.SendMessage("Usage: {0}", command.Usage);
         }
