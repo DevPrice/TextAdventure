@@ -116,7 +116,7 @@ namespace TextAdventure
 
         public void SendMessage()
         {
-            SendMessage("");
+            SendMessage(String.Empty);
         }
 
         public void SendMessage(string message)
