@@ -53,6 +53,7 @@
     <Compile Include="Commands\CommandNotFoundException.cs" />
     <Compile Include="Commands\CommandQuit.cs" />
     <Compile Include="Commands\CommandParser.cs" />
+    <Compile Include="Commands\CommandSay.cs" />
     <Compile Include="Commands\CommandStatus.cs" />
     <Compile Include="Commands\CommandTake.cs" />
     <Compile Include="Commands\ICommand.cs" />

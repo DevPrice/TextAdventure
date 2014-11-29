@@ -19,7 +19,9 @@ namespace TextAdventure
         public static List<RemotePlayer> Players { get; private set; }
         public GameWorld World { get; private set; }
         public CommandEngine CommandEngine { get; private set; }
-        private int PlayerNum;
+        public int PlayerNum { get; private set; }
+        private volatile bool _Running;
+        public bool Running { get { return _Running; } private set { _Running = value; } }
 
         public GameServer()
         {
@@ -35,13 +37,14 @@ namespace TextAdventure
 
             List<Command> commands = new List<Command>();
             commands.Add(new CommandHelp(World, null, commands, null));
+            commands.Add(new CommandSay(World, null, String.Empty));
             commands.Add(new CommandStatus(World, null, null));
             commands.Add(new CommandLook(World, null, null));
             commands.Add(new CommandMove(World, null, null));
             commands.Add(new CommandInventory(World, null, null));
             commands.Add(new CommandTake(World, null, null));
             commands.Add(new CommandDrop(World, null, null));
-            commands.Add(new CommandQuit(World, null));
+            commands.Add(new CommandQuit(World, null, this));
 
             CommandParser parser = new CommandParser(commands);
             CommandEngine = new CommandEngine(parser);
@@ -53,11 +56,17 @@ namespace TextAdventure
 
             Output.WriteLine("Listening...");
 
-            while (true)
+            Running = true;
+            while (Running)
             {
                 Output.Write(">");
                 CommandEngine.RunCommand(Console.ReadLine(), this);
             }
+        }
+
+        public void Stop()
+        {
+            Running = false;
         }
 
         private void Listen()

@@ -7,10 +7,10 @@ using TextAdventure.World;
 
 namespace TextAdventure.Commands
 {
-    public class CommandQuit : Command
+    public class CommandQuit : Command<GameServer>
     {
-        public CommandQuit(GameWorld world, ICommandSender sender)
-            : base(world, sender)
+        public CommandQuit(GameWorld world, ICommandSender sender, GameServer server)
+            : base(world, sender, server)
         {
             Name = "quit";
             Aliases.Add("exit");
@@ -21,12 +21,12 @@ namespace TextAdventure.Commands
         {
             base.Execute();
 
-            Environment.Exit(Environment.ExitCode);
+            Target.Stop();
         }
 
         public override ICommand Create(ICommandSender sender, string[] args)
         {
-            return new CommandQuit(World, sender);
+            return new CommandQuit(World, sender, Target);
         }
     }
 }
