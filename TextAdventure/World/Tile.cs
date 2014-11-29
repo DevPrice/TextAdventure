@@ -27,5 +27,14 @@ namespace TextAdventure.World
         {
             examiner.SendMessage("You are on a tile.");
         }
+
+        public void Update(TimeSpan delta)
+        {
+            foreach (Entity entity in Entities)
+                entity.Update(delta);
+
+            foreach (Item item in Items)
+                item.Update(delta);
+        }
     }
 }

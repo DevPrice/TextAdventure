@@ -8,7 +8,7 @@ using TextAdventure.Items;
 
 namespace TextAdventure.World
 {
-    public interface IMapNode : IExaminable
+    public interface IMapNode : IExaminable, IUpdatable
     {
         List<Entity> Entities { get; }
         List<Item> Items { get; }

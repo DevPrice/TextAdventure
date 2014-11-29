@@ -8,7 +8,7 @@ using TextAdventure.Items;
 
 namespace TextAdventure.World
 {
-    public interface IGameMap
+    public interface IGameMap : IUpdatable
     {
         IMapNode EntryNode { get; }
 

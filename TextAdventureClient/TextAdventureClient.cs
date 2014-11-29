@@ -14,7 +14,6 @@ namespace TextAdventureClient
         const int DEFAULT_PORT = 53251;
         const int BROADCAST_PORT = 15235;
         static UdpClient Client;
-        static Queue<string> MessageQueue;
 
         static void Main(string[] args)
         {
@@ -22,15 +21,19 @@ namespace TextAdventureClient
 
             while (Client == null || serverEndPoint == null)
             {
-                Client = new UdpClient(BROADCAST_PORT);
+                UdpClient broadcastClient = new UdpClient(BROADCAST_PORT);
                 IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, BROADCAST_PORT);
 
-                byte[] bytes = Client.Receive(ref endPoint);
+                byte[] bytes = broadcastClient.Receive(ref endPoint);
 
                 string message = Encoding.Unicode.GetString(bytes);
 
                 if (message.Equals("CTRL:BROADCAST"))
                     serverEndPoint = endPoint;
+
+                broadcastClient.Close();
+
+                Client = new UdpClient();
                 
                 /*try
                 {

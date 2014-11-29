@@ -8,7 +8,7 @@ using TextAdventure.Items;
 
 namespace TextAdventure.World
 {
-    public class GameWorld
+    public class GameWorld : IUpdatable
     {
         public IGameMap Map { get; private set; }
         public List<Player> Players { get; private set; }
@@ -34,6 +34,11 @@ namespace TextAdventure.World
             IGameMap map = GridMap.Generate(random);
             map.EntryNode.Items.Add(new Item("compass"));
             return new GameWorld(map);
+        }
+
+        public void Update(TimeSpan delta)
+        {
+            Map.Update(delta);
         }
     }
 }

@@ -13,28 +13,42 @@ using TextAdventure.World;
 
 namespace TextAdventure
 {
-    public class GameServer : ICommandSender
+    public class GameServer : ICommandSender, IUpdatable
     {
-        const int DEFAULT_PORT = 53251;
-        const int BROADCAST_PORT = 15235;
-        public static UdpClient Client { get; private set; }
-        public static List<RemotePlayer> Players { get; private set; }
+        public const int DEFAULT_PORT = 53251;
+        public const int BROADCAST_PORT = 15235;
+
+        public int Port { get; private set; }
+        public UdpClient Client { get; private set; }
+        public List<RemotePlayer> Players { get; private set; }
         public GameWorld World { get; private set; }
         public CommandEngine CommandEngine { get; private set; }
         public int PlayerNum { get; private set; }
         private volatile bool _Running;
         public bool Running { get { return _Running; } private set { _Running = value; } }
+        public DateTime LastUpdate { get; private set; }
 
         public GameServer()
         {
-            Client = new UdpClient(DEFAULT_PORT);
             Players = new List<RemotePlayer>();
             PlayerNum = 1;
+            Port = DEFAULT_PORT;
+        }
+
+        public GameServer(int port)
+            : this()
+        {
+            Port = port;
         }
 
         public void Start()
         {
+            if (Running)
+                throw new InvalidOperationException();
+
             Running = true;
+
+            Client = new UdpClient(Port);
 
             Output.Write("Generating world... ");
             World = GameWorld.Generate();
@@ -54,6 +68,9 @@ namespace TextAdventure
             CommandEngine = new CommandEngine(parser);
 
             Output.WriteLine("Done.");
+
+            Task updateTask = new Task(BeginUpdate);
+            updateTask.Start();
 
             Task broadcastTask = new Task(Broadcast);
             broadcastTask.Start();
@@ -75,9 +92,25 @@ namespace TextAdventure
             Running = false;
         }
 
+        private void BeginUpdate()
+        {
+            while (Running)
+            {
+                DateTime now = DateTime.Now;
+                Update(now - LastUpdate);
+                LastUpdate = now;
+                Thread.Sleep(200);
+            }
+        }
+
+        public void Update(TimeSpan delta)
+        {
+            World.Update(delta);
+        }
+
         private void Listen()
         {
-            IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, DEFAULT_PORT);
+            IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, Port);
 
             while (Running)
             {
@@ -115,7 +148,7 @@ namespace TextAdventure
             }
         }
 
-        private static RemotePlayer GetPlayerFromEndPoint(IPEndPoint endPoint)
+        private RemotePlayer GetPlayerFromEndPoint(IPEndPoint endPoint)
         {
             foreach (RemotePlayer player in Players)
             {

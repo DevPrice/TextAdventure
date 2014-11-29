@@ -9,7 +9,7 @@ using TextAdventure.World;
 
 namespace TextAdventure.Items
 {
-    public class Item : IExaminable
+    public class Item : IExaminable, IUpdatable
     {
         public string Name { get; set; }
         public string Description { get; set; }
@@ -23,6 +23,11 @@ namespace TextAdventure.Items
         public void Examine(ICommandSender examiner)
         {
             examiner.SendMessage(Description);
+        }
+
+        public virtual void Update(TimeSpan delta)
+        {
+
         }
     }
 }

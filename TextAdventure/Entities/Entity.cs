@@ -10,7 +10,7 @@ using TextAdventure.World;
 
 namespace TextAdventure.Entities
 {
-    public abstract class Entity : IExaminable
+    public abstract class Entity : IExaminable, IUpdatable
     {
         public string Name { get; set; }
         public EntityAttributes Attributes { get; set; }
@@ -39,7 +39,12 @@ namespace TextAdventure.Entities
             Hp = Attributes.MaxHp = hp;
         }
 
-        public void Examine(ICommandSender examiner)
+        public virtual void Examine(ICommandSender examiner)
+        {
+
+        }
+
+        public virtual void Update(TimeSpan delta)
         {
 
         }

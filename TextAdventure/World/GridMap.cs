@@ -123,6 +123,12 @@ namespace TextAdventure.World
         {
             throw new NotImplementedException();
         }
+
+        public void Update(TimeSpan delta)
+        {
+            foreach (IMapNode node in Tiles)
+                node.Update(delta);
+        }
     }
 
     struct Point

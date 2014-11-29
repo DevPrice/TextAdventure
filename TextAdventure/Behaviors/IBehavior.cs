@@ -14,7 +14,7 @@ namespace TextAdventure.Behaviors
         bool ShouldUpdate { get; }
 
         void Start();
-        void Update();
+        void Update(TimeSpan delta);
         void Stop();
     }
 }
