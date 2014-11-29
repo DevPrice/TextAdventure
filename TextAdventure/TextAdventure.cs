@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Commands;
@@ -12,27 +14,15 @@ namespace TextAdventure
 {
     class TextAdventure
     {
+        const int DEFAULT_PORT = 53251;
+        static UdpClient Sender;
+
         static void Main(string[] args)
         {
-            GameWorld world = GameWorld.Generate();
+            GameServer server = new GameServer();
+            server.Start();
 
-            Player player = new Player();
-            world.Players.Add(player);
-            world.Map.EntryNode.Entities.Add(player);
-
-            List<Command> commands = new List<Command>();
-            commands.Add(new CommandHelp(world, null, commands, null));
-            commands.Add(new CommandStatus(world, null, null));
-            commands.Add(new CommandLook(world, null, null));
-            commands.Add(new CommandMove(world, null, null));
-            commands.Add(new CommandInventory(world, null, null));
-            commands.Add(new CommandTake(world, null, null));
-            commands.Add(new CommandDrop(world, null, null));
-            commands.Add(new CommandQuit(world, null));
-
-            CommandParser parser = new CommandParser(commands);
-
-            while (player.Hp > 0)
+            /*while (player.Hp > 0)
             {
                 Output.WriteLine();
                 Output.Write(">");
@@ -62,7 +52,7 @@ namespace TextAdventure
 
             Output.WriteLine();
             Output.Write("YOU ARE DEAD");
-            Console.ReadKey(false);
+            Console.ReadKey(false);*/
         }
     }
 }

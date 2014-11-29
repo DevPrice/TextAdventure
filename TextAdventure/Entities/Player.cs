@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Behaviors;
 using TextAdventure.Commands;
+using TextAdventure.Utility;
 using TextAdventure.World;
 
 namespace TextAdventure.Entities
@@ -18,6 +19,11 @@ namespace TextAdventure.Entities
         {
             Name = "You";
             Permission = CommandPermission.User;
+        }
+
+        public virtual void SendMessage(string message)
+        {
+            Output.WriteLine(message);
         }
     }
 }

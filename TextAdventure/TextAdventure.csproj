@@ -65,6 +65,8 @@
     <Compile Include="Entities\EntityNPC.cs" />
     <Compile Include="Entities\EntityRat.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\RemotePlayer.cs" />
+    <Compile Include="GameServer.cs" />
     <Compile Include="Items\IEdible.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\IUsable.cs" />
