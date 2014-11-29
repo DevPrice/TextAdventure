@@ -1,0 +1,52 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TextAdventure.Entities;
+using TextAdventure.World;
+
+namespace TextAdventure.Commands
+{
+    public class CommandSay : Command<string>
+    {
+        public CommandSay(GameWorld world, ICommandSender sender, string message)
+            : base(world, sender, message)
+        {
+            Name = "say";
+            Aliases.Add("shout");
+            Aliases.Add("speak");
+        }
+
+        public override void Execute()
+        {
+            base.Execute();
+
+            if (Sender is Player)
+            {
+
+                foreach (Entity entity in World.Map.LocationOf((Player)Sender).Entities)
+                {
+                    if (entity is Player && entity != Sender)
+                        ((Player)entity).SendMessage("{0} says, \"{1}\"", ((Player)Sender).Name, Target);
+                }
+            }
+            else
+            {
+                foreach (Player player in World.Players)
+                {
+                    player.SendMessage("SERVER: {0}", Target);
+                }
+            }
+        }
+
+        public override ICommand Create(ICommandSender sender, string[] args)
+        {
+            string[] messageArr = new string[args.Length - 1];
+            Array.Copy(args, 1, messageArr, 0, messageArr.Length);
+            string message = String.Join(" ", messageArr);
+
+            return new CommandSay(World, sender, message);
+        }
+    }
+}
