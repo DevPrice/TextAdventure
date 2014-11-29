@@ -15,14 +15,20 @@ namespace TextAdventureClient
 
         static void Main(string[] args)
         {
+            Console.Write("Enter server IP: ");
+            string serverIp = Console.ReadLine();
+
             Client = new UdpClient(0);
-            IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Loopback, DEFAULT_PORT);
+            IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse(serverIp), DEFAULT_PORT);
+
+            Console.WriteLine("Connected.");
 
             Task listenTask = new Task(Listen);
             listenTask.Start();
             
             while (true)
             {
+                Console.Write(">");
                 byte[] bytes = Encoding.Unicode.GetBytes(Console.ReadLine());
                 Client.Send(bytes, bytes.Length, serverEndPoint);
             }

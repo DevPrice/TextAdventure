@@ -35,40 +35,40 @@ namespace TextAdventure.Commands
             {
                 if (Target.Name.Equals("help"))
                 {
-                    Output.WriteLine("Are you okay?");
+                    Sender.SendMessage("Are you okay?");
                     return;
                 }
 
                 if (UsedAlias)
-                    Output.WriteLine("Alias for {0}.", Target.Name);
+                    Sender.SendMessage("Alias for {0}.", Target.Name);
 
-                Output.WriteLine(Target.Description);
-                Output.WriteLine();
+                Sender.SendMessage(Target.Description);
+                Sender.SendMessage();
 
                 Output.Write("Aliases: ");
 
                 foreach (string alias in Target.Aliases)
                     Output.Write("{0} ", alias);
 
-                Output.WriteLine();
+                Sender.SendMessage();
 
-                Output.WriteLine("Usage: {0}", Target.Usage);
+                Sender.SendMessage("Usage: {0}", Target.Usage);
 
                 return;
             }
 
-            Output.WriteLine("Available commands:");
+            Sender.SendMessage("Available commands:");
 
             foreach (ICommand command in CommandList)
             {
                 if (command.Hidden || (int)sender.Permission < (int)command.RequiredPermission)
                     continue;
 
-                Output.WriteLine("{0}", command.Name);
+                Sender.SendMessage("{0}", command.Name);
             }
 
-            Output.WriteLine();
-            Output.WriteLine("Type 'help [command]' for more information about a command.");
+            Sender.SendMessage();
+            Sender.SendMessage("Type 'help [command]' for more information about a command.");
         }
 
         public override ICommand Create(ICommandSender sender, string[] args)

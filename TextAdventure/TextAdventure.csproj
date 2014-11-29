@@ -45,6 +45,7 @@
     <Compile Include="Behaviors\IBehavior.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CommandDrop.cs" />
+    <Compile Include="Commands\CommandEngine.cs" />
     <Compile Include="Commands\CommandHelp.cs" />
     <Compile Include="Commands\CommandInventory.cs" />
     <Compile Include="Commands\CommandLook.cs" />

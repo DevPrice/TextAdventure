@@ -9,5 +9,9 @@ namespace TextAdventure.Commands
     public interface ICommandSender
     {
         CommandPermission Permission { get; }
+
+        void SendMessage();
+        void SendMessage(string message);
+        void SendMessage(string message, params object[] args);
     }
 }

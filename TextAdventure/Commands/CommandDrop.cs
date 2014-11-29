@@ -31,11 +31,11 @@ namespace TextAdventure.Commands
                 ((Player)Sender).Inventory.Remove(Target);
                 currentNode.Items.Add(Target);
 
-                Output.WriteLine("You drop the {0}.", Target.Name);
+                Sender.SendMessage("You drop the {0}.", Target.Name);
             }
             else
             {
-                Output.WriteLine("You can't drop that.");
+                Sender.SendMessage("You can't drop that.");
             }
         }
 

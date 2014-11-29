@@ -31,7 +31,7 @@ namespace TextAdventure.Commands
 
             if (Target is IMapNode)
             {
-                Output.WriteLine();
+                Sender.SendMessage();
 
                 ListItems();
 
@@ -51,8 +51,8 @@ namespace TextAdventure.Commands
 
             if (((IMapNode)Target).Items.Count > 0)
             {
-                Output.WriteLine();
-                Output.WriteLine();
+                Sender.SendMessage();
+                Sender.SendMessage();
             }
         }
 
@@ -65,8 +65,8 @@ namespace TextAdventure.Commands
 
             if (((IMapNode)Target).Entities.Count > 0)
             {
-                Output.WriteLine();
-                Output.WriteLine();
+                Sender.SendMessage();
+                Sender.SendMessage();
             }
         }
         

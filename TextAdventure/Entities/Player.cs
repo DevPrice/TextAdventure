@@ -25,5 +25,15 @@ namespace TextAdventure.Entities
         {
             Output.WriteLine(message);
         }
+
+        public void SendMessage()
+        {
+            SendMessage(String.Empty);
+        }
+
+        public void SendMessage(string value, params object[] args)
+        {
+            SendMessage(String.Format(value, args));
+        }
     }
 }

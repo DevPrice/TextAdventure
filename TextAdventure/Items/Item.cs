@@ -21,7 +21,7 @@ namespace TextAdventure.Items
 
         public void Examine()
         {
-            Output.WriteLine(Description);
+            //Output.WriteLine(Description);
         }
     }
 }

@@ -30,11 +30,11 @@ namespace TextAdventure.Commands
                 Target.From.Entities.Remove((Player)Sender);
                 Target.To.Entities.Add((Player)Sender);
 
-                Output.WriteLine("You go {0}.", Target.Identifier);
+                Sender.SendMessage("You go {0}.", Target.Identifier);
             }
             else
             {
-                Output.WriteLine("You can't go that way.");
+                Sender.SendMessage("You can't go that way.");
             }
         }
 
