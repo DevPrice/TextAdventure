@@ -27,11 +27,12 @@ namespace TextAdventure
             commands.Add(new CommandMove(world, null, null));
             commands.Add(new CommandInventory(world, null, null));
             commands.Add(new CommandTake(world, null, null));
+            commands.Add(new CommandDrop(world, null, null));
             commands.Add(new CommandQuit(world, null));
 
             CommandParser parser = new CommandParser(commands);
 
-            while (true)
+            while (player.Hp > 0)
             {
                 Output.WriteLine();
                 Output.Write(">");
@@ -58,6 +59,10 @@ namespace TextAdventure
                     Output.WriteLine("Invalid command.");
                 }
             }
+
+            Output.WriteLine();
+            Output.Write("YOU ARE DEAD");
+            Console.ReadKey(false);
         }
     }
 }
