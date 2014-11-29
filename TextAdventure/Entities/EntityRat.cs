@@ -10,9 +10,9 @@ namespace TextAdventure.Entities
     public class EntityRat : Entity
     {
         public EntityRat(GameWorld world)
-            : base(world)
+            : base(world, 6)
         {
-            Hp = Attributes.MaxHp = 4;
+            Name = "rat";
         }
     }
 }

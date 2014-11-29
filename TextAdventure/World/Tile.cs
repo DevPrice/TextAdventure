@@ -36,5 +36,20 @@ namespace TextAdventure.World
             foreach (Item item in Items)
                 item.Update(delta);
         }
+
+
+        public void Broadcast(string message)
+        {
+            Broadcast(message, null);
+        }
+
+        public void Broadcast(string message, Player player)
+        {
+            foreach (Entity entity in Entities)
+            {
+                if (entity is Player)
+                    ((Player)entity).SendMessage(message);
+            }
+        }
     }
 }

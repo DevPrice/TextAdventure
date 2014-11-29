@@ -62,6 +62,7 @@ namespace TextAdventure
             commands.Add(new CommandInventory(World, null, null));
             commands.Add(new CommandTake(World, null, null));
             commands.Add(new CommandDrop(World, null, null));
+            commands.Add(new CommandAttack(World, null, null));
             commands.Add(new CommandQuit(World, null, this));
 
             CommandParser parser = new CommandParser(commands);
@@ -114,26 +115,33 @@ namespace TextAdventure
 
             while (Running)
             {
-                byte[] bytes = Client.Receive(ref endPoint);
-
-                RemotePlayer player = GetPlayerFromEndPoint(endPoint);
-
-                if (player == null)
+                try
                 {
-                    player = new RemotePlayer(World, Client, endPoint);
-                    Players.Add(player);
-                    World.Players.Add(player);
-                    World.Map.EntryNode.Entities.Add(player);
+                    byte[] bytes = Client.Receive(ref endPoint);
 
-                    player.Name = String.Format("Player{0}", PlayerNum++);
+                    RemotePlayer player = GetPlayerFromEndPoint(endPoint);
 
-                    Output.WriteLine("Player connected from {0}:{1}.", endPoint.Address, endPoint.Port);
+                    if (player == null)
+                    {
+                        player = new RemotePlayer(World, Client, endPoint);
+                        Players.Add(player);
+                        World.Players.Add(player);
+                        World.Map.EntryNode.Entities.Add(player);
+
+                        player.Name = String.Format("Player{0}", PlayerNum++);
+
+                        Output.WriteLine("Player connected from {0}:{1}.", endPoint.Address, endPoint.Port);
+                    }
+
+                    string message = Encoding.Unicode.GetString(bytes);
+
+                    if (message.Length > 0)
+                        CommandEngine.RunCommand(message, player);
                 }
+                catch (SocketException)
+                {
 
-                string message = Encoding.Unicode.GetString(bytes);
-
-                if (message.Length > 0)
-                    CommandEngine.RunCommand(message, player);
+                }
             }
         }
 

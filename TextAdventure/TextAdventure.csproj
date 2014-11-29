@@ -44,6 +44,7 @@
     <Compile Include="Behaviors\Behavior.cs" />
     <Compile Include="Behaviors\IBehavior.cs" />
     <Compile Include="Commands\Command.cs" />
+    <Compile Include="Commands\CommandAttack.cs" />
     <Compile Include="Commands\CommandDrop.cs" />
     <Compile Include="Commands\CommandEngine.cs" />
     <Compile Include="Commands\CommandHelp.cs" />
@@ -62,12 +63,14 @@
     <Compile Include="Commands\InsufficientPermissionException.cs" />
     <Compile Include="Commands\SharedAliasException.cs" />
     <Compile Include="Commands\UsageException.cs" />
+    <Compile Include="DamageSource.cs" />
     <Compile Include="Entities\EntityAttributes.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\EntityNPC.cs" />
     <Compile Include="Entities\EntityRat.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\RemotePlayer.cs" />
+    <Compile Include="EntityDamageSource.cs" />
     <Compile Include="GameServer.cs" />
     <Compile Include="Items\IEdible.cs" />
     <Compile Include="Items\Item.cs" />

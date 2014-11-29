@@ -33,7 +33,11 @@ namespace TextAdventure.World
         {
             IGameMap map = GridMap.Generate(random);
             map.EntryNode.Items.Add(new Item("compass"));
-            return new GameWorld(map);
+
+            GameWorld world = new GameWorld(map);
+            map.EntryNode.Entities.Add(new EntityRat(world));
+
+            return world;
         }
 
         public void Update(TimeSpan delta)

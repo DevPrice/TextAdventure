@@ -12,5 +12,8 @@ namespace TextAdventure.World
     {
         List<Entity> Entities { get; }
         List<Item> Items { get; }
+
+        void Broadcast(string message);
+        void Broadcast(string message, Player player);
     }
 }
