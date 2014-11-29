@@ -120,7 +120,7 @@ namespace TextAdventure
 
                 if (player == null)
                 {
-                    player = new RemotePlayer(Client, endPoint);
+                    player = new RemotePlayer(World, Client, endPoint);
                     Players.Add(player);
                     World.Players.Add(player);
                     World.Map.EntryNode.Entities.Add(player);

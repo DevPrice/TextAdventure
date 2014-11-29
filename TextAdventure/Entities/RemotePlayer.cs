@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using TextAdventure.World;
 
 namespace TextAdventure.Entities
 {
@@ -13,7 +14,8 @@ namespace TextAdventure.Entities
         public UdpClient Client { get; private set; }
         public IPEndPoint EndPoint { get; private set; }
 
-        public RemotePlayer(UdpClient client, IPEndPoint endPoint)
+        public RemotePlayer(GameWorld world, UdpClient client, IPEndPoint endPoint)
+            : base(world)
         {
             Client = client;
             EndPoint = endPoint;

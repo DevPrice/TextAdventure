@@ -26,15 +26,15 @@ namespace TextAdventure.Entities
         }
         public List<Item> Inventory { get; set; }
 
-        public Entity()
+        public Entity(GameWorld world)
         {
             Attributes = new EntityAttributes();
             Hp = Attributes.MaxHp;
             Inventory = new List<Item>();
         }
 
-        public Entity(int hp)
-            : this()
+        public Entity(GameWorld world, int hp)
+            : this(world)
         {
             Hp = Attributes.MaxHp = hp;
         }
