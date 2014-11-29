@@ -14,6 +14,7 @@ namespace TextAdventure.Commands
         {
             Name = "quit";
             Aliases.Add("exit");
+            RequiredPermission = CommandPermission.Admin;
         }
 
         public override void Execute()

@@ -36,11 +36,11 @@ namespace TextAdventure.Commands
 
                 ((Player)Sender).Inventory.Add(Target);
 
-                Output.WriteLine("You take the {0}.", Target.Name);
+                Sender.SendMessage("You take the {0}.", Target.Name);
             }
             else
             {
-                Output.WriteLine("You can't take that.");
+                Sender.SendMessage("You can't take that.");
             }
         }
 

@@ -22,7 +22,7 @@ namespace TextAdventure.Commands
         {
             base.Execute();
 
-            Output.WriteLine("HP: {0}", Target.Hp);
+            Sender.SendMessage("HP: {0}", Target.Hp);
         }
 
         public override ICommand Create(ICommandSender sender, string[] args)

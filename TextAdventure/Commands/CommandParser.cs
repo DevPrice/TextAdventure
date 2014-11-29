@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextAdventure.Commands
 {
-    class CommandParser
+    public class CommandParser
     {
         public IEnumerable<Command> Commands { get; private set; }
 
@@ -15,7 +15,7 @@ namespace TextAdventure.Commands
             Commands = commands;
         }
 
-        public ICommand Parse(ICommandSender sender, string command)
+        public ICommand Parse(string command, ICommandSender sender)
         {
             if (command == null)
                 return null;

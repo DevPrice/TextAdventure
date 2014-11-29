@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextAdventure.Commands;
 using TextAdventure.Utility;
 using TextAdventure.World;
 
@@ -19,9 +20,9 @@ namespace TextAdventure.Items
             Description = "A " + Name + ".";
         }
 
-        public void Examine()
+        public void Examine(ICommandSender examiner)
         {
-            Output.WriteLine(Description);
+            examiner.SendMessage(Description);
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextAdventure.Commands;
 using TextAdventure.Items;
 using TextAdventure.Utility;
 using TextAdventure.World;
@@ -38,9 +39,9 @@ namespace TextAdventure.Entities
             Hp = Attributes.MaxHp = hp;
         }
 
-        public void Examine()
+        public void Examine(ICommandSender examiner)
         {
-            throw new NotImplementedException();
+
         }
     }
 
