@@ -25,12 +25,6 @@ namespace TextAdventure.Commands
         {
             base.Execute();
 
-
-            ListCommands(Sender);
-        }
-
-        private void ListCommands(ICommandSender sender)
-        {
             if (Target != null)
             {
                 if (Target.Name.Equals("help"))
@@ -39,29 +33,39 @@ namespace TextAdventure.Commands
                     return;
                 }
 
-                if (UsedAlias)
-                    Sender.SendMessage("Alias for {0}.", Target.Name);
-
-                Sender.SendMessage(Target.Description);
-                Sender.SendMessage();
-
-                Output.Write("Aliases: ");
-
-                foreach (string alias in Target.Aliases)
-                    Output.Write("{0} ", alias);
-
-                Sender.SendMessage();
-
-                Sender.SendMessage("Usage: {0}", Target.Usage);
-
-                return;
+                HelpForCommand(Target);
             }
+            else
+            {
+                ListCommands();
+            }
+        }
 
+        private void HelpForCommand(ICommand command)
+        {
+            if (UsedAlias)
+                Sender.SendMessage("Alias for {0}.", command.Name);
+
+            Sender.SendMessage(command.Description);
+            Sender.SendMessage();
+
+            Sender.SendMessage("Aliases: ");
+
+            foreach (string alias in command.Aliases)
+                Sender.SendMessage("{0} ", alias);
+
+            Sender.SendMessage();
+
+            Sender.SendMessage("Usage: {0}", command.Usage);
+        }
+
+        private void ListCommands()
+        {
             Sender.SendMessage("Available commands:");
 
             foreach (ICommand command in CommandList)
             {
-                if (command.Hidden || (int)sender.Permission < (int)command.RequiredPermission)
+                if (command.Hidden || (int)Sender.Permission < (int)command.RequiredPermission)
                     continue;
 
                 Sender.SendMessage("{0}", command.Name);

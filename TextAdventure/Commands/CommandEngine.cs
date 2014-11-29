@@ -20,23 +20,19 @@ namespace TextAdventure.Commands
             try
             {
                 ICommand commandObj = Parser.Parse(command, sender);
-
-                try
-                {
-                    commandObj.Execute();
-                }
-                catch (UsageException)
-                {
-                    sender.SendMessage("Invalid usage.");
-                }
-                catch (InsufficientPermissionException)
-                {
-                    sender.SendMessage("Invalid permissions.");
-                }
+                commandObj.Execute();
             }
             catch (CommandNotFoundException)
             {
                 sender.SendMessage("Invalid command.");
+            }
+            catch (UsageException)
+            {
+                sender.SendMessage("Invalid usage.");
+            }
+            catch (InsufficientPermissionException)
+            {
+                sender.SendMessage("Invalid permissions.");
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextAdventure.Commands;
 using TextAdventure.Entities;
 using TextAdventure.Items;
 using TextAdventure.Utility;
@@ -22,9 +23,9 @@ namespace TextAdventure.World
             Items = new List<Item>();
         }
 
-        public void Examine()
+        public void Examine(ICommandSender examiner)
         {
-            Output.WriteLine("You are on a tile.");
+            examiner.SendMessage("You are on a tile.");
         }
     }
 }

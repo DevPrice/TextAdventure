@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace TextAdventureClient
@@ -12,14 +13,30 @@ namespace TextAdventureClient
     {
         const int DEFAULT_PORT = 53251;
         static UdpClient Client;
+        static Queue<string> MessageQueue;
 
         static void Main(string[] args)
         {
-            Console.Write("Enter server IP: ");
-            string serverIp = Console.ReadLine();
+            IPEndPoint serverEndPoint = null;
 
-            Client = new UdpClient(0);
-            IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse(serverIp), DEFAULT_PORT);
+            while (Client == null || serverEndPoint == null)
+            {
+                try
+                {
+                    Console.Write("Enter server IP: ");
+                    string serverIp = Console.ReadLine();
+
+                    Client = new UdpClient(0);
+                    serverEndPoint = new IPEndPoint(IPAddress.Parse(serverIp), DEFAULT_PORT);
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid IP address.");
+                }
+            }
+
+            byte[] connectBytes = Encoding.Unicode.GetBytes(String.Empty);
+            Client.Send(connectBytes, connectBytes.Length, serverEndPoint);
 
             Console.WriteLine("Connected.");
 
@@ -28,9 +45,12 @@ namespace TextAdventureClient
             
             while (true)
             {
+                Console.WriteLine();
                 Console.Write(">");
-                byte[] bytes = Encoding.Unicode.GetBytes(Console.ReadLine());
+                string command = Console.ReadLine();
+                byte[] bytes = Encoding.Unicode.GetBytes(command);
                 Client.Send(bytes, bytes.Length, serverEndPoint);
+                Thread.Sleep(150);
             }
         }
 

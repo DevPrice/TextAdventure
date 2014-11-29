@@ -27,17 +27,18 @@ namespace TextAdventure.Commands
         {
             base.Execute();
 
-            Target.Examine();
+            Target.Examine(Sender);
 
             if (Target is IMapNode)
             {
                 Sender.SendMessage();
 
                 ListItems();
+                ListEntities();
 
                 foreach (Path path in World.Map.GetPathsFrom((IMapNode)Target))
                 {
-                    path.Examine();
+                    path.Examine(Sender);
                 }
             }
         }
@@ -46,12 +47,11 @@ namespace TextAdventure.Commands
         {
             foreach (Item item in ((IMapNode)Target).Items)
             {
-                Output.Write("You see a {0} on the ground.", item.Name);
+                Sender.SendMessage("You see a {0} on the ground.", item.Name);
             }
 
             if (((IMapNode)Target).Items.Count > 0)
             {
-                Sender.SendMessage();
                 Sender.SendMessage();
             }
         }
@@ -60,12 +60,12 @@ namespace TextAdventure.Commands
         {
             foreach (Entity entity in ((IMapNode)Target).Entities)
             {
-                Output.Write("You see a {0}.", entity.Name);
+                if (entity != Sender as Entity)
+                    Sender.SendMessage("You see {0}.", entity.Name);
             }
 
-            if (((IMapNode)Target).Entities.Count > 0)
+            if (((IMapNode)Target).Entities.Count > 1)
             {
-                Sender.SendMessage();
                 Sender.SendMessage();
             }
         }

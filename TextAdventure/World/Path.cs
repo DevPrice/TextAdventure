@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextAdventure.Commands;
 using TextAdventure.Utility;
 
 namespace TextAdventure.World
@@ -22,9 +23,9 @@ namespace TextAdventure.World
             Description = "A path.";
         }
 
-        public void Examine()
+        public void Examine(ICommandSender examiner)
         {
-            Output.WriteLine("[{0}]: {1}", Identifier, Description);
+            examiner.SendMessage("[{0}]: {1}", Identifier, Description);
         }
     }
 }

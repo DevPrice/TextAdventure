@@ -17,13 +17,21 @@ namespace TextAdventure
         const int DEFAULT_PORT = 53251;
         public static UdpClient Client { get; private set; }
         public static List<RemotePlayer> Players { get; private set; }
-        public static GameWorld World { get; private set; }
-        public static CommandEngine CommandEngine { get; private set; }
+        public GameWorld World { get; private set; }
+        public CommandEngine CommandEngine { get; private set; }
+        private int PlayerNum;
 
         public GameServer()
         {
             Client = new UdpClient(DEFAULT_PORT);
             Players = new List<RemotePlayer>();
+            PlayerNum = 1;
+        }
+
+        public void Start()
+        {
+            Output.Write("Generating world... ");
+            World = GameWorld.Generate();
 
             List<Command> commands = new List<Command>();
             commands.Add(new CommandHelp(World, null, commands, null));
@@ -37,17 +45,6 @@ namespace TextAdventure
 
             CommandParser parser = new CommandParser(commands);
             CommandEngine = new CommandEngine(parser);
-        }
-
-        public void Start()
-        {
-            Output.Write("Generating world... ");
-            World = GameWorld.Generate();
-
-
-            Player player = new Player();
-            World.Players.Add(player);
-            World.Map.EntryNode.Entities.Add(player);
 
             Output.WriteLine("Done.");
 
@@ -63,7 +60,7 @@ namespace TextAdventure
             }
         }
 
-        private static void Listen()
+        private void Listen()
         {
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, DEFAULT_PORT);
 
@@ -79,11 +76,16 @@ namespace TextAdventure
                     Players.Add(player);
                     World.Players.Add(player);
                     World.Map.EntryNode.Entities.Add(player);
+
+                    player.Name = String.Format("Player {0}", PlayerNum++);
+
+                    Output.WriteLine("Player connected from {0}:{1}", endPoint.Address, endPoint.Port);
                 }
 
                 string message = Encoding.Unicode.GetString(bytes);
 
-                CommandEngine.RunCommand(message, player);
+                if (message.Length > 0)
+                    CommandEngine.RunCommand(message, player);
             }
         }
 
