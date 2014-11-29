@@ -13,6 +13,7 @@ namespace TextAdventure.Entities
         public float Defense;
         public float Accuracy;
         public float Dodge;
+        public float Speed;
         public float CritChance;
         public float CritMultiplier;
 
@@ -23,17 +24,19 @@ namespace TextAdventure.Entities
             Defense = 1;
             Accuracy = 1;
             Dodge = 1;
+            Speed = 1;
             CritChance = 0;
             CritMultiplier = 2;
         }
 
-        public EntityAttributes(float maxHp, float strength, float defense, float accuracy, float dodge, float critChance, float critMultiplier)
+        public EntityAttributes(float maxHp, float strength, float defense, float accuracy, float dodge, float speed, float critChance, float critMultiplier)
         {
             MaxHp = maxHp;
             Strength = strength;
             Defense = defense;
             Accuracy = accuracy;
             Dodge = dodge;
+            Speed = speed;
             CritChance = critChance;
             CritMultiplier = critMultiplier;
         }
@@ -42,7 +45,7 @@ namespace TextAdventure.Entities
         {
             return new EntityAttributes(a1.MaxHp + a2.MaxHp,
                 a1.Strength + a2.Strength, a1.Defense + a2.Defense,
-                a1.Accuracy + a2.Accuracy, a1.Dodge + a2.Dodge,
+                a1.Accuracy + a2.Accuracy, a1.Dodge + a2.Dodge, a1.Speed + a1.Speed,
                 a1.CritChance + a2.CritChance, a1.CritMultiplier + a2.CritMultiplier);
         }
     }
