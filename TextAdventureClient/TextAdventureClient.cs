@@ -17,6 +17,9 @@ namespace TextAdventureClient
 
         static void Main(string[] args)
         {
+            Console.WriteLine("TextAdventure Client");
+            Console.WriteLine();
+
             IPEndPoint serverEndPoint = null;
 
             while (Client == null || serverEndPoint == null)

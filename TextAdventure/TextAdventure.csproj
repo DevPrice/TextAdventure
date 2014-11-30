@@ -72,6 +72,8 @@
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\RemotePlayer.cs" />
     <Compile Include="EntityDamageSource.cs" />
+    <Compile Include="Events\AttackedEntityEventArgs.cs" />
+    <Compile Include="Events\DamageTakenEventArgs.cs" />
     <Compile Include="GameServer.cs" />
     <Compile Include="Items\IEdible.cs" />
     <Compile Include="Items\Item.cs" />
@@ -92,9 +94,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Events\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

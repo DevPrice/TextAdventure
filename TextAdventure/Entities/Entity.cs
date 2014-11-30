@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Commands;
+using TextAdventure.Events;
 using TextAdventure.Items;
 using TextAdventure.Utility;
 using TextAdventure.World;
@@ -12,6 +13,7 @@ namespace TextAdventure.Entities
 {
     public abstract class Entity : IExaminable, IUpdatable
     {
+        public GameWorld World { get; private set; }
         public string Name { get; set; }
         public EntityAttributes Attributes { get; set; }
         public Gender Gender { get; set; }
@@ -28,14 +30,26 @@ namespace TextAdventure.Entities
         public List<Item> Inventory { get; set; }
         public Entity CombatTarget { get; set; }
         public TimeSpan TimeSinceAttack { get; set; }
+        public int Experience { get; protected set; }
+
+        #region events
+
+        public event EventHandler<DamageTakenEventArgs> DamageTaken;
+        public event EventHandler<DamageTakenEventArgs> Death;
+        public event EventHandler<AttackedEntityEventArgs> AttackedEntity;
+        public event EventHandler<AttackedEntityEventArgs> KilledEntity;
+
+        #endregion
 
         public Entity(GameWorld world)
         {
+            World = world;
             Attributes = new EntityAttributes();
             Hp = Attributes.MaxHp;
             Inventory = new List<Item>();
             TimeSinceAttack = TimeSpan.FromSeconds(30);
         }
+
 
         public Entity(GameWorld world, int hp)
             : this(world)
@@ -63,16 +77,19 @@ namespace TextAdventure.Entities
 
         private void TryCombat(Entity target)
         {
-            if (!target.Alive)
+            if (!Alive || !target.Alive)
+                return;
+
+            if (World.Map.LocationOf(this) != World.Map.LocationOf(target))
                 return;
 
             if (TimeSinceAttack > TimeSpan.FromSeconds(1 / Attributes.Speed))
             {
-                Attack(target);
+                AttackEntity(target);
             }
         }
 
-        public virtual void Attack(Entity target)
+        public virtual void AttackEntity(Entity target)
         {
             double chanceToHit = Attributes.Accuracy / (Attributes.Accuracy + target.Attributes.Dodge);
 
@@ -90,13 +107,16 @@ namespace TextAdventure.Entities
                     damage *= Attributes.CritMultiplier;
 
                 int startHp = (int)Math.Ceiling(target.Hp);
-                target.DealDamage(new EntityDamageSource(this), damage);
-                int damageDealt = (int)(startHp - Math.Ceiling(target.Hp));
 
-                if (this is ICommandSender)
-                {
-                    ((ICommandSender)this).SendMessage("You attack {0} for {1} damage{2}", target.Name, damageDealt, crit ? "!" : ".");
-                }
+                DamageSource damageSource = new EntityDamageSource(this);
+
+                target.DealDamage(damageSource, damage);
+
+                if (AttackedEntity != null)
+                    AttackedEntity(this, new AttackedEntityEventArgs(target, damageSource, damage));
+
+                if (!target.Alive && AttackedEntity != null)
+                    KilledEntity(this, new AttackedEntityEventArgs(target, damageSource, damage));
             }
             else if (this is ICommandSender)
             {
@@ -108,25 +128,20 @@ namespace TextAdventure.Entities
 
         public virtual double DealDamage(DamageSource source, double amount)
         {
-            int startHp = (int)Math.Ceiling(Hp);
-
-            double finalDamage = amount;
-
             if (source.DamageType == DamageType.Physical)
             {
-                finalDamage = finalDamage * 10 / (10 + Attributes.Defense);
+                amount *= 10 / (10 + Attributes.Defense);
             }
 
-            Hp -= finalDamage;
+            Hp -= amount;
 
-            int damageDealt = (int)(startHp - Math.Ceiling(Hp));
+            if (DamageTaken != null)
+                DamageTaken(this, new DamageTakenEventArgs(source, amount));
 
-            if (this is ICommandSender)
-            {
-                ((ICommandSender)this).SendMessage("You take {0} damage from {1}.", damageDealt, source.ToString());
-            }
+            if (!Alive && Death != null)
+                Death(this, new DamageTakenEventArgs(source, amount));
 
-            return finalDamage;
+            return amount;
         }
     }
 

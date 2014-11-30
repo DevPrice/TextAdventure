@@ -15,7 +15,13 @@ namespace TextAdventure.Entities
         public EntityNPC(GameWorld world)
             : base(world)
         {
-            
+            Behaviors = new List<Behavior>();
+        }
+
+        public EntityNPC(GameWorld world, int hp)
+            : base(world, hp)
+        {
+            Behaviors = new List<Behavior>();
         }
 
         public override void Update(TimeSpan delta)

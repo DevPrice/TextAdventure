@@ -14,8 +14,12 @@ namespace TextAdventure
 {
     class TextAdventure
     {
+        static readonly string GameName = "TextAdventure";
         static void Main(string[] args)
         {
+            Output.WriteLine("{0} Server", GameName);
+            Output.WriteLine();
+
             GameServer server = new GameServer();
             server.Start();
         }

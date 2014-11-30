@@ -23,7 +23,7 @@ namespace TextAdventure.Entities
 
         public override void SendMessage(string message)
         {
-            if (message == null)
+            if (message == null || !Alive)
                 return;
 
             byte[] bytes = Encoding.Unicode.GetBytes(message);

@@ -10,6 +10,7 @@ namespace TextAdventure
     public class EntityDamageSource : DamageSource
     {
         public Entity Source { get; private set; }
+
         public EntityDamageSource(Entity entity)
         {
             Source = entity;

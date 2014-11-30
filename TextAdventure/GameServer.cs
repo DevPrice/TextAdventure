@@ -27,12 +27,14 @@ namespace TextAdventure
         private volatile bool _Running;
         public bool Running { get { return _Running; } private set { _Running = value; } }
         public DateTime LastUpdate { get; private set; }
+        public readonly int TickRate;
 
         public GameServer()
         {
             Players = new List<RemotePlayer>();
             PlayerNum = 1;
             Port = DEFAULT_PORT;
+            TickRate = 20;
         }
 
         public GameServer(int port)
@@ -100,7 +102,7 @@ namespace TextAdventure
                 DateTime now = DateTime.Now;
                 Update(now - LastUpdate);
                 LastUpdate = now;
-                Thread.Sleep(200);
+                Thread.Sleep(1000 / TickRate);
             }
         }
 
@@ -135,7 +137,7 @@ namespace TextAdventure
 
                     string message = Encoding.Unicode.GetString(bytes);
 
-                    if (message.Length > 0)
+                    if (message.Length > 0 && player.Alive)
                         CommandEngine.RunCommand(message, player);
                 }
                 catch (SocketException)

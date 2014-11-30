@@ -13,15 +13,13 @@ namespace TextAdventure.Behaviors
         public int Priority { get; set; }
         public bool Active { get; protected set; }
         public int Mask { get; set; }
+        public Entity Entity { get; private set; }
+        public virtual bool ShouldUpdate { get; protected set; }
 
         public Behavior(Entity entity)
         {
-
-        }
-
-        public virtual bool ShouldUpdate
-        {
-            get { return true; }
+            Entity = entity;
+            ShouldUpdate = true;
         }
 
         public virtual void Start()
