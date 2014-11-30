@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using TextAdventure.Commands;
 using TextAdventure.Events;
@@ -59,7 +60,18 @@ namespace TextAdventure.Entities
 
         public virtual void Examine(ICommandSender examiner)
         {
+            examiner.SendMessage(Name.ToTitleCase());
 
+            if (!Alive)
+            {
+                examiner.SendMessage();
+                examiner.SendMessage("It's dead.");
+            }
+            else if (Hp < Attributes.MaxHp / 2)
+            {
+                examiner.SendMessage();
+                examiner.SendMessage("It looks injured.");
+            }
         }
 
         public virtual void Update(TimeSpan delta)

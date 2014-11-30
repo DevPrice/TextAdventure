@@ -126,11 +126,11 @@ namespace TextAdventure
                     if (player == null)
                     {
                         player = new RemotePlayer(World, Client, endPoint);
+                        player.Name = String.Format("Player{0}", PlayerNum++);
+
                         Players.Add(player);
                         World.Players.Add(player);
-                        World.Map.EntryNode.Entities.Add(player);
-
-                        player.Name = String.Format("Player{0}", PlayerNum++);
+                        World.Map.EntryNode.Add(player);
 
                         Output.WriteLine("Player connected from {0}:{1}.", endPoint.Address, endPoint.Port);
                     }

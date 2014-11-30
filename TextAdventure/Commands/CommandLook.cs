@@ -47,7 +47,7 @@ namespace TextAdventure.Commands
         {
             foreach (Item item in ((IMapNode)Target).Items)
             {
-                Sender.SendMessage("You see a {0} on the ground.", item.Name);
+                Sender.SendMessage("You see a [{0}] on the ground.", item.Name);
             }
 
             if (((IMapNode)Target).Items.Count > 0)
@@ -61,7 +61,7 @@ namespace TextAdventure.Commands
             foreach (Entity entity in ((IMapNode)Target).Entities)
             {
                 if (entity != Sender as Entity)
-                    Sender.SendMessage("You see {0}.", entity.Name);
+                    Sender.SendMessage("You see{0} [{1}].", entity is Player ? "" : " a", entity.Name);
             }
 
             if (((IMapNode)Target).Entities.Count > 1)
@@ -83,6 +83,12 @@ namespace TextAdventure.Commands
                 {
                     if (item.Name.Equals(args[1], StringComparison.CurrentCultureIgnoreCase))
                         return new CommandLook(World, sender, item);
+                }
+
+                foreach (Entity entity in currentNode.Entities)
+                {
+                    if (entity.Name.Equals(args[1], StringComparison.CurrentCultureIgnoreCase))
+                        return new CommandLook(World, sender, entity);
                 }
             }
 

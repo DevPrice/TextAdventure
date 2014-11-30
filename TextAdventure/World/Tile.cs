@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Commands;
 using TextAdventure.Entities;
+using TextAdventure.Events;
 using TextAdventure.Items;
 using TextAdventure.Utility;
 
@@ -12,15 +13,26 @@ namespace TextAdventure.World
 {
     public class Tile : IMapNode
     {
+        private List<Entity> _Entities;
+        public IReadOnlyCollection<Entity> Entities { get { return _Entities.AsReadOnly(); } }
 
-        public List<Entity> Entities { get; private set; }
+        public List<Item> _Items;
+        public IReadOnlyCollection<Item> Items { get { return _Items.AsReadOnly(); } }
 
-        public List<Item> Items { get; private set; }
+        #region events
+
+        public event EventHandler<EntityMovedEventArgs> EntityEntered;
+        public event EventHandler<EntityMovedEventArgs> EntityLeft;
+
+        #endregion
 
         public Tile()
         {
-            Entities = new List<Entity>();
-            Items = new List<Item>();
+            _Entities = new List<Entity>();
+            _Items = new List<Item>();
+
+            EntityEntered += OnEntityEntered;
+            EntityLeft += OnEntityLeft;
         }
 
         public void Examine(ICommandSender examiner)
@@ -37,6 +49,60 @@ namespace TextAdventure.World
                 item.Update(delta);
         }
 
+        public void Add(Entity entity)
+        {
+            _Entities.Add(entity);
+
+            if (EntityEntered != null)
+                EntityEntered(this, new EntityMovedEventArgs(entity, null, this));
+        }
+
+        public void Remove(Entity entity)
+        {
+            bool success = _Entities.Remove(entity);
+
+            if (success && EntityLeft != null)
+                EntityLeft(this, new EntityMovedEventArgs(entity, this, null));
+        }
+
+        public void Add(Item item)
+        {
+            _Items.Add(item);
+        }
+
+        public void Remove(Item item)
+        {
+            _Items.Remove(item);
+        }
+
+        private void OnEntityEntered(object sender, EntityMovedEventArgs e)
+        {
+            string message = String.Format("{0} entered the area.", e.Entity.Name);
+            
+            if (e.Entity is Player)
+            {
+                Broadcast(message, (Player)e.Entity);
+            }
+            else
+            {
+                Broadcast(message);
+            }
+        }
+
+        private void OnEntityLeft(object sender, EntityMovedEventArgs e)
+        {
+            string message = String.Format("{0} left the area.", e.Entity.Name);
+
+            if (e.Entity is Player)
+            {
+                Broadcast(message, (Player)e.Entity);
+            }
+            else
+            {
+                Broadcast(message);
+            }
+        }
+
 
         public void Broadcast(string message)
         {
@@ -47,7 +113,7 @@ namespace TextAdventure.World
         {
             foreach (Entity entity in Entities)
             {
-                if (entity is Player)
+                if (entity is Player && entity != player)
                     ((Player)entity).SendMessage(message);
             }
         }

@@ -24,12 +24,8 @@ namespace TextAdventure.Commands
 
             if (Sender is Player)
             {
-
-                foreach (Entity entity in World.Map.LocationOf((Player)Sender).Entities)
-                {
-                    if (entity is Player && entity != Sender)
-                        ((Player)entity).SendMessage("{0} says, \"{1}\"", ((Player)Sender).Name, Target);
-                }
+                string message = String.Format("{0} says, \"{1}\"", ((Player)Sender).Name, Target);
+                World.Map.LocationOf((Player)Sender).Broadcast(message);
             }
             else
             {

@@ -32,7 +32,7 @@ namespace TextAdventure.Commands
             {
                 IMapNode node = World.Map.LocationOf(Target);
 
-                node.Items.Remove(Target);
+                node.Remove(Target);
 
                 ((Player)Sender).Inventory.Add(Target);
 

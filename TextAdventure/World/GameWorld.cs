@@ -32,10 +32,10 @@ namespace TextAdventure.World
         public static GameWorld Generate(Random random)
         {
             IGameMap map = GridMap.Generate(random);
-            map.EntryNode.Items.Add(new Item("compass"));
+            map.EntryNode.Add(new Item("compass"));
 
             GameWorld world = new GameWorld(map);
-            map.EntryNode.Entities.Add(new EntityRat(world));
+            map.EntryNode.Add(new EntityRat(world));
 
             return world;
         }

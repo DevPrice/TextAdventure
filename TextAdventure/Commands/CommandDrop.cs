@@ -29,7 +29,7 @@ namespace TextAdventure.Commands
                 IMapNode currentNode = World.Map.LocationOf(((Player)Sender));
 
                 ((Player)Sender).Inventory.Remove(Target);
-                currentNode.Items.Add(Target);
+                currentNode.Add(Target);
 
                 Sender.SendMessage("You drop the {0}.", Target.Name);
             }

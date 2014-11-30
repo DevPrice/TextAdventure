@@ -27,8 +27,8 @@ namespace TextAdventure.Commands
 
             if (Target != null)
             {
-                Target.From.Entities.Remove((Player)Sender);
-                Target.To.Entities.Add((Player)Sender);
+                Target.From.Remove((Player)Sender);
+                Target.To.Add((Player)Sender);
 
                 Sender.SendMessage("You go {0}.", Target.Identifier);
             }
