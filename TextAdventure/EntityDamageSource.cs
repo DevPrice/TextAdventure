@@ -14,5 +14,10 @@ namespace TextAdventure
         {
             Source = entity;
         }
+
+        public override string ToString()
+        {
+            return Source.Name;
+        }
     }
 }

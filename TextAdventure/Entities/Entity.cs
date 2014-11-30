@@ -52,7 +52,7 @@ namespace TextAdventure.Entities
         {
             TimeSinceAttack += delta;
 
-            if (!CombatTarget.Alive)
+            if (CombatTarget != null && !CombatTarget.Alive)
                 CombatTarget = null;
 
             if (CombatTarget != null)
@@ -123,7 +123,7 @@ namespace TextAdventure.Entities
 
             if (this is ICommandSender)
             {
-                ((ICommandSender)this).SendMessage("You take {0} damage.", damageDealt);
+                ((ICommandSender)this).SendMessage("You take {0} damage from {1}.", damageDealt, source.ToString());
             }
 
             return finalDamage;

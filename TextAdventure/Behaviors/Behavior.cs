@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextAdventure.Entities;
 using TextAdventure.World;
 
 namespace TextAdventure.Behaviors
@@ -12,6 +13,11 @@ namespace TextAdventure.Behaviors
         public int Priority { get; set; }
         public bool Active { get; protected set; }
         public int Mask { get; set; }
+
+        public Behavior(Entity entity)
+        {
+
+        }
 
         public virtual bool ShouldUpdate
         {
