@@ -23,7 +23,10 @@ namespace TextAdventure.Entities
 
         public override void SendMessage(string message)
         {
-            if (message == null || !Alive)
+            if (message == null)
+                return;
+
+            if (!Alive && !message.Contains("YOU DIED"))
                 return;
 
             byte[] bytes = Encoding.Unicode.GetBytes(message);

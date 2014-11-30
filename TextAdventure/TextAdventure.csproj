@@ -46,6 +46,7 @@
     <Compile Include="Behaviors\IBehavior.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CommandAttack.cs" />
+    <Compile Include="Commands\CommandDie.cs" />
     <Compile Include="Commands\CommandDrop.cs" />
     <Compile Include="Commands\CommandEngine.cs" />
     <Compile Include="Commands\CommandHelp.cs" />

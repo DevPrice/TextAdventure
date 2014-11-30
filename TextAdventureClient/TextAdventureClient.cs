@@ -22,35 +22,43 @@ namespace TextAdventureClient
 
             IPEndPoint serverEndPoint = null;
 
+            Console.WriteLine("Enter a host address or type 'LAN' to search the local network:");
+            Console.Write(">");
+
             while (Client == null || serverEndPoint == null)
             {
-                UdpClient broadcastClient = new UdpClient(BROADCAST_PORT);
-                IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, BROADCAST_PORT);
+                string address = Console.ReadLine();
 
-                byte[] bytes = broadcastClient.Receive(ref endPoint);
-
-                string message = Encoding.Unicode.GetString(bytes);
-
-                if (message.Equals("CTRL:BROADCAST"))
-                    serverEndPoint = endPoint;
-
-                broadcastClient.Close();
-
-                Client = new UdpClient();
-                
-                /*try
+                if (address.Equals("lan", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    Console.Write("Enter server IP: ");
-                    string serverIp = Console.ReadLine();
+                    UdpClient broadcastClient = new UdpClient(BROADCAST_PORT);
+                    IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, BROADCAST_PORT);
 
-                    Client = new UdpClient(0, AddressFamily.InterNetworkV6);
-                    IPAddress[] addresses = Dns.GetHostAddresses(serverIp);
-                    serverEndPoint = new IPEndPoint(addresses[0], DEFAULT_PORT);
+                    byte[] bytes = broadcastClient.Receive(ref endPoint);
+
+                    string message = Encoding.Unicode.GetString(bytes);
+
+                    if (message.Equals("CTRL:BROADCAST"))
+                        serverEndPoint = endPoint;
+
+                    broadcastClient.Close();
+
+                    Client = new UdpClient();
                 }
-                catch (Exception)
+                else
                 {
-                    Console.WriteLine("Invalid host address.");
-                }*/
+                    try
+                    {
+                        Client = new UdpClient(0, AddressFamily.InterNetwork);
+                        IPAddress[] addresses = Dns.GetHostAddresses(address);
+                        serverEndPoint = new IPEndPoint(addresses[0], DEFAULT_PORT);
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Invalid host address.");
+                        Console.Write("Enter host address: ");
+                    }
+                }
             }
 
             byte[] connectBytes = Encoding.Unicode.GetBytes(String.Empty);
@@ -61,7 +69,7 @@ namespace TextAdventureClient
             Task listenTask = new Task(Listen);
             listenTask.Start();
             
-            while (true)
+            while (!listenTask.IsCompleted)
             {
                 Console.WriteLine();
                 Console.Write(">");
@@ -70,6 +78,9 @@ namespace TextAdventureClient
                 Client.Send(bytes, bytes.Length, serverEndPoint);
                 Thread.Sleep(150);
             }
+
+            Thread.Sleep(2000);
+            Console.ReadKey();
         }
 
         private static void Listen()
@@ -85,7 +96,14 @@ namespace TextAdventureClient
                     string message = Encoding.Unicode.GetString(bytes);
 
                     if (!message.StartsWith("CTRL:"))
+                    {
                         Console.WriteLine(message);
+                    }
+
+                    if (message.Contains("YOU DIED"))
+                    {
+                        break;
+                    }
                 }
             }
             catch (SocketException)

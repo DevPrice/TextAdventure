@@ -65,6 +65,7 @@ namespace TextAdventure
             commands.Add(new CommandTake(World, null, null));
             commands.Add(new CommandDrop(World, null, null));
             commands.Add(new CommandAttack(World, null, null));
+            commands.Add(new CommandDie(World, null));
             commands.Add(new CommandQuit(World, null, this));
 
             CommandParser parser = new CommandParser(commands);
@@ -81,7 +82,7 @@ namespace TextAdventure
             Task listenTask = new Task(Listen);
             listenTask.Start();
 
-            Output.WriteLine("Listening...");
+            Output.WriteLine("Listening on port {0}...", Port);
 
             while (Running)
             {
