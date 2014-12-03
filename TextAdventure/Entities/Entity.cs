@@ -29,6 +29,7 @@ namespace TextAdventure.Entities
         }
         public bool Alive { get { return Hp > 0; } }
         public List<Item> Inventory { get; set; }
+        public Equipment Equipment { get; set; }
         public Entity CombatTarget { get; set; }
         public TimeSpan TimeSinceAttack { get; set; }
         public int Experience { get; protected set; }
@@ -48,6 +49,7 @@ namespace TextAdventure.Entities
             Attributes = new CombatAttributes();
             Hp = Attributes.MaxHp;
             Inventory = new List<Item>();
+            Equipment = new Equipment();
             TimeSinceAttack = TimeSpan.FromSeconds(30);
         }
 
