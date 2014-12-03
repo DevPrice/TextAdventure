@@ -28,7 +28,7 @@ namespace TextAdventure.Entities
 
         private void OnDamageTaken(object sender, DamageTakenEventArgs e)
         {
-            int displayDamage = (int)Math.Max(Attributes.MaxHp, Hp + e.Amount) - (int)Hp;
+            int displayDamage = (int)Math.Min(Attributes.MaxHp, Hp + e.Amount) - (int)Hp;
             SendMessage("{0} damage taken from {1}.", displayDamage, e.DamageSource);
         }
 
