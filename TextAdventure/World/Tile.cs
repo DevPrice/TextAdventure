@@ -16,7 +16,7 @@ namespace TextAdventure.World
         private List<Entity> _Entities;
         public IReadOnlyCollection<Entity> Entities { get { return _Entities.AsReadOnly(); } }
 
-        public List<Item> _Items;
+        private List<Item> _Items;
         public IReadOnlyCollection<Item> Items { get { return _Items.AsReadOnly(); } }
 
         #region events
