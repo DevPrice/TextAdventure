@@ -66,7 +66,7 @@
     <Compile Include="Commands\SharedAliasException.cs" />
     <Compile Include="Commands\UsageException.cs" />
     <Compile Include="DamageSource.cs" />
-    <Compile Include="Entities\EntityAttributes.cs" />
+    <Compile Include="Entities\CombatAttributes.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\EntityNPC.cs" />
     <Compile Include="Entities\EntityRat.cs" />
@@ -79,6 +79,7 @@
     <Compile Include="GameServer.cs" />
     <Compile Include="Items\IEdible.cs" />
     <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\ItemWieldable.cs" />
     <Compile Include="Items\IUsable.cs" />
     <Compile Include="TextAdventure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

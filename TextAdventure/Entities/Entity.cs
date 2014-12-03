@@ -16,7 +16,7 @@ namespace TextAdventure.Entities
     {
         public GameWorld World { get; private set; }
         public string Name { get; set; }
-        public EntityAttributes Attributes { get; set; }
+        public CombatAttributes Attributes { get; set; }
         public Gender Gender { get; set; }
         private double _Hp;
         public double Hp
@@ -45,7 +45,7 @@ namespace TextAdventure.Entities
         public Entity(GameWorld world)
         {
             World = world;
-            Attributes = new EntityAttributes();
+            Attributes = new CombatAttributes();
             Hp = Attributes.MaxHp;
             Inventory = new List<Item>();
             TimeSinceAttack = TimeSpan.FromSeconds(30);
