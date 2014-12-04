@@ -81,6 +81,7 @@
     <Compile Include="Items\Equipment.cs" />
     <Compile Include="Items\IEdible.cs" />
     <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\ItemSword.cs" />
     <Compile Include="Items\ItemWieldable.cs" />
     <Compile Include="Items\IUsable.cs" />
     <Compile Include="TextAdventure.cs" />

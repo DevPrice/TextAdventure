@@ -19,7 +19,7 @@ namespace TextAdventure.Items
         }
 
         public ItemWieldable(string name, EquipmentSlot slot)
-            : this(name, slot, new CombatAttributes())
+            : this(name, slot, CombatAttributes.Zero)
         {
 
         }

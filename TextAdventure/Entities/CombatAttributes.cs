@@ -8,6 +8,8 @@ namespace TextAdventure.Entities
 {
     public class CombatAttributes
     {
+        public static CombatAttributes Zero { get { return new CombatAttributes(0, 0, 0, 0, 0, 0, 0, 0); } }
+
         public double MaxHp;
         public double Strength;
         public double Defense;
@@ -16,7 +18,6 @@ namespace TextAdventure.Entities
         public double Speed;
         public double CritChance;
         public double CritMultiplier;
-
         public CombatAttributes()
         {
             MaxHp = 1;
