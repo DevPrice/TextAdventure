@@ -3,12 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextAdventure.Entities;
 using TextAdventure.Events;
 
 namespace TextAdventure.Items
 {
     public class Equipment : ICollection<ItemWieldable>
     {
+        public CombatAttributes TotalAttributes
+        {
+            get
+            {
+                CombatAttributes totalAttributes = CombatAttributes.Zero;
+
+                foreach (var item in this)
+                {
+                    totalAttributes = CombatAttributes.Combine(totalAttributes, item.BonusAttributes);
+                }
+
+                return totalAttributes;
+            }
+        }
+
         #region events
 
         public event EventHandler<ItemEquipEventArgs> ItemEquipped;
@@ -24,10 +40,9 @@ namespace TextAdventure.Items
             {
                 int count = 0;
 
-                foreach (var item in Items)
+                foreach (var item in this)
                 {
-                    if (item != null)
-                        count++;
+                    count++;
                 }
 
                 return count;
@@ -132,7 +147,8 @@ namespace TextAdventure.Items
             
             foreach (ItemWieldable item in Items)
             {
-                set.Add(item);
+                if (item != null)
+                    set.Add(item);
             }
 
             return set.GetEnumerator();

@@ -16,7 +16,8 @@ namespace TextAdventure.Entities
     {
         public GameWorld World { get; private set; }
         public string Name { get; set; }
-        public CombatAttributes Attributes { get; set; }
+        public CombatAttributes Attributes { get { return CombatAttributes.Combine(BaseAttributes, Equipment.TotalAttributes); } }
+        public CombatAttributes BaseAttributes { get; set; }
         public Gender Gender { get; set; }
         private double _Hp;
         public double Hp
@@ -46,18 +47,17 @@ namespace TextAdventure.Entities
         public Entity(GameWorld world)
         {
             World = world;
-            Attributes = new CombatAttributes();
-            Hp = Attributes.MaxHp;
-            Inventory = new List<Item>();
+            BaseAttributes = new CombatAttributes();
             Equipment = new Equipment();
+            Hp = BaseAttributes.MaxHp;
+            Inventory = new List<Item>();
             TimeSinceAttack = TimeSpan.FromSeconds(30);
         }
-
 
         public Entity(GameWorld world, int hp)
             : this(world)
         {
-            Hp = Attributes.MaxHp = hp;
+            Hp = BaseAttributes.MaxHp = hp;
         }
 
         public virtual void Examine(ICommandSender examiner)
@@ -142,6 +142,8 @@ namespace TextAdventure.Entities
 
         public virtual double DealDamage(DamageSource source, double amount)
         {
+            bool alreadyDead = !Alive;
+
             if (source.DamageType == DamageType.Physical)
             {
                 amount *= 10 / (10 + Attributes.Defense);
@@ -152,7 +154,7 @@ namespace TextAdventure.Entities
             if (DamageTaken != null)
                 DamageTaken(this, new DamageTakenEventArgs(source, amount));
 
-            if (!Alive && Death != null)
+            if (!Alive && !alreadyDead && Death != null)
                 Death(this, new DamageTakenEventArgs(source, amount));
 
             return amount;

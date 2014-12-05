@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using TextAdventure.Behaviors;
 using TextAdventure.Commands;
 using TextAdventure.Events;
+using TextAdventure.Items;
 using TextAdventure.Utility;
 using TextAdventure.World;
 
@@ -24,6 +25,7 @@ namespace TextAdventure.Entities
             Death += OnDeath;
             AttackedEntity += OnAttackedEntity;
             KilledEntity += OnKilledEntity;
+            Equipment.Add(new ItemSword());
         }
 
         private void OnDamageTaken(object sender, DamageTakenEventArgs e)
