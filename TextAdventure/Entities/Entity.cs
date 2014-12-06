@@ -105,7 +105,12 @@ namespace TextAdventure.Entities
 
         public virtual void AttackEntity(Entity target)
         {
-            double chanceToHit = Attributes.Accuracy / (Attributes.Accuracy + target.Attributes.Dodge);
+            double chanceToHit = 0;
+
+            if (Attributes.Accuracy + target.Attributes.Dodge != 0)
+            {
+                chanceToHit = Attributes.Accuracy / (Attributes.Accuracy + target.Attributes.Dodge);
+            }
 
             Random rng = new Random(GetHashCode() + Environment.TickCount);
 
