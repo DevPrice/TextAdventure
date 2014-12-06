@@ -35,9 +35,40 @@ namespace TextAdventure.World
             map.EntryNode.Add(new Item("compass"));
 
             GameWorld world = new GameWorld(map);
-            map.EntryNode.Add(new EntityRat(world));
+
+            world.GenerateItems(random);
+            world.GenerateEntities(random);
 
             return world;
+        }
+
+        private void GenerateItems(Random random)
+        {
+            int numSwords = (int)(Map.NumNodes * .8);
+
+            for (int i = 0; i < numSwords; i++)
+            {
+                Map.GetRandomNode(random).Add(new ItemSword());
+            }
+
+            int numFood = (int)(Map.NumNodes * .8);
+
+            for (int i = 0; i < numFood; i++)
+            {
+                ItemFood food = random.NextDouble() < .2 ? new ItemFood("pizza", 10) : new ItemFood("hotdog", 4);
+
+                Map.GetRandomNode(random).Add(food);
+            }
+        }
+
+        private void GenerateEntities(Random random)
+        {
+            int numRats = (int)(Map.NumNodes * .4);
+
+            for (int i = 0; i < numRats; i++)
+            {
+                Map.GetRandomNode(random).Add(new EntityRat(this));
+            }
         }
 
         public void Update(TimeSpan delta)

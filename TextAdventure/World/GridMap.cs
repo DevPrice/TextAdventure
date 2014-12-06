@@ -10,18 +10,17 @@ namespace TextAdventure.World
 {
     public class GridMap : IGameMap
     {
-        public Tile[,] Tiles { get; private set; }
+        public GridTile[,] Tiles { get; private set; }
         public readonly int Width;
         public readonly int Height;
 
-        public IMapNode EntryNode
-        {
-            get { return Tiles[0, 0]; }
-        }
+        public int NumNodes { get { return Width * Height;  } }
+
+        public IMapNode EntryNode { get; protected set; }
 
         public GridMap(int width, int height)
         {
-            Tiles = new Tile[width, height];
+            Tiles = new GridTile[width, height];
             Width = width;
             Height = height;
         }
@@ -35,21 +34,24 @@ namespace TextAdventure.World
         {
             GridMap map = new GridMap(width, height);
 
-
             for (int y = 0; y < map.Height; y++)
             {
                 for (int x = 0; x < map.Width; x++)
                 {
-                    map.Tiles[x, y] = new Tile();
+                    map.Tiles[x, y] = new GridTile();
+                    map.Tiles[x, y].Travelable = random.Next(4) > 0;
                 }
             }
+
+            map.EntryNode = map.Tiles[random.Next(width), random.Next(height)];
+            ((GridTile)map.EntryNode).Travelable = true;
 
             return map;
         }
 
         public IMapNode LocationOf(Entity entity)
         {
-            foreach (Tile tile in Tiles)
+            foreach (GridTile tile in Tiles)
             {
                 if (tile.Entities.Contains(entity))
                     return tile;
@@ -60,7 +62,7 @@ namespace TextAdventure.World
 
         public IMapNode LocationOf(Item item)
         {
-            foreach (Tile tile in Tiles)
+            foreach (GridTile tile in Tiles)
             {
                 if (tile.Items.Contains(item))
                     return tile;
@@ -71,7 +73,7 @@ namespace TextAdventure.World
 
         public List<Path> GetPathsFrom(IMapNode node)
         {
-            if (node == null || !(node is Tile))
+            if (node == null || !(node is GridTile))
                 throw new ArgumentException("Node is not a tile.");
 
             Point nodePos = GetPosition(node);
@@ -92,6 +94,8 @@ namespace TextAdventure.World
 
             if (nodePos.X < Width - 1)
                 pathsFrom.Add(new Path("east", node, Tiles[nodePos.X + 1, nodePos.Y]));
+
+            pathsFrom.RemoveAll(x => !((GridTile)x.To).Travelable);
 
             return pathsFrom;
         }
@@ -128,6 +132,11 @@ namespace TextAdventure.World
         {
             foreach (IMapNode node in Tiles)
                 node.Update(delta);
+        }
+
+        public IMapNode GetRandomNode(Random random)
+        {
+            return Tiles[random.Next(Width), random.Next(Height)];
         }
     }
 

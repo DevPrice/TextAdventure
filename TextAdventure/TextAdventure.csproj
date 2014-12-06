@@ -100,7 +100,7 @@
     <Compile Include="World\IMapNode.cs" />
     <Compile Include="World\IUpdatable.cs" />
     <Compile Include="World\Path.cs" />
-    <Compile Include="World\Tile.cs" />
+    <Compile Include="World\GridTile.cs" />
     <Compile Include="World\GridMap.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -11,8 +11,10 @@ using TextAdventure.Utility;
 
 namespace TextAdventure.World
 {
-    public class Tile : IMapNode
+    public class GridTile : IMapNode
     {
+        public bool Travelable { get; set; }
+
         private List<Entity> _Entities;
         public IReadOnlyCollection<Entity> Entities { get { return _Entities.AsReadOnly(); } }
 
@@ -26,7 +28,7 @@ namespace TextAdventure.World
 
         #endregion
 
-        public Tile()
+        public GridTile()
         {
             _Entities = new List<Entity>();
             _Items = new List<Item>();
