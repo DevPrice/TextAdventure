@@ -48,6 +48,7 @@
     <Compile Include="Commands\CommandAttack.cs" />
     <Compile Include="Commands\CommandDie.cs" />
     <Compile Include="Commands\CommandDrop.cs" />
+    <Compile Include="Commands\CommandEat.cs" />
     <Compile Include="Commands\CommandEngine.cs" />
     <Compile Include="Commands\CommandEquip.cs" />
     <Compile Include="Commands\CommandHelp.cs" />
@@ -85,6 +86,7 @@
     <Compile Include="Items\Equipment.cs" />
     <Compile Include="Items\IEdible.cs" />
     <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\ItemFood.cs" />
     <Compile Include="Items\ItemSword.cs" />
     <Compile Include="Items\ItemWieldable.cs" />
     <Compile Include="Items\IUsable.cs" />

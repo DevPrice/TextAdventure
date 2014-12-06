@@ -48,11 +48,11 @@ namespace TextAdventure.Entities
         public Entity(GameWorld world)
         {
             World = world;
-            BaseAttributes = new CombatAttributes();
+            BaseAttributes = CombatAttributes.Default;
             Equipment = new Equipment();
-            Hp = BaseAttributes.MaxHp;
             Inventory = new List<Item>();
             TimeSinceAttack = TimeSpan.FromSeconds(30);
+            Hp = BaseAttributes.MaxHp;
         }
 
         public Entity(GameWorld world, int hp)

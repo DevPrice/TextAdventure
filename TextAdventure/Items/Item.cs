@@ -12,13 +12,13 @@ namespace TextAdventure.Items
     public class Item : IExaminable, IUpdatable, INamed
 
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string Name { get; protected set; }
+        public string Description { get; protected set; }
 
         public Item(string name)
         {
             Name = name;
-            Description = "A " + Name + ".";
+            Description = String.Format("A {0}.", Name);
         }
 
         public void Examine(ICommandSender examiner)

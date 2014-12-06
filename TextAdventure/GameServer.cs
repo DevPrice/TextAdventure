@@ -66,6 +66,7 @@ namespace TextAdventure
             commands.Add(new CommandDrop(World, null, null));
             commands.Add(new CommandEquip(World, null, null));
             commands.Add(new CommandUnequip(World, null, null));
+            commands.Add(new CommandEat(World, null, null));
             commands.Add(new CommandAttack(World, null, null));
             commands.Add(new CommandDie(World, null));
             commands.Add(new CommandQuit(World, null, this));

@@ -9,6 +9,7 @@ namespace TextAdventure.Entities
     public class CombatAttributes
     {
         public static CombatAttributes Zero { get { return new CombatAttributes(0, 0, 0, 0, 0, 0, 0, 0); } }
+        public static CombatAttributes Default { get { return new CombatAttributes(1, 1, 1, 1, 1, .5, 0, 2); } }
 
         public double MaxHp;
         public double Strength;
@@ -18,17 +19,6 @@ namespace TextAdventure.Entities
         public double Speed;
         public double CritChance;
         public double CritMultiplier;
-        public CombatAttributes()
-        {
-            MaxHp = 1;
-            Strength = 1;
-            Defense = 1;
-            Accuracy = 1;
-            Dodge = 1;
-            Speed = .5f;
-            CritChance = 0;
-            CritMultiplier = 2;
-        }
 
         public CombatAttributes(double maxHp, double strength, double defense, double accuracy,
             double dodge, double speed, double critChance, double critMultiplier)
