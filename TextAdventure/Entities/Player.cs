@@ -25,6 +25,8 @@ namespace TextAdventure.Entities
             Death += OnDeath;
             AttackedEntity += OnAttackedEntity;
             KilledEntity += OnKilledEntity;
+            Equipment.ItemEquipped += OnItemEquipped;
+            Equipment.ItemUnequipped += OnItemUnequipped;
             Inventory.Add(new ItemSword());
         }
 
@@ -37,6 +39,16 @@ namespace TextAdventure.Entities
         private void OnDeath(object sender, DamageTakenEventArgs e)
         {
             SendMessage("YOU DIED");
+        }
+
+        private void OnItemEquipped(object sender, ItemEquipEventArgs e)
+        {
+            SendMessage("{0} equipped.", e.Item.Name.ToTitleCase());
+        }
+
+        private void OnItemUnequipped(object sender, ItemEquipEventArgs e)
+        {
+            SendMessage("{0} unequipped.", e.Item.Name.ToTitleCase());
         }
 
         private void OnAttackedEntity(object sender, AttackedEntityEventArgs e)
