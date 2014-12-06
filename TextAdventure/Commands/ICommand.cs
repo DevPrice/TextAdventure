@@ -7,9 +7,8 @@ using TextAdventure.World;
 
 namespace TextAdventure.Commands
 {
-    public interface ICommand
+    public interface ICommand : INamed
     {
-        string Name { get; }
         List<string> Aliases { get; }
         string Description { get; }
         string Usage { get; }

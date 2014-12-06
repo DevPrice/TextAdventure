@@ -49,6 +49,7 @@
     <Compile Include="Commands\CommandDie.cs" />
     <Compile Include="Commands\CommandDrop.cs" />
     <Compile Include="Commands\CommandEngine.cs" />
+    <Compile Include="Commands\CommandEquip.cs" />
     <Compile Include="Commands\CommandHelp.cs" />
     <Compile Include="Commands\CommandInventory.cs" />
     <Compile Include="Commands\CommandLook.cs" />
@@ -59,6 +60,7 @@
     <Compile Include="Commands\CommandSay.cs" />
     <Compile Include="Commands\CommandStatus.cs" />
     <Compile Include="Commands\CommandTake.cs" />
+    <Compile Include="Commands\CommandUnequip.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ICommandFactory.cs" />
     <Compile Include="Commands\ICommandSender.cs" />
@@ -78,6 +80,7 @@
     <Compile Include="Events\EntityMovedEventArgs.cs" />
     <Compile Include="Events\ItemEquipEventArgs.cs" />
     <Compile Include="GameServer.cs" />
+    <Compile Include="INamed.cs" />
     <Compile Include="Items\Equipment.cs" />
     <Compile Include="Items\IEdible.cs" />
     <Compile Include="Items\Item.cs" />

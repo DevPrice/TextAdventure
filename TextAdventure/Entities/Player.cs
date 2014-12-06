@@ -25,7 +25,7 @@ namespace TextAdventure.Entities
             Death += OnDeath;
             AttackedEntity += OnAttackedEntity;
             KilledEntity += OnKilledEntity;
-            Equipment.Add(new ItemSword());
+            Inventory.Add(new ItemSword());
         }
 
         private void OnDamageTaken(object sender, DamageTakenEventArgs e)

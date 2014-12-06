@@ -12,7 +12,7 @@ using TextAdventure.World;
 
 namespace TextAdventure.Entities
 {
-    public abstract class Entity : IExaminable, IUpdatable
+    public abstract class Entity : IExaminable, IUpdatable, INamed
     {
         public GameWorld World { get; private set; }
         public string Name { get; set; }

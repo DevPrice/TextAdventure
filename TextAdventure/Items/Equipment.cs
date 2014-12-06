@@ -89,7 +89,7 @@ namespace TextAdventure.Items
 
             for (int i = 0; i < Items.Length; i++)
             {
-                if (Items[i].Equals(item))
+                if (item.Equals(Items[i]))
                     Items[i] = null;
             }
 
@@ -120,6 +120,20 @@ namespace TextAdventure.Items
 
         public bool CanEquip(ItemWieldable item)
         {
+            int slot = (int)item.Slot;
+
+            for (int i = 0; i < Items.Length; i++)
+            {
+                // if bit i is set and item already in slot
+                if ((slot & 1) == 1 && Items[i] != null)
+                {
+                    return false;
+                }
+
+                // check next bit
+                slot >>= 1;
+            }
+
             return true;
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Entities;
+using TextAdventure.Items;
 using TextAdventure.Utility;
 using TextAdventure.World;
 
@@ -23,6 +24,12 @@ namespace TextAdventure.Commands
             base.Execute();
 
             Sender.SendMessage("HP: {0}", Target.Hp);
+            Sender.SendMessage();
+
+            foreach (ItemWieldable item in Target.Equipment)
+            {
+                Sender.SendMessage("{0}: {1}", item.Slot.ToString(), item.Name);
+            }
         }
 
         public override ICommand Create(ICommandSender sender, string[] args)

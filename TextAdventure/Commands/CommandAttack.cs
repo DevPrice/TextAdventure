@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Entities;
+using TextAdventure.Utility;
 using TextAdventure.World;
 
 namespace TextAdventure.Commands
@@ -32,23 +33,13 @@ namespace TextAdventure.Commands
         {
             if (sender is Entity && args.Length >= 2)
             {
-                string[] itemNameArr = new string[args.Length - 1];
-                Array.Copy(args, 1, itemNameArr, 0, itemNameArr.Length);
-                string entityName = String.Join(" ", itemNameArr);
+                string[] entityNameArr = new string[args.Length - 1];
+                Array.Copy(args, 1, entityNameArr, 0, entityNameArr.Length);
+                string entityName = String.Join(" ", entityNameArr);
 
                 IMapNode node = World.Map.LocationOf((Player)sender);
 
-                Entity attackTarget = null;
-
-                foreach (Entity entity in node.Entities)
-                {
-                    if (entity.Name.Equals(entityName, StringComparison.CurrentCultureIgnoreCase)
-                        && entity != sender)
-                    {
-                        attackTarget = entity;
-                        break;
-                    }
-                }
+                Entity attackTarget = node.Entities.GetByName(entityName);
 
                 if (attackTarget == null)
                     throw new UsageException();
