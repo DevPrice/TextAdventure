@@ -80,6 +80,11 @@ namespace TextAdventure.Entities
         {
             TimeSinceAttack += delta;
 
+            foreach (Item item in Inventory)
+            {
+                item.Update(delta);
+            }
+
             if (CombatTarget != null && !CombatTarget.Alive)
                 CombatTarget = null;
 
