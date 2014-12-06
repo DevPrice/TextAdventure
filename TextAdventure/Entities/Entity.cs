@@ -40,6 +40,7 @@ namespace TextAdventure.Entities
         public event EventHandler<DamageTakenEventArgs> DamageTaken;
         public event EventHandler<DamageTakenEventArgs> Death;
         public event EventHandler<AttackedEntityEventArgs> AttackedEntity;
+        public event EventHandler<AttackMissedEventArgs> AttackMissed;
         public event EventHandler<AttackedEntityEventArgs> KilledEntity;
 
         #endregion
@@ -142,9 +143,9 @@ namespace TextAdventure.Entities
                 if (!target.Alive && AttackedEntity != null)
                     KilledEntity(this, new AttackedEntityEventArgs(target, damageSource, damage));
             }
-            else if (this is ICommandSender)
+            else if (AttackMissed != null)
             {
-                ((ICommandSender)this).SendMessage("You miss!");
+                AttackMissed(this, new AttackMissedEventArgs(target));
             }
 
             TimeSinceAttack = TimeSpan.Zero;

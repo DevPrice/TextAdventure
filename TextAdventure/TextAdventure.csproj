@@ -76,6 +76,7 @@
     <Compile Include="Entities\RemotePlayer.cs" />
     <Compile Include="EntityDamageSource.cs" />
     <Compile Include="Events\AttackedEntityEventArgs.cs" />
+    <Compile Include="Events\AttackMissedEventArgs.cs" />
     <Compile Include="Events\DamageTakenEventArgs.cs" />
     <Compile Include="Events\EntityMovedEventArgs.cs" />
     <Compile Include="Events\ItemEquipEventArgs.cs" />

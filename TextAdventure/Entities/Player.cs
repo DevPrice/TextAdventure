@@ -24,6 +24,7 @@ namespace TextAdventure.Entities
             DamageTaken += OnDamageTaken;
             Death += OnDeath;
             AttackedEntity += OnAttackedEntity;
+            AttackMissed += OnAttackMissed;
             KilledEntity += OnKilledEntity;
             Equipment.ItemEquipped += OnItemEquipped;
             Equipment.ItemUnequipped += OnItemUnequipped;
@@ -41,6 +42,22 @@ namespace TextAdventure.Entities
             SendMessage("YOU DIED");
         }
 
+        private void OnAttackedEntity(object sender, AttackedEntityEventArgs e)
+        {
+            int displayDamage = (int)(e.AttackedEntity.Hp + e.DamageDealt) - (int)e.AttackedEntity.Hp;
+            SendMessage("You attack {0} for {1} damage.", e.AttackedEntity.Name, displayDamage);
+        }
+
+        private void OnAttackMissed(object sender, AttackMissedEventArgs e)
+        {
+            SendMessage("You miss!");
+        }
+
+        private void OnKilledEntity(object sender, AttackedEntityEventArgs e)
+        {
+            SendMessage("You killed {0}.", e.AttackedEntity.Name);
+        }
+
         private void OnItemEquipped(object sender, ItemEquipEventArgs e)
         {
             SendMessage("{0} equipped.", e.Item.Name.ToTitleCase());
@@ -49,17 +66,6 @@ namespace TextAdventure.Entities
         private void OnItemUnequipped(object sender, ItemEquipEventArgs e)
         {
             SendMessage("{0} unequipped.", e.Item.Name.ToTitleCase());
-        }
-
-        private void OnAttackedEntity(object sender, AttackedEntityEventArgs e)
-        {
-            int displayDamage = (int)(e.AttackedEntity.Hp + e.DamageDealt) - (int)e.AttackedEntity.Hp;
-            SendMessage("You attack {0} for {1} damage.", e.AttackedEntity.Name, displayDamage);
-        }
-
-        private void OnKilledEntity(object sender, AttackedEntityEventArgs e)
-        {
-            SendMessage("You killed {0}.", e.AttackedEntity.Name);
         }
 
         public virtual void SendMessage(string message)
