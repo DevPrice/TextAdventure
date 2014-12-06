@@ -111,7 +111,7 @@ namespace TextAdventure.Items
 
             while (intSlot > 0)
             {
-                intSlot >>= 2;
+                intSlot >>= 1;
                 index++;
             }
 
