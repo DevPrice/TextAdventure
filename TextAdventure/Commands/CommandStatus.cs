@@ -23,7 +23,7 @@ namespace TextAdventure.Commands
         {
             base.Execute();
 
-            Sender.SendMessage("HP: {0}", Target.Hp);
+            Sender.SendMessage("HP: {0}", Math.Ceiling(Target.Hp));
             Sender.SendMessage();
 
             foreach (ItemWieldable item in Target.Equipment)
