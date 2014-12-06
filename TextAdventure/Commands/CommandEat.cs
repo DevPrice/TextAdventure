@@ -34,6 +34,7 @@ namespace TextAdventure.Commands
                 Entity entity = (Entity)Sender;
                 
                 Target.Eat(entity);
+                entity.Inventory.Remove(Target);
             }
             else
             {
