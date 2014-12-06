@@ -79,17 +79,16 @@ namespace TextAdventure.Commands
                 if (args.Length < 2)
                     return new CommandLook(World, sender, currentNode);
 
-                foreach (Item item in currentNode.Items)
-                {
-                    if (item.Name.Equals(args[1], StringComparison.CurrentCultureIgnoreCase))
-                        return new CommandLook(World, sender, item);
-                }
+                IExaminable examinable = ((Player)sender).Inventory.GetByName(args[1]);
 
-                foreach (Entity entity in currentNode.Entities)
-                {
-                    if (entity.Name.Equals(args[1], StringComparison.CurrentCultureIgnoreCase))
-                        return new CommandLook(World, sender, entity);
-                }
+                if (examinable == null)
+                    examinable = currentNode.Items.GetByName(args[1]);
+
+                if (examinable == null)
+                    examinable = currentNode.Entities.GetByName(args[1]);
+
+                if (examinable != null)
+                    return new CommandLook(World, sender, examinable);
             }
 
             throw new UsageException();

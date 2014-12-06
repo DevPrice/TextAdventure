@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextAdventure.Entities;
 using TextAdventure.World;
 
 namespace TextAdventure.Commands
 {
-    public class CommandQuit : Command<GameServer>
+    public class CommandQuit : Command
     {
-        public CommandQuit(GameWorld world, ICommandSender sender, GameServer server)
-            : base(world, sender, server)
+        public CommandQuit(GameWorld world, ICommandSender sender)
+            : base(world, sender)
         {
             Name = "quit";
             Aliases.Add("exit");
@@ -21,12 +22,15 @@ namespace TextAdventure.Commands
         {
             base.Execute();
 
-            Target.Stop();
+            if (Sender is GameServer)
+            {
+                ((GameServer)Sender).Stop();
+            }
         }
 
         public override ICommand Create(ICommandSender sender, string[] args)
         {
-            return new CommandQuit(World, sender, Target);
+            return new CommandQuit(World, sender);
         }
     }
 }

@@ -69,7 +69,7 @@ namespace TextAdventure
             commands.Add(new CommandEat(World, null, null));
             commands.Add(new CommandAttack(World, null, null));
             commands.Add(new CommandDie(World, null));
-            commands.Add(new CommandQuit(World, null, this));
+            commands.Add(new CommandQuit(World, null));
 
             CommandParser parser = new CommandParser(commands);
             CommandEngine = new CommandEngine(parser);

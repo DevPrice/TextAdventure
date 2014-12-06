@@ -74,6 +74,10 @@ namespace TextAdventureClient
                 Console.WriteLine();
                 Console.Write(">");
                 string command = Console.ReadLine();
+
+                if (command.Equals("quit", StringComparison.CurrentCultureIgnoreCase))
+                    Environment.Exit(0);
+
                 byte[] bytes = Encoding.Unicode.GetBytes(command);
                 Client.Send(bytes, bytes.Length, serverEndPoint);
                 Thread.Sleep(150);

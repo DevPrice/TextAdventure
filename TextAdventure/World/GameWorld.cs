@@ -13,7 +13,7 @@ namespace TextAdventure.World
         public IGameMap Map { get; private set; }
         public List<Player> Players { get; private set; }
 
-        private GameWorld(IGameMap map)
+        protected GameWorld(IGameMap map)
         {
             Map = map;
             Players = new List<Player>();
