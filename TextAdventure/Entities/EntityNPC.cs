@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Behaviors;
+using TextAdventure.Events;
+using TextAdventure.Utility;
 using TextAdventure.World;
 
 namespace TextAdventure.Entities
@@ -14,15 +16,39 @@ namespace TextAdventure.Entities
         public int BehaviorMask { get; private set; }
 
         public EntityNPC(GameWorld world)
-            : base(world)
+            : this(world, (int)CombatAttributes.Default.MaxHp)
         {
-            Behaviors = new List<Behavior>();
+
         }
 
         public EntityNPC(GameWorld world, int hp)
             : base(world, hp)
         {
             Behaviors = new List<Behavior>();
+
+            AttackedEntity += Entity_AttackedEntity;
+            Death += Entity_Death;
+        }
+
+        private void Entity_AttackedEntity(object sender, AttackedEntityEventArgs e)
+        {
+            foreach (Entity entity in Location.Entities)
+            {
+                if (entity is Player && entity != e.AttackedEntity)
+                    ((Player)entity).SendMessage("{0} attacks {1}.", ((Entity)sender).Name.ToTitleCase(), e.AttackedEntity.Name);
+            }
+        }
+
+        private void Entity_Death(object sender, DamageTakenEventArgs e)
+        {
+            foreach (Entity entity in Location.Entities)
+            {
+                if (entity is Player)
+                {
+                    if (!(e.DamageSource is EntityDamageSource) || ((EntityDamageSource)e.DamageSource).Source != entity)
+                        ((Player)entity).SendMessage("{0} was killed by {1}.", ((Entity)sender).Name.ToTitleCase(), e.DamageSource.ToString());
+                }
+            }
         }
 
         public override void Update(TimeSpan delta)

@@ -19,7 +19,7 @@ namespace TextAdventure.Entities
         }
 
         public EntityCat(GameWorld world)
-            : base(world, 8)
+            : base(world, 6)
         {
             Name = "cat";
             BaseAttributes.CritChance = .2;

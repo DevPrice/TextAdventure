@@ -79,7 +79,7 @@ namespace TextAdventure.World
 
         private void OnEntityEntered(object sender, EntityMovedEventArgs e)
         {
-            string message = String.Format("{0} entered the area.", e.Entity.Name);
+            string message = String.Format("{0} entered the area.", e.Entity.Name.ToTitleCase());
             
             if (e.Entity is Player)
             {
@@ -93,7 +93,7 @@ namespace TextAdventure.World
 
         private void OnEntityLeft(object sender, EntityMovedEventArgs e)
         {
-            string message = String.Format("{0} left the area.", e.Entity.Name);
+            string message = String.Format("{0} left the area.", e.Entity.Name.ToTitleCase());
 
             if (e.Entity is Player)
             {
