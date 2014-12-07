@@ -4,39 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Entities;
-using TextAdventure.Events;
-using TextAdventure.World;
+using TextAdventure.Utility;
 
 namespace TextAdventure.Behaviors
 {
-    public class BehaviorRetaliate : Behavior
+    public class BehaviorHostileByName : Behavior
     {
-        public override bool ShouldUpdate { get; protected set; }
+        public string EnemyName { get; private set; }
         public Entity Target { get; private set; }
-
-        public BehaviorRetaliate(Entity entity)
-            : base(entity)
+        public override bool ShouldUpdate
         {
-            Entity.DamageTaken += Entity_DamageTaken;
-            ShouldUpdate = false;
-            Mask = (int)BehaviorMask.Combat;
+            get
+            {
+                return Entity.Alive && Entity.Location.Entities.GetByName(EnemyName) != null;
+            }
         }
 
-        private void Entity_DamageTaken(object sender, DamageTakenEventArgs e)
+        public BehaviorHostileByName(Entity entity, string enemyName)
+            : base(entity)
         {
-            if (e.DamageSource is EntityDamageSource)
-            {
-                EntityDamageSource entitySource = (EntityDamageSource)e.DamageSource;
-                Target = entitySource.Source;
-                ShouldUpdate = true;
-            }
+            EnemyName = enemyName;
+            Mask = (int)BehaviorMask.Combat;
         }
 
         public override void Start()
         {
             base.Start();
 
-            Entity.CombatTarget = Target;
+            // TODO: This won't work if the entity is hostile to its own kind, fix that.
+            Entity.CombatTarget = Target = Entity.Location.Entities.GetByName(EnemyName);
         }
 
         public override void Update(TimeSpan delta)

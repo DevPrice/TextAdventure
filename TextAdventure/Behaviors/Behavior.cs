@@ -45,4 +45,6 @@ namespace TextAdventure.Behaviors
             throw new ArgumentException("Object is not a Behavior.");
         }
     }
+
+    public enum BehaviorMask { None = 0, Combat = 1, Movement = 2 }
 }

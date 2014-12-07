@@ -10,7 +10,8 @@ namespace TextAdventure.Entities
 {
     public class EntityNPC : Entity
     {
-        public List<Behavior> Behaviors { get; set; }
+        public List<Behavior> Behaviors { get; private set; }
+        public int BehaviorMask { get; private set; }
 
         public EntityNPC(GameWorld world)
             : base(world)
@@ -28,14 +29,18 @@ namespace TextAdventure.Entities
         {
             base.Update(delta);
 
+            BehaviorMask = 0;
+
             foreach (Behavior behavior in Behaviors)
             {
-                if (behavior.ShouldUpdate)
+                if (behavior.ShouldUpdate && (BehaviorMask & behavior.Mask) == 0)
                 {
                     if (!behavior.Active)
                         behavior.Start();
 
                     behavior.Update(delta);
+
+                    BehaviorMask |= behavior.Mask;
                 }
                 else
                 {

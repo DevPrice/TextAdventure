@@ -42,7 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Behaviors\Behavior.cs" />
+    <Compile Include="Behaviors\BehaviorHostileByName.cs" />
     <Compile Include="Behaviors\BehaviorRetaliate.cs" />
+    <Compile Include="Behaviors\BehaviorWander.cs" />
     <Compile Include="Behaviors\IBehavior.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CommandAttack.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="DamageSource.cs" />
     <Compile Include="Entities\CombatAttributes.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\EntityCat.cs" />
     <Compile Include="Entities\EntityNPC.cs" />
     <Compile Include="Entities\EntityRat.cs" />
     <Compile Include="Entities\Player.cs" />

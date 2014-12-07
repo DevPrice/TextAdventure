@@ -15,6 +15,7 @@ namespace TextAdventure.Entities
     public abstract class Entity : IExaminable, IUpdatable, INamed
     {
         public GameWorld World { get; private set; }
+        public IMapNode Location { get { return World.Map.LocationOf(this); } }
         public string Name { get; set; }
         public CombatAttributes Attributes { get { return CombatAttributes.Combine(BaseAttributes, Equipment.TotalAttributes); } }
         public CombatAttributes BaseAttributes { get; set; }

@@ -44,7 +44,7 @@ namespace TextAdventure.World
 
         public void Update(TimeSpan delta)
         {
-            foreach (Entity entity in Entities)
+            foreach (Entity entity in new List<Entity>(Entities))
                 entity.Update(delta);
 
             foreach (Item item in Items)

@@ -11,10 +11,15 @@ namespace TextAdventure.Entities
     public class EntityRat : EntityNPC
     {
         public EntityRat(GameWorld world)
-            : base(world, 6)
+            : base(world, 4)
         {
             Name = "rat";
-            Behaviors.Add(new BehaviorRetaliate(this, world));
+            BaseAttributes.Strength = 1;
+            BaseAttributes.Defense = 0;
+            BaseAttributes.Dodge = 5;
+            BaseAttributes.Speed = .4;
+            
+            Behaviors.Add(new BehaviorRetaliate(this));
         }
     }
 }

@@ -9,7 +9,7 @@ namespace TextAdventure.Entities
     public class CombatAttributes
     {
         public static CombatAttributes Zero { get { return new CombatAttributes(0, 0, 0, 0, 0, 0, 0, 0); } }
-        public static CombatAttributes Default { get { return new CombatAttributes(1, 1, 1, 1, 1, .5, 0, 2); } }
+        public static CombatAttributes Default { get { return new CombatAttributes(10, 2, 2, 10, 10, .5, 0, 2); } }
 
         public double MaxHp;
         public double Strength;

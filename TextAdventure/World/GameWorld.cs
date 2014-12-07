@@ -44,14 +44,14 @@ namespace TextAdventure.World
 
         private void GenerateItems(Random random)
         {
-            int numSwords = (int)(Map.NumNodes * .8);
+            int numSwords = (int)(Map.NumNodes * .08);
 
             for (int i = 0; i < numSwords; i++)
             {
                 Map.GetRandomNode(random).Add(new ItemSword());
             }
 
-            int numFood = (int)(Map.NumNodes * .8);
+            int numFood = (int)(Map.NumNodes * .25);
 
             for (int i = 0; i < numFood; i++)
             {
@@ -68,6 +68,13 @@ namespace TextAdventure.World
             for (int i = 0; i < numRats; i++)
             {
                 Map.GetRandomNode(random).Add(new EntityRat(this));
+            }
+
+            int numCats = (int)(Map.NumNodes * .2);
+
+            for (int i = 0; i < numCats; i++)
+            {
+                Map.GetRandomNode(random).Add(new EntityCat(this));
             }
         }
 
