@@ -31,6 +31,23 @@ namespace TextAdventure.Entities
 
             BehaviorMask = 0;
 
+            // Stop behaviors that should no longer update
+            foreach (Behavior behavior in Behaviors)
+            {
+                if (behavior.ShouldUpdate && (BehaviorMask & behavior.Mask) == 0)
+                {
+                    BehaviorMask |= behavior.Mask;
+                }
+                else
+                {
+                    if (behavior.Active)
+                        behavior.Stop();
+                }
+            }
+
+            BehaviorMask = 0;
+
+            // Update behaviors and start as necessary
             foreach (Behavior behavior in Behaviors)
             {
                 if (behavior.ShouldUpdate && (BehaviorMask & behavior.Mask) == 0)
@@ -41,11 +58,6 @@ namespace TextAdventure.Entities
                     behavior.Update(delta);
 
                     BehaviorMask |= behavior.Mask;
-                }
-                else
-                {
-                    if (behavior.Active)
-                        behavior.Stop();
                 }
             }
         }
