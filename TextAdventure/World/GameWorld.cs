@@ -12,6 +12,7 @@ namespace TextAdventure.World
     {
         public IGameMap Map { get; private set; }
         public List<Player> Players { get; private set; }
+        public Random Random { get; private set; }
 
         protected GameWorld(IGameMap map)
         {
@@ -38,6 +39,8 @@ namespace TextAdventure.World
 
             world.GenerateItems(random);
             world.GenerateEntities(random);
+
+            world.Random = random;
 
             return world;
         }
@@ -74,8 +77,18 @@ namespace TextAdventure.World
 
             for (int i = 0; i < numCats; i++)
             {
-                Map.GetRandomNode(random).Add(new EntityCat(this));
+                //Map.GetRandomNode(random).Add(new EntityCat(this));
             }
+
+            int numBats = (int)(Map.NumNodes * .2);
+
+            for (int i = 0; i < numBats; i++)
+            {
+                Map.GetRandomNode(random).Add(new EntityBat(this));
+            }
+
+            Map.EntryNode.Add(new EntityCat(this));
+            Map.EntryNode.Add(new EntityRat(this));
         }
 
         public void Update(TimeSpan delta)

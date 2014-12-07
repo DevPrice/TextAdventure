@@ -18,7 +18,6 @@ namespace TextAdventure.Behaviors
             : base(entity)
         {
             Entity.DamageTaken += Entity_DamageTaken;
-            ShouldUpdate = false;
             Mask = (int)BehaviorMask.Combat;
         }
 

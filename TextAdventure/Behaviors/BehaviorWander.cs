@@ -45,7 +45,7 @@ namespace TextAdventure.Behaviors
                 if (paths.Count > 0)
                 {
                     Entity.Location.Remove(Entity);
-                    paths[new Random().Next(paths.Count)].To.Add(Entity);
+                    paths[Entity.World.Random.Next(paths.Count)].To.Add(Entity);
                     TimeSinceMoved = TimeSpan.Zero;
                 }
             }

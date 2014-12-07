@@ -26,7 +26,7 @@ namespace TextAdventure.Commands
 
             if (Sender is Entity)
             {
-                Sender.SendMessage("You crush your own skull with your {0} hands.", new Random().Next(2) == 0 ? "bare" : "bear");
+                Sender.SendMessage("You crush your own skull with your {0} hands.", World.Random.Next(2) == 0 ? "bare" : "bear");
                 ((Entity)Sender).DealDamage(DamageSource.World, Double.MaxValue);
             }
         }

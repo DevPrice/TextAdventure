@@ -19,7 +19,6 @@ namespace TextAdventure.Behaviors
         public Behavior(Entity entity)
         {
             Entity = entity;
-            ShouldUpdate = true;
         }
 
         public virtual void Start()

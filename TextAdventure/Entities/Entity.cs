@@ -54,6 +54,17 @@ namespace TextAdventure.Entities
             Inventory = new List<Item>();
             TimeSinceAttack = TimeSpan.FromSeconds(30);
             Hp = BaseAttributes.MaxHp;
+
+            AttackedEntity += Entity_AttackedEntity;
+        }
+
+        private void Entity_AttackedEntity(object sender, AttackedEntityEventArgs e)
+        {
+            foreach (Entity entity in Location.Entities)
+            {
+                if (entity is Player && entity != this && entity != e.AttackedEntity)
+                    ((Player)entity).SendMessage("{0} attacks {1}.", ((Entity)sender).Name.ToTitleCase(), e.AttackedEntity.Name);
+            }
         }
 
         public Entity(GameWorld world, int hp)
@@ -141,7 +152,7 @@ namespace TextAdventure.Entities
                 if (AttackedEntity != null)
                     AttackedEntity(this, new AttackedEntityEventArgs(target, damageSource, damage));
 
-                if (!target.Alive && AttackedEntity != null)
+                if (!target.Alive && AttackedEntity != null && KilledEntity != null)
                     KilledEntity(this, new AttackedEntityEventArgs(target, damageSource, damage));
             }
             else if (AttackMissed != null)

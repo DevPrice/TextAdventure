@@ -105,7 +105,6 @@ namespace TextAdventure.World
             }
         }
 
-
         public void Broadcast(string message)
         {
             Broadcast(message, null);
