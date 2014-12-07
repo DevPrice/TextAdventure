@@ -36,7 +36,7 @@ namespace TextAdventure.Entities
         {
             base.Update(delta);
 
-            if (World.Random.Next(750) == 0)
+            if (Alive && World.Random.Next(750) == 0)
             {
                 Location.Broadcast(String.Format("{0} says, \"{1}\"", Name.ToTitleCase(), Meows[World.Random.Next(Meows.Length)]));
             }
