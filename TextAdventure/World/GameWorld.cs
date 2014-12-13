@@ -40,21 +40,21 @@ namespace TextAdventure.World
             world.GenerateItems(random);
             world.GenerateEntities(random);
 
-            world.Random = random;
+            world.Random = new Random(random.Next());
 
             return world;
         }
 
         private void GenerateItems(Random random)
         {
-            int numSwords = (int)(Map.NumNodes * .08);
+            int numSwords = (int)(Map.Nodes.Count() * .08);
 
             for (int i = 0; i < numSwords; i++)
             {
                 Map.GetRandomNode(random).Add(new ItemSword());
             }
 
-            int numFood = (int)(Map.NumNodes * .25);
+            int numFood = (int)(Map.Nodes.Count() * .25);
 
             for (int i = 0; i < numFood; i++)
             {
@@ -66,21 +66,21 @@ namespace TextAdventure.World
 
         private void GenerateEntities(Random random)
         {
-            int numRats = (int)(Map.NumNodes * .4);
+            int numRats = (int)(Map.Nodes.Count() * .4);
 
             for (int i = 0; i < numRats; i++)
             {
                 Map.GetRandomNode(random).Add(new EntityRat(this));
             }
 
-            int numCats = (int)(Map.NumNodes * .2);
+            int numCats = (int)(Map.Nodes.Count() * .2);
 
             for (int i = 0; i < numCats; i++)
             {
-                //Map.GetRandomNode(random).Add(new EntityCat(this));
+                Map.GetRandomNode(random).Add(new EntityCat(this));
             }
 
-            int numBats = (int)(Map.NumNodes * .2);
+            int numBats = (int)(Map.Nodes.Count() * .2);
 
             for (int i = 0; i < numBats; i++)
             {

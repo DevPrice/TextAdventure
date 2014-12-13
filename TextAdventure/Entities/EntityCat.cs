@@ -15,7 +15,7 @@ namespace TextAdventure.Entities
 
         static EntityCat()
         {
-            Meows = new string[] { "Meow!", "Mew.", "Meow...", "Meow?", "Nyan." };
+            Meows = new string[] { "Meow.", "Meow!", "Mew.", "Meow...", "Meow?", "Nyan." };
         }
 
         public EntityCat(GameWorld world)

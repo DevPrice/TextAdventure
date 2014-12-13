@@ -10,7 +10,7 @@ namespace TextAdventure.World
 {
     public interface IGameMap : IUpdatable
     {
-        int NumNodes { get; }
+        IEnumerable<IMapNode> Nodes { get; }
 
         IMapNode EntryNode { get; }
 

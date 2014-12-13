@@ -27,5 +27,56 @@ namespace TextAdventure.World
         {
             examiner.SendMessage("[{0}]: {1}", Identifier, Description);
         }
+
+        public static List<Path> Find(IGameMap map, IMapNode start, IMapNode goal)
+        {
+            if (start == goal)
+                return new List<Path>();
+
+            Dictionary<IMapNode, int> distance = new Dictionary<IMapNode, int>();
+            Dictionary<IMapNode, Path> previous = new Dictionary<IMapNode, Path>();
+
+            ICollection<IMapNode> unvisited = new HashSet<IMapNode>();
+
+            foreach (IMapNode node in map.Nodes)
+            {
+                distance.Add(node, Int32.MaxValue);
+                previous.Add(node, null);
+                unvisited.Add(node);
+            }
+
+            distance[start] = 0;
+
+            while (unvisited.Count > 0)
+            {
+                IMapNode currentNode = unvisited.First(x => distance[x] == unvisited.Min(y => distance[y]));
+                unvisited.Remove(currentNode);
+
+                if (currentNode == goal)
+                    break;
+
+                foreach (Path p in map.GetPathsFrom(currentNode))
+                {
+                    IMapNode neighbor = p.To;
+                    int alternateDistance = distance[currentNode] + 1;
+                    if (alternateDistance < distance[neighbor])
+                    {
+                        distance[neighbor] = alternateDistance;
+                        previous[neighbor] = p;
+                    }
+                }
+            }
+
+            List<Path> path = new List<Path>();
+            Path prevPath = previous[goal];
+
+            do
+            {
+                path.Insert(0, prevPath);
+                prevPath = previous[prevPath.From];
+            } while (prevPath != null);
+
+            return path;
+        }
     }
 }

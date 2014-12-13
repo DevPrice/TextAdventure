@@ -77,6 +77,7 @@ namespace TextAdventure
 
             Output.WriteLine("Done.");
 
+            LastUpdate = DateTime.Now;
             Task updateTask = new Task(BeginUpdate);
             updateTask.Start();
 
@@ -107,13 +108,22 @@ namespace TextAdventure
                 DateTime now = DateTime.Now;
                 Update(now - LastUpdate);
                 LastUpdate = now;
-                Thread.Sleep(1000 / TickRate);
+
+                TimeSpan tickLength = DateTime.Now - now;
+
+                if (tickLength < TimeSpan.FromMilliseconds(1000 / TickRate))
+                    Thread.Sleep(TimeSpan.FromMilliseconds(1000 / TickRate) - tickLength);
             }
         }
 
         public void Update(TimeSpan delta)
         {
             World.Update(delta);
+
+            if (delta > TimeSpan.FromSeconds(1.0 / TickRate * 1.5))
+            {
+                Output.WriteLine("Tick took {0}ms! Server could be overloaded.", delta.TotalMilliseconds);
+            }
         }
 
         private void Listen()

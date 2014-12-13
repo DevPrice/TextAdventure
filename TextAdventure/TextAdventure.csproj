@@ -62,6 +62,7 @@
     <Compile Include="Behaviors\BehaviorHostileToPlayers.cs" />
     <Compile Include="Behaviors\BehaviorRetaliate.cs" />
     <Compile Include="Behaviors\BehaviorWander.cs" />
+    <Compile Include="Behaviors\BehaviorFollowEntity.cs" />
     <Compile Include="Behaviors\IBehavior.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\CommandAttack.cs" />

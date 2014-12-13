@@ -14,7 +14,19 @@ namespace TextAdventure.World
         public readonly int Width;
         public readonly int Height;
 
-        public int NumNodes { get { return Width * Height;  } }
+        public IEnumerable<IMapNode> Nodes
+        {
+            get
+            {
+                for (int y = 0; y < Height; y++)
+                {
+                    for (int x = 0; x < Width; x++)
+                    {
+                        yield return Tiles[x, y];
+                    }
+                }
+            }
+        }
 
         public IMapNode EntryNode { get; protected set; }
 
@@ -125,7 +137,7 @@ namespace TextAdventure.World
 
         public List<Path> FindPath(IMapNode from, IMapNode to)
         {
-            throw new NotImplementedException();
+            return Path.Find(this, from, to);
         }
 
         public void Update(TimeSpan delta)
