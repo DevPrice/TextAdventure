@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,6 +18,22 @@ namespace TextAdventure.Utility
             else return val;
         }
 
+        public static string GetFullName(this INoun noun)
+        {
+            return String.Format("{0}{1}.", noun.Article == Article.None ? "" : noun.Article.GetRantPattern() + " ", noun.Name);
+        }
+
+        public static string FirstCharToUpper(this string s)
+        {
+            if (s.Length == 0)
+                return s;
+
+            char[] chars = s.ToCharArray();
+            chars[0] = Char.ToUpper(chars[0]);
+
+            return new String(chars);
+        }
+
         public static string ToTitleCase(this string s)
         {
             return Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(s);
@@ -29,16 +47,35 @@ namespace TextAdventure.Utility
         {
             foreach (T item in collection)
             {
-                if (item.Name.Equals(name))
+                if (item.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase))
                     return item;
             }
 
             return default(T);
         }
 
-        public static T TestTest<T>(this T x)
+        public static string GetRantPattern<T>(this T enumerationValue)
+            where T : struct
         {
-            return x;
+            Type type = enumerationValue.GetType();
+            if (!type.IsEnum)
+            {
+                throw new ArgumentException("EnumerationValue must be of Enum type", "enumerationValue");
+            }
+
+            MemberInfo[] memberInfo = type.GetMember(enumerationValue.ToString());
+            if (memberInfo != null && memberInfo.Length > 0)
+            {
+                object[] attrs = memberInfo[0].GetCustomAttributes(typeof(RantPatternAttribute), false);
+
+                if (attrs != null && attrs.Length > 0)
+                {
+                    return ((RantPatternAttribute)attrs[0]).Pattern;
+                }
+            }
+
+            return enumerationValue.ToString().ToLower();
+
         }
     }
 }

@@ -19,7 +19,9 @@ namespace TextAdventure.Entities
         public Player(GameWorld world)
             : base(world, 10)
         {
+            Article = Article.None;
             Name = "You";
+            Gender = Gender.Male;
             Permission = CommandPermission.User;
             DamageTaken += OnDamageTaken;
             Death += OnDeath;
@@ -56,6 +58,8 @@ namespace TextAdventure.Entities
         private void OnKilledEntity(object sender, AttackedEntityEventArgs e)
         {
             SendMessage("You killed {0}.", e.AttackedEntity.Name);
+
+            Experience += e.AttackedEntity.Experience;
         }
 
         private void OnItemEquipped(object sender, ItemEquipEventArgs e)

@@ -1,0 +1,97 @@
+#version 2
+#name substance
+#subs default
+
+> water
+  | class liquid
+> vomit
+  | class liquid
+> orange juice
+  | class liquid
+> sweat
+  | class liquid
+> blood
+  | class liquid
+> lava
+  | class liquid
+> gasoline
+  | class liquid
+> sand
+> oil
+  | class liquid
+> molten iron
+  | class liquid
+> grease
+  | class liquid
+> tears
+  | class liquid
+> ketchup
+  | class liquid
+> mustard
+  | class liquid
+> mayonnaise
+  | class liquid
+> soy sauce
+  | class liquid
+> beer
+  | class liquid
+> wine
+  | class liquid
+> vodka
+  | class liquid
+> olive oil
+  | class liquid
+> extra-virgin olive oil
+  | class liquid
+> earwax
+> vinegar
+  | class liquid
+> paint
+  | class liquid
+> liquid nitrogen
+  | class liquid
+> tomato sauce
+  | class liquid
+> ink
+  | class liquid
+> lemonade
+  | class liquid
+> oatmeal
+> spaghetti
+> flour
+> sap
+  | class liquid
+> plasma
+  | class liquid
+> dark matter
+> antimatter
+> corn
+> snow
+> acid
+  | class liquid
+> magma
+  | class liquid
+
+#nsfw
+> happiness
+> dick cheese
+> cum
+  | class liquid
+> lube
+  | class liquid
+> crotch juice
+  | class liquid
+> pee
+  | class liquid
+> piss
+  | class liquid
+> pisswater
+  | class liquid
+> diarrhea
+  | class liquid
+> jizz
+  | class liquid
+> urine
+  | class liquid
+
+#sfw

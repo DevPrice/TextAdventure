@@ -1,0 +1,661 @@
+#version 2
+#name verb
+#subs simple ing ed s er pp noun
+
+> whisper/whispering/whispered/whispers/whisperer/whispered/whispering
+> spelunk/spelunking/spelunked/spelunks/spelunker/spelunked/spelunking
+> invigorate/invigorating/invigorated/invigorates/invigorator/invigorated/invigoration
+  | class transitive
+> extrapolate/extrapolating/extrapolated/extrapolates/extrapolator/extrapolated/extrapolation
+  | class transitive
+> extrude/extruding/extruded/extrudes/extruder/extruded/extruding
+  | class transitive
+> squelch/squelching/squelched/squelches/squelcher/squelched/squelching
+> articulate/articulating/articulated/articulates/articulator/articulated/articulation
+  | class transitive
+> transcribe/transcribing/transcribed/transcribes/transcriber/transcribed/transcribing
+  | class transitive
+> draft/drafting/drafted/drafts/drafter/drafted/drafting
+  | class transitive
+> tune/tuning/tuned/tunes/tuner/tuned/tunings
+  | class transitive
+> withdraw/withdrawing/withdrew/withdraws/withdrawer/withdrawn/withdrawing
+  | class transitive
+> strategize/strategizing/strategized/strategizes/strategizer/strategized/strategizing
+> zip/zipping/zipped/zips/zipper/zipped/zipping
+  | class transitive
+> extend/extending/extended/extends/extender/extended/extending
+  | class transitive
+> streamline/streamlining/streamlined/streamlines/streamliner/streamlined/streamlining
+  | class transitive
+> organize/organizing/organized/organizes/organizer/organized/organization
+  | class transitive
+> quantify/quantifying/quantified/quantifies/quantifier/quantified/quantification
+  | class transitive
+> grate/grating/grated/grates/grater/grated/grating
+  | class transitive
+> tape/taping/taped/tapes/taper/taped/taping
+  | class transitive
+> oil/oiling/oiled/oils/oiler/oiled/oiling
+  | class transitive
+> strap/strapping/strapped/straps/strapper/strapped/strapping
+  | class transitive
+> snoop/snooping/snooped/snoops/snooper/snooped/snooping
+  | class walk
+> click/clicking/clicked/clicks/clicker/clicked/clicking
+> flap/flapping/flapped/flaps/flapper/flapped/flapping
+> cultivate/cultivating/cultivated/cultivates/cultivater/cultivated/cultivation
+  | class transitive
+> moan/moaning/moaned/moans/moaner/moaned/moaning
+  | class intransitive
+> discipline/disciplining/disciplined/disciplines/discipliner/disciplined/discipline
+  | class transitive
+> rustle/rustling/rustled/rustles/rustler/rustled/rustling
+  | class intransitive
+> examine/examining/examined/examines/examiner/examined/examination
+  | class transitive
+> fiddle/fiddling/fiddled/fiddles/fiddler/fiddled/fiddling
+  | class intransitive
+> stew/stewing/stewed/stews/stewer/stewed/stewing
+  | class transitive
+> stir/stirring/stirred/stirs/stirrer/stirred/stirring
+  | class transitive
+> hug/hugging/hugged/hugs/hugger/hugged/hugging
+  | class transitive
+> pop/popping/popped/pops/popper/popped/popping
+  | class transitive
+> hiccup/hiccuping/hiccuped/hiccups/hiccuper/hiccuped/hiccuping
+  | class intransitive
+> sanitize/sanitizing/sanitized/sanitizes/sanitizer/sanitized/sanitization
+  | class transitive
+> clean/cleaning/cleaned/cleans/cleaner/cleaned/cleaning
+  | class transitive
+> touch/touching/touched/touches/toucher/touched/touching
+  | class transitive
+> vibrate/vibrating/vibrated/vibrates/vibrator/vibrated/vibration
+  | class intransitive
+> strain/straining/strained/strains/strainer/strained/straining
+  | class transitive intransitive
+> kill/killing/killed/kills/killer/killed/killing
+  | class transitive
+> barbeque/barbequing/barbequed/barbeques/barbequer/barbequed/barbequing
+> gargle/gargling/gargled/gargles/gargler/gargled/gargling
+  | class transitive
+> crumple/crumpling/crumpled/crumples/crumpler/crumpled/crumpling
+  | class transitive
+> salt/salting/salted/salts/salter/salted/salting
+  | class transitive
+> season/seasoning/seasoned/seasons/seasoner/seasoned/seasoning
+  | class transitive
+> marinate/marinating/marinated/marinates/marinater/marinated/marination
+  | class transitive
+> pickle/pickling/pickled/pickles/pickler/pickled/pickling
+  | class transitive
+> polish/polishing/polished/polishes/polisher/polished/polishing
+  | class transitive
+> caress/caressing/caressed/caresses/caresser/caressed/caressing
+  | class transitive
+> stimulate/stimulating/stimulated/stimulates/stimulator/stimulated/stimulation
+  | class transitive
+> hunt/hunting/hunted/hunts/hunter/hunted/hunting
+  | class transitive
+> dishonor/dishonoring/dishonored/dishonors/dishonorer/dishonored/dishonoring
+  | class transitive
+> puff/puffing/puffed/puffs/puffer/puffed/puffing
+> suckle/suckling/suckled/suckles/suckler/suckled/suckling
+  | class transitive
+> squeeze/squeezing/squeezed/squeezes/squeezer/squeezed/squeezing
+  | class transitive
+> infest/infesting/infested/infests/infester/infested/infestation
+  | class transitive
+> tap/tapping/tapped/taps/tapper/tapped/tapping
+  | class transitive
+> probe/probing/probed/probes/proper/probed/probing
+  | class transitive
+> tinkle/tinkling/tinkled/tinkles/tinkler/tinkled/tinkling
+  | class intransitive
+> blast/blasting/blasted/blasts/blaster/blasted/blasting
+  | class transitive
+> shave/shaving/shaved/shaves/shaver/shaved/shaving
+  | class transitive intransitive
+> wrinkle/wrinkling/wrinkled/wrinkles/wrinkler/wrinkled/wrinkling
+  | class transitive
+> kiss/kissing/kissed/kisses/kisser/kissed/kissing
+  | class transitive intransitive
+> cuddle/cuddling/cuddled/cuddles/cuddler/cuddled/cuddling
+  | class transitive intransitive
+> soak/soaking/soaked/soaks/soaker/soaked/soaking
+  | class transitive intransitive
+> grip/gripping/gripped/grips/gripper/gripped/gripping
+  | class transitive
+> jerk/jerking/jerked/jerks/jerker/jerked/jerking
+  | class transitive intransitive
+> scrub/scrubbing/scrubbed/scrubs/scrubber/scrubbed/scrubbing
+  | class transitive intransitive
+> mist/misting/misted/mists/mister/misted/misting
+  | class transitive
+> burn/burning/burned/burns/burner/burnt/burning
+  | class transitive intransitive
+> freeze/freezing/froze/freezes/freezer/frozen/freezing
+  | class transitive intransitive
+> dry-freeze/dry-freezing/dry-froze/dry-freezes/dry-freezer/dry-frozen/dry-freezing
+  | class transitive
+> bake/baking/baked/bakes/baker/baked/baking
+  | class transitive intransitive
+> deep-fry/deep-frying/deep-fried/deep-fries/deep-frier/deep-fried/deep-frying
+  | class transitive
+> swallow/swallowing/swallowed/swallows/swallower/swallowed/swallowing
+  | class transitive intransitive
+> flatten/flattening/flattened/flattens/flattener/flattened/flattening
+  | class transitive intransitive
+> glue/gluing/glued/glues/gluer/glued/gluing
+  | class transitive
+> rub/rubbing/rubbed/rubs/rubber/rubbed/rubbing
+  | class transitive
+> swipe/swiping/swiped/swipes/swiper/swiped/swiping
+  | class transitive
+> rot/rotting/rotted/rots/rotter/rotten/rotting
+  | class intransitive
+> sculpt/sculpting/sculpted/sculpts/sculptor/sculpted/sculpture
+  | class transitive intransitive
+> iron/ironing/ironed/irons/ironer/ironed/ironing
+  | class transitive
+> roll/rolling/rolled/rolls/roller/rolled/rolling
+  | class transitive intransitive
+> slit/slitting/slit/slits/slitter/slit/slitting
+  | class transitive
+> cut/cutting/cut/cuts/cutter/cut/cutting
+  | class transitive intransitive
+> loosen/loosening/loosened/loosens/loosener/loosened/loosening
+  | class transitive
+> tighten/tightening/tightened/tightens/tightener/tightened/tightening
+  | class transitive
+> penetrate/penetrating/penetrated/penetrates/penetrator/penetrated/penetration
+  | class transitive
+> strike/striking/struck/strikes/striker/stricken/striking
+  | class transitive
+> recycle/recycling/recycled/recycles/recycler/recycled/recycling
+  | class transitive
+> groom/grooming/groomed/grooms/groomer/groomed/grooming
+  | class transitive
+> hypnotize/hypnotizing/hypnotized/hypnotizes/hypnotist/hypnotized/hypnosis
+  | class transitive
+> dig/digging/dug/digs/digger/dug/digging
+  | class transitive intransitive
+> crush/crushing/crushed/crushes/crusher/crushed/crushing
+  | class transitive
+> cook/cooking/cooked/cooks/cooker/cooked/cooking
+  | class transitive intransitive
+> rattle/rattling/rattled/rattles/rattler/rattled/rattling
+  | class intransitive
+> massage/massaging/massaged/massages/massager/massaged/massage
+  | class transitive
+> toke/toking/toked/tokes/toker/toked/toking
+  | class transitive
+> pull/pulling/pulled/pulls/puller/pulled/pulling
+  | class transitive intransitive
+> yank/yanking/yanked/yanks/yanker/yanked/yanking
+  | class transitive intransitive
+> dice/dicing/diced/dices/dicer/diced/dicing
+  | class transitive
+> chop/chopping/chopped/chops/chopper/chopped/chopping
+  | class transitive
+> boil/boiling/boiled/boils/boiler/boiled/boiling
+  | class transitive intransitive
+> uproot/uprooting/uprooted/uproots/uprooter/uprooted/uprooting
+  | class transitive
+> clip/clipping/clipped/clips/clipper/clipped/clipping
+  | class transitive
+> stroke/stroking/stroked/strokes/stroker/stroked/stroking
+  | class sex transitive
+> plaster/plastering/plastered/plasters/plasterer/plastered/plastering
+  | class transitive intransitive
+> scrunch/scrunching/scrunched/scrunches/scruncher/scrunched/scrunching
+  | class transitive
+> superglue/supergluing/superglued/superglues/supergluer/superglued/supergluing
+  | class transitive
+> embrace/embracing/embraced/embraces/embracer/embraced/embrace
+  | class transitive
+> smoke/smoking/smoked/smokes/smoker/smoked/smoking
+  | class transitive intransitive
+> moisten/moistening/moistened/moistens/moistener/moistened/moisturization
+  | class transitive
+> flick/flicking/flicked/flicks/flicker/flicked/flicking
+  | class transitive intransitive
+> scorch/scorching/scorched/scorches/scorcher/scorched/scorching
+  | class transitive intransitive
+> scold/scolding/scolded/scolds/scolder/scolded/scolding
+  | class transitive
+> punish/punishing/punished/punishes/punisher/punished/punishment
+  | class transitive
+> handle/handling/handled/handles/handler/handled/handling
+  | class transitive
+> manipulate/manipulating/manipulated/manipulates/manipulator/manipulated/manipulation
+  | class transitive
+> exploit/exploiting/exploited/exploits/exploiter/exploited/exploitation
+  | class transitive
+> misuse/misusing/misused/misuses/misuser/misused/misuse
+  | class transitive
+> breastfeed/breastfeeding/breastfed/breastfeeds/breastfeeder/breastfed/breastfeeding
+  | class transitive intransitive
+> pillage/pillaging/pillaged/pillages/pillager/pillaged/pillaging
+  | class transitive
+> eliminate/eliminating/eliminated/eliminates/eliminater/eliminated/elimination
+  | class transitive
+> waste/wasting/wasted/wastes/waster/wasted/wasting
+  | class transitive intransitive
+> grind/grinding/grinded/grinds/grinder/ground/grinding
+  | class transitive
+> fight/fighting/fought/fights/fighter/fighted/fighting
+  | class transitive
+> stuff/stuffing/stuffed/stuffs/stuffer/stuffed/stuffing
+  | class transitive
+> fume/fuming/fumed/fumes/fumer/fumed/fuming
+  | class intransitive
+> stand/standing/stood/stands/stander/stood/standing
+  | class pose intransitive
+> sit/sitting/sat/sits/sitter/sat/sitting
+  | class pose intransitive
+> lay/laying/laid/lays/layer/laid/laying
+  | class pose intransitive
+> crouch/crouching/crouched/crouches/croucher/crouched/crouching
+  | class pose intransitive
+> squat/squatting/squatted/squats/squatter/squatted/squatting
+  | class pose intransitive
+> slurp/slurping/slurped/slurps/slurper/slurped/slurping
+  | class eat intransitive
+> lick/licking/licked/licks/licker/licked/licking
+  | class eat intransitive
+> snort/snorting/snorted/snorts/snorter/snorted/snorting
+  | class eat intransitive
+> eat/eating/ate/eats/eater/eaten/eating
+  | class eat intransitive transitive
+> suck/sucking/sucked/sucks/sucker/sucked/sucking
+  | class eat transitive
+> snuffle/snuffling/snuffled/snuffles/snuffler/snuffled/snuffling
+  | class eat intransitive
+> guzzle/guzzling/guzzled/guzzles/guzzler/guzzled/guzzling
+  | class eat transitive
+> sniff/sniffing/sniffed/sniffs/sniffer/sniffed/sniffing
+  | class eat transitive intransitive
+> nibble/nibbling/nibbled/nibbles/nibbler/nibbled/nibbling
+  | class eat transitive
+> spurt/spurting/spurted/spurts/spurter/spurted/spurting
+  | class liquid intransitive transitive
+> smear/smearing/smeared/smears/smearer/smeared/smearing
+  | class liquid transitive
+> paint/painting/painted/paints/painter/painted/painting
+  | class liquid intransitive transitive
+> shower/showering/showered/showers/showerer/showered/showering
+  | class liquid transitive
+> sputter/sputtering/sputtered/sputters/sputterer/sputtered/sputtering
+  | class liquid transitive intransitive
+> drain/draining/drained/drains/drainer/drained/draining
+  | class liquid intransitive transitive
+> smatter/smattering/smattered/smatters/smatterer/smattered/smattering
+  | class liquid intransitive
+> splatter/splattering/splattered/splatters/splatterer/splattered/splattering
+  | class liquid transitive
+> spray/spraying/sprayed/sprays/sprayer/sprayed/spraying
+  | class liquid transitive
+> jet-spray/jet-spraying/jet-sprayed/jet-sprays/jet-sprayer/jet-sprayed/jet-spraying
+  | class liquid transitive
+> squirt/squirting/squirted/squirts/squirter/squirted/squirting
+  | class liquid transitive intransitive
+> sprinkle/sprinkling/sprinkled/sprinkles/sprinkler/sprinkled/sprinkling
+  | class liquid transitive intransitive
+> drip/dripping/dripped/drips/dripper/dripped/dripping
+  | class liquid intransitive transitive
+> piss/pissing/pissed/pisses/pisser/pissed/pissing
+  | class liquid intransitive transitive
+> pour/pouring/poured/pours/pourer/poured/pouring
+  | class liquid transitive
+> splash/splashing/splashed/splashes/splasher/splashed/splashing
+  | class liquid transitive intransitive
+> tremble/trembling/trembled/trembles/trembler/trembled/trembling
+  | class motion
+> waddle/waddling/waddled/woddles/woddler/waddled/waddling
+  | class motion
+> wiggle/wiggling/wiggled/wiggles/wiggler/wiggled/wiggling
+  | class motion
+> slam/slamming/slammed/slams/slammer/slammed/slamming
+  | class motion
+> kick/kicking/kicked/kicks/kicker/kicked/kicking
+  | class motion
+> smack/smacking/smacked/smacks/smacker/smacked/smacking
+  | class motion
+> stomp/stomping/stomped/stomps/stomper/stomped/stomping
+  | class motion
+> shoot/shooting/shot/shoots/shooter/shot/shooting
+  | class motion
+> screw/screwing/screwed/screws/screwer/screwed/screwing
+  | class motion insert
+> pump/pumping/pumped/pumps/pumper/pumped/pumping
+  | class motion
+> hack/hacking/hacked/hacks/hacker/hacked/hacking
+  | class motion
+> poke/poking/poked/pokes/poker/poked/poking
+  | class motion insert
+> crank/cranking/cranked/cranks/cranker/cranked/cranking
+  | class motion
+> serve/serving/served/serves/server/served/serving
+  | class motion
+> force/forcing/forced/forces/forcer/forced/forcing
+  | class motion
+> stick/sticking/stuck/sticks/sticker/stuck/sticking
+  | class motion insert
+> move/moving/moved/moves/mover/moved/moving
+  | class motion
+> bind/binding/bound/binds/binder/bound/binding
+  | class motion
+> staple/stapling/stapled/staples/stapler/stapled/stapling
+  | class motion
+> eject/ejecting/ejected/ejects/ejector/ejected/ejection
+  | class motion
+> crunch/crunching/crunched/crunches/cruncher/crunched/crunching
+  | class motion
+> squish/squishing/squished/squishes/squisher/squished/squishing
+  | class motion
+> prod/prodding/prodded/prods/prodder/prodded/prodding
+  | class motion insert
+> wedge/wedging/wedged/wedges/wedger/wedged/wedging
+  | class motion insert
+> blow/blowing/blew/blows/blower/blown/blowing
+  | class motion
+> knead/kneading/kneaded/kneads/kneader/kneaded/kneading
+  | class motion
+> twist/twisting/twisted/twists/twister/twisted/twisting
+  | class motion
+> throw/throwing/threw/throws/thrower/thrown/throwing
+  | class motion
+> fly/flying/flew/flies/flier/flown/flying
+  | class motion
+> shake/shaking/shook/shakes/shaker/shaken/shaking
+  | class motion
+> bang/banging/banged/bangs/banger/banged/banging
+  | class motion
+> press/pressing/pressed/presses/presser/pressed/pressing
+  | class motion
+> inject/injecting/injected/injects/injector/injected/injection
+  | class motion insert
+> slip/slipping/slipped/slips/slipper/slipped/slipping
+  | class motion
+> rip/ripping/ripped/rips/ripper/ripped/ripping
+  | class motion
+> joust/jousting/jousted/jousts/jouster/jousted/jousting
+  | class walk
+> slouch/slouching/slouched/slouches/sloucher/slouched/slouching
+  | class walk
+> walk/walking/walked/walks/walker/walked/walking
+  | class walk
+> skip/skipping/skipped/skips/skipper/skipped/skipping
+  | class walk
+> march/marching/marched/marches/marcher/marched/marching
+  | class walk
+> run/running/ran/runs/runner/run/running
+  | class walk
+> stampede/stampeding/stampeded/stampedes/stampeder/stampeded/stampeding
+  | class walk
+> strut/strutting/strutted/struts/strutter/strutted/strutting
+  | class walk
+> tiptoe/tiptoeing/tiptoed/tiptoes/tiptoer/tiptoed/tiptoeing
+  | class walk
+> sprint/sprinting/sprinted/sprints/sprinter/sprinted/sprinting
+  | class walk
+> gallop/galloping/galloped/gallops/galloper/galloped/galloping
+  | class walk
+> crawl/crawling/crawled/crawls/crawler/crawled/crawling
+  | class walk
+> trot/trotting/trotted/trots/trotter/trotted/trotting
+  | class walk
+> pluck/plucking/plucked/plucks/plucker/plucked/plucking
+  | class violent
+> bite/biting/bit/bites/biter/bitten/biting
+  | class violent
+> fart/farting/farted/farts/farter/farted/farting
+  | class violent
+> manhandle/manhandling/manhandled/manhandles/manhandler/manhandled/manhandling
+  | class violent
+> maul/mauling/mauled/mauls/mauler/mauled/mauling
+  | class violent
+> whip/whipping/whipped/whips/whipper/whipped/whipping
+  | class violent
+> dominate/dominating/dominated/dominates/dominator/dominated/domination
+  | class violent
+> punch/punching/punched/punches/puncher/punched/punching
+  | class violent
+> headbutt/headbutting/headbutted/headbutts/headbutter/headbutted/headbutting
+  | class violent
+> impale/impaling/impaled/impales/impaler/impaled/impalement
+  | class violent
+> scratch/scratching/scratched/scratches/scratcher/scratched/scratching
+  | class violent
+> grab/grabbing/grabbed/grabs/grabber/grabbed/grabbing
+  | class violent
+> snip/snipping/snipped/snips/snipper/snipped/snipping
+  | class violent
+> shatter/shattering/shattered/shatters/shatterer/shattered/shattering
+  | class violent
+> slap/slapping/slapped/slaps/slapper/slapped/slapping
+  | class violent
+> tickle/tickling/tickled/tickles/tickler/tickled/tickling
+  | class violent
+> stab/stabbing/stabbed/stabs/stabber/stabbed/stabbing
+  | class violent
+> strangle/strangling/strangled/strangles/strangler/strangled/strangulation
+  | class violent
+> decapitate/decapitating/decapitated/decapitates/decapitater/decapitated/decapitation
+  | class violent
+> behead/beheading/beheaded/beheads/beheader/beheaded/beheading
+  | class violent
+> dangle/dangling/dangled/dangles/dangler/dangled/dangling
+  | class violent
+> hang/hanging/hung/hangs/hanger/hanged/hanging
+  | class violent
+> gouge/gouging/gouged/gouges/gouger/gouged/gouging
+  | class violent
+> electrocute/electrocuting/electrocuted/electrocutes/electrocuter/electrocuted/electrocution
+  | class violent
+> slash/slashing/slashed/slashes/slasher/slashed/slashing
+  | class violent
+> hammer/hammering/hammered/hammers/hammerer/hammered/hammering
+  | class violent
+> bludgeon/bludgeoning/bludgeoned/bludgeons/bludgeoner/bludgeoned/bludgeoning
+  | class violent
+> pierce/piercing/pierced/pierces/piercer/pierced/piercing
+  | class violent
+> skewer/skewering/skewered/skewers/skewerer/skewered/skewering
+  | class violent
+> spank/spanking/spanked/spanks/spanker/spanked/spanking
+  | class violent
+> vomit/vomiting/vomited/vomits/vomiter/vomited/vomiting
+  | class violent
+> pinch/pinching/pinched/pinches/pincher/pinched/pinching
+  | class violent
+> shove/shoving/shoved/shoves/shover/shoved/shoving
+  | class violent
+> amputate/amputating/amputated/amputates/amputator/amputated/amputation
+  | class violent
+> throttle/throttling/throttled/throttles/throttler/throttled/throttling
+  | class violent
+> implode/imploding/imploded/implodes/imploder/imploded/implosion
+  | class violent
+> explode/exploding/exploded/explodes/exploder/exploded/explosion
+  | class violent
+> twang/twanging/twanged/twangs/twanger/twanged/twanging
+  | class motion
+> veto/vetoing/vetoed/vetoes/vetoer/vetoed/vetoing
+  | class political
+> elect/electing/elected/elects/electer/elected/election
+  | class political
+> ratify/ratifying/ratified/ratifies/ratifier/ratified/ratification
+  | class political
+> amend/amending/amended/amends/amender/amended/amendment
+  | class political
+> impeach/impeaching/impeached/impeaches/impeacher/impeached/impeachment
+  | class political
+> inaugurate/inaugurating/inaugurated/inaugurates/inaugurater/inaugurated/inauguration
+  | class political
+> petition/petitioning/petitioned/petitions/petitioner/petitioned/petitioning
+> cremate/cremating/cremated/cremates/cremater/cremated/cremation
+  | class violent
+> sue/suing/sued/sues/suer/sued/suing
+  | class legal transitive
+> prosecute/prosecuting/prosecuted/prosecutes/prosecuter/prosecuted/prosecution
+  | class legal transitive
+> convict/convicting/convicted/convicts/convicter/convicted/conviction
+  | class legal transitive
+> legalize/legalizing/legalized/legalizes/legalizer/legalized/legalization
+  | class legal transitive
+> bathe/bathing/bathed/bathes/bather/bathed/bathing
+  | class intransitive transitive
+> sleepwalk/sleepwalking/sleepwalked/sleepwalks/sleepwalker/sleepwalked/sleepwalking
+  | class walk
+> abduct/abducting/abducted/abducts/abductor/abducted/abduction
+> abolish/abolishing/abolished/abolishes/abolisher/abolished/abolishment
+> apprehend/apprehending/apprehended/apprehends/apprehender/apprehended/apprehension
+> assault/assaulting/assaulted/assaults/assaulter/assaulted/assault
+  | class violent
+> attack/attacking/attacked/attacks/attacker/attacked/attack
+  | class violent
+> authenticate/authenticating/authenticated/authenticates/authenticator/authenticated/authentication
+> choke/choking/choked/chokes/choker/choked/choking
+> commandeer/commandeering/commandeered/commandeers/commandeerer/commandeered/commandeering
+> conserve/conserving/conserved/conserves/conserver/conserved/conservation
+> crash/crashing/crashed/crashes/crasher/crashed/crashing
+> cram/cramming/crammed/crams/crammer/crammed/cramming
+  | class motion insert
+> cripple/crippling/crippled/cripples/crippler/crippled/crippling
+  | class violent transitive
+> customize/customizing/customized/customizes/customizer/customized/customization
+  | class transitive
+> decorate/decorating/decorated/decorates/decorator/decorated/decoration
+  | class transitive
+> dissect/dissecting/dissected/dissects/dissector/dissected/dissection
+  | class violent
+> dramatize/dramatizing/dramatized/dramatizes/dramatizer/dramatized/dramatization
+> feed/feeding/fed/feeds/feeder/fed/feeding
+  | class transitive insert
+> forecast/forecasting/forecasted/forecasts/forecaster/forecasted/forecasting
+> gnaw/gnawing/gnawed/gnaws/gnawer/gnawed/gnawing
+  | class eat
+> harass/harassing/harassed/harasses/harasser/harassed/harassment
+  | class violent transitive
+> hoist/hostng/hoisted/hoists/hoister/hoisted/hoisting
+  | class transitive
+> hurl/hurling/hurled/hurls/hurler/hurled/hurling
+  | class motion
+> injure/injuring/injured/injures/injurer/injured/injury
+  | class violent
+> jingle/jingling/jingled/jingles/jingler/jingled/jingling
+> jimmy/jimmying/jimmied/jimmies/jimmier/jimmied/jimmying
+> kidnap/kidnapping/kidnapped/kidnaps/kidnapper/kidnapped/kidnapping
+  | class violent
+> lecture/lecturing/lectured/lectures/lecturer/lectured/lecturing
+> lunge/lunging/lunged/lunges/lunger/lunged/lunging
+  | class motion move
+> jump/jumping/jumped/jumps/jumper/jumped/jumping
+  | class motion move
+> mangle/mangling/mangled/mangles/mangler/mangled/mangling
+  | class violent
+> maim/maiming/maimed/maims/maimer/maimed/maiming
+  | class violent
+> mutilate/mutilating/mutilated/mutilates/mutilater/mutilated/mutilation
+  | class violent
+> nab/nabbing/nabbed/nabs/nabber/nabbed/nabbing
+  | class violent transitive
+> nail/nailing/nailed/nails/nailer/nailed/nailing
+  | class violent transitive insert
+> nip/nipping/nipped/nips/nipper/nipped/nipping
+  | class eat violent
+> preen/preening/preened/preens/preener/preened/preening
+  | class transitive
+> ride/riding/rode/rides/rider/ridden/riding
+  | class transitive
+> rob/robbing/robbed/robs/robber/robbed/robbery
+  | class violent transitive
+> sharpen/sharpening/sharpened/sharpens/sharpener/sharpened/sharpening
+  | class transitive
+> snuggle/snuggling/snuggled/snuggles/snuggler/snuggled/snuggling
+  | class transitive intransitive
+> gush/gushing/gushed/gushes/gusher/gushed/gushing
+  | class liquid
+> puke/puking/puked/pukes/puker/puked/puking
+  | class liquid intransitive
+> donate/donating/donated/donates/donater/donated/donation
+  | class transitive
+> purify/purifying/purified/purifies/purifier/purified/purification
+  | class transitive
+> rapture/rapturing/raptured/raptures/rapturer/raptured/rapture
+> toast/toasting/toasted/toasts/toaster/toasted/toasting
+  | class transitive
+> liquidate/liquidating/liquidated/liquidates/liquidator/liquidated/liquidation
+  | class transitive
+> lather/lathering/lathered/lathers/latherer/lathered/lathering
+  | class intransitive
+> masticate/masticating/masticated/masticates/masticater/masticated/mastication
+  | class eat intransitive transitive
+> chew/chewing/chewed/chews/chewer/chewed/chewing
+  | class eat intransitive transitive
+> rotate/rotating/rotated/rotates/rotator/rotated/rotation
+  | class motion transitive intransitive
+> push/pushing/pushed/pushes/pusher/pushed/pushing
+  | class move transitive insert
+> chill/chilling/chilled/chills/chiller/chilled/chilling
+  | class transitive
+> report/reporting/reported/reports/reporter/reported/reporting
+  | class transitive
+> plunge/plunging/plunged/plunges/plunger/plunged/plunging
+  | class transitive insert
+> ram/ramming/rammed/rams/rammer/rammed/ramming
+  | class transitive insert
+> vaporize/vaporizing/vaporized/vaporizes/vaporizer/vaporized/vaporization
+  | class violent transitive
+> bless/blessing/blessed/blesses/blesser/blessed/blessing
+  | class transitive
+> pray/praying/prayed/prays/prayer/prayed/prayer
+  | class intransitive
+> liquefy/liquefying/liquefied/liquefies/liquefier/liquefied/liquefication
+  | class violent transitive
+> shred/shredding/shredded/shreds/shredder/shredded/shredding
+  | class violent transitive
+
+#nsfw
+> erect/erecting/erected/erects/erector/erected/erection
+  | class transitive
+> cockblast/cockblasting/cockflasted/cockblasts/cockblaster/cockblasted/cockblasting
+  | class transitive sex liquid
+> ejaculate/ejaculating/ejaculated/ejaculates/ejaculator/ejaculated/ejaculation
+  | class intransitive sex liquid
+> fertilize/fertilizing/fertilized/fertilizes/fertilizer/fertilized/fertilization
+  | class transitive
+> please/pleasing/pleased/pleases/pleaser/pleasted/pleasing
+  | class transitive sex
+> thrust/thrusting/thrust/thrusts/thruster/thrusted/thrusting
+  | class motion sex transitive intransitive insert
+> mount/mounting/mounted/mounts/mounter/mounted/mounting
+  | class sex transitive
+> fuck/fucking/fucked/fucks/fucker/fucked/fucking
+  | class sex transitive intransitive
+> masturbate/masturbating/masturbated/masturbates/masturbator/masturbated/masturbation
+  | class sex intransitive
+> fellate/fellating/fellated/fellates/fellater/fellated/fellatio
+  | class sex transitive
+> titfuck/titfucking/titfucked/titucks/titfucker/titfucked/titfucking
+  | class sex transitive
+> turbohump/turbohumping/turbohumped/turbohumps/turbohumper/turbohumped/turbohumpification
+  | class sex transitive
+> gyrate/gyrating/gyrated/gyrates/gyrator/gyrated/gyration
+  | class motion move intransitive
+> grope/groping/groped/gropes/groper/groped/groping
+  | class violent transitive
+> twerk/twerking/twerked/twerks/twerker/twerked/twerking
+  | class motion intransitive
+> defecate/defecating/defecated/defecates/defecator/defecated/defecation
+  | class liquid intransitive transitive
+> urinate/urinating/urinated/urinates/urinator/urinated/urination
+  | class liquid intransitive
+> finger/fingering/fingered/fingers/fingerer/fingered/fingering
+  | class transitive
+
+#sfw

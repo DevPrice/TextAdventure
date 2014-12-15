@@ -12,11 +12,19 @@ using TextAdventure.World;
 
 namespace TextAdventure.Entities
 {
-    public abstract class Entity : IExaminable, IUpdatable, INamed
+    public abstract class Entity : IExaminable, IUpdatable, INoun
     {
         public GameWorld World { get; private set; }
         public IMapNode Location { get { return World.Map.LocationOf(this); } }
+        public Article Article { get; protected set; }
         public string Name { get; set; }
+        public string Pronoun
+        {
+            get
+            {
+                return RantEngine.RunPattern(String.Format("<pron-{0}>", Gender.GetRantPattern()));
+            }
+        }
         public CombatAttributes Attributes { get { return CombatAttributes.Combine(BaseAttributes, Equipment.TotalAttributes); } }
         public CombatAttributes BaseAttributes { get; set; }
         public Gender Gender { get; set; }
@@ -49,6 +57,7 @@ namespace TextAdventure.Entities
         public Entity(GameWorld world)
         {
             World = world;
+            Article = Article.Indefinite;
             BaseAttributes = CombatAttributes.Default;
             Equipment = new Equipment();
             Inventory = new List<Item>();
@@ -64,17 +73,17 @@ namespace TextAdventure.Entities
 
         public virtual void Examine(ICommandSender examiner)
         {
-            examiner.SendMessage(Name.ToTitleCase());
+            examiner.SendMessage(RantEngine.RunPattern(this.GetFullName()).FirstCharToUpper());
 
             if (!Alive)
             {
                 examiner.SendMessage();
-                examiner.SendMessage("It's dead.");
+                examiner.SendMessage("{0}'s dead.", Pronoun.ToTitleCase());
             }
             else if (Hp < Attributes.MaxHp / 2)
             {
                 examiner.SendMessage();
-                examiner.SendMessage("It looks injured.");
+                examiner.SendMessage("{0} looks injured.", Pronoun);
             }
         }
 
@@ -168,10 +177,8 @@ namespace TextAdventure.Entities
 
             if (!Alive && !alreadyDead && Death != null)
                 Death(this, new DamageTakenEventArgs(source, amount));
-
+            
             return amount;
         }
     }
-
-    public enum Gender { Neutral, Male, Female }
 }

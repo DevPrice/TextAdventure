@@ -1,0 +1,11 @@
+#version 2
+#name conj
+#subs default
+
+> and
+> or
+> but
+> nor
+> for
+> yet
+> so

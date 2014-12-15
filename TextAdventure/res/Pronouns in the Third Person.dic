@@ -1,0 +1,8 @@
+#version 2
+#name pron
+#subs obj nom self poss s
+
+> him/he/himself/his/his
+  | class male
+> her/she/herself/her/hers
+  | class female

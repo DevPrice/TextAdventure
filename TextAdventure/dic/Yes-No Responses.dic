@@ -1,0 +1,42 @@
+#version 2
+#name yn
+
+#class add yes
+  > yes
+  > yayaya
+  > yep
+  > yeppers
+  > definitely
+  > absolutely
+  > without a doubt
+  > indeed
+  > affirmative
+  > undoubtedly
+  > undeniably
+  > yes/yes
+  > hell yes
+  > ya
+  > certainly
+  > obviously
+  > oh yes
+  > I couldn't agree more
+#class remove yes
+
+#class add no
+  > no
+  > definitely not
+  > absolutely not
+  > no way
+  > impossible
+  > negative
+  > nope
+  > hell no
+  > nooooo
+  > not at all
+  > certainly not
+  > obviously not
+  > oh no
+  > most certainly not
+  > there's no way
+  > that can't be
+#class remove no

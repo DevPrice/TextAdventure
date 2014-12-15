@@ -1,0 +1,236 @@
+#version 2
+#name place
+#subs singular plural
+
+> palace/palaces
+  | class building indoor
+> classroom/classrooms
+  | class indoor
+> nest/nests
+  | class natural indoor
+> office/offices
+  | class indoor
+> ditch/ditches
+  | class natural indoor
+> cave/caves
+  | class natural indoor
+> house/houses
+  | class indoor
+> bathroom/bathrooms
+  | class indoor
+> bedroom/bedrooms
+  | class indoor
+> town/towns
+  | class indoor
+> jail/jails
+  | class building indoor
+> shop/shops
+  | class indoor
+> tomb/tombs
+  | class building indoor
+> basement/basements
+  | class indoor
+> dungeon/dungeons
+  | class indoor
+> coffeeshop/coffeeshops
+  | class building indoor
+> tower/towers
+  | class building indoor
+> stable/stables
+  | class building indoor
+> barn/barns
+  | class building indoor
+> mansion/mansions
+  | class building indoor
+> castle/castles
+  | class building indoor
+> attic/attics
+  | class indoor
+> cage/cages
+  | class indoor
+> stadium/stadiums
+  | class building indoor
+> school/schools
+  | class building indoor
+> mall/malls
+  | class building indoor
+> store/stores
+  | class building indoor
+> stand/stands
+  | class indoor
+> company/companies
+  | class indoor
+> land/lands
+  | class natural indoor
+> garden/gardens
+  | class indoor
+> wonderland/wonderlands
+  | class indoor
+> abyss/abysses
+  | class indoor
+> shanty/shanties
+  | class building indoor
+> prison/prisons
+  | class building indoor
+> apartment/apartments
+  | class indoor
+> closet/closets
+  | class indoor
+> shack/shacks
+  | class building indoor
+> tent/tents
+  | class building indoor
+> car/cars
+  | class indoor
+> van/vans
+  | class indoor
+> alley/alleys
+  | class indoor
+> forest/forests
+  | class natural indoor
+> meadow/meadows
+  | class natural indoor
+> outhouse/outhouses
+  | class building indoor
+> boat/boats
+  | class indoor
+> port-a-potty/port-a-potties
+  | class indoor
+> sauna/saunas
+  | class indoor
+> cottage/cottages
+  | class building indoor
+> bank/banks
+  | class indoor
+> asylum/asylums
+  | class building indoor
+> arcade/arcades
+  | class indoor
+> bar/bars
+  | class building indoor
+> pub/pubs
+  | class building indoor
+> nightclub/nightclubs
+  | class building indoor
+> factory/factories
+  | class building indoor
+> station/stations
+  | class indoor
+> firehouse/firehouses
+  | class building indoor
+> safehouse/safehouses
+  | class building indoor
+> warehouse/warehouses
+  | class building indoor
+> bomb shelter/bomb shelters
+  | class building indoor
+> homeless shelter/homeless shelters
+  | class building indoor
+> firetruck/firetrucks
+  | class indoor
+> ambulance/ambulances
+  | class indoor
+> kitchen/kitchens
+  | class indoor
+> church/churches
+  | class building indoor
+> distillery/distilleries
+  | class building indoor
+> conservatory/conservatories
+  | class building indoor
+> morgue/morgues
+  | class building indoor
+> funeral home/funeral homes
+  | class building indoor
+> courthouse/courthouses
+  | class building indoor
+> trailer/trailers
+  | class indoor
+> theater/theaters
+  | class building indoor
+> studio/studios
+  | class building indoor
+> ring/rings
+  | class indoor
+> fort/forts
+  | class building indoor
+> nursery/nurseries
+  | class building indoor
+> library/libraries
+  | class building indoor
+> hospital/hospitals
+  | class building indoor
+> hostel/hostels
+  | class building indoor
+> hotel/hostels
+  | class building indoor
+> sanctuary/sanctuaries
+  | class indoor
+> bus/buses
+  | class indoor
+> post office/post offices
+  | class building indoor
+> skyway/skyways
+  | class indoor
+> opera/operas
+  | class indoor
+> laboratory/laboratories
+  | class building indoor
+> garage/garages
+  | class indoor
+> festival/festivals
+  | class indoor
+> carnival/carnivals
+  | class indoor
+> dispensary/dispensaries
+  | class indoor
+> beach/beaches
+  | class natural outdoor
+> highway/highways
+  | class outdoor
+> mountain/mountains
+  | class natural outdoor
+> hill/hills
+  | class natural outdoor
+> railroad/railroads
+  | class outdoor
+> road/roads
+  | class outdoor
+> hilltop/hilltops
+  | class natural outdoor
+> park/parks
+  | class outdoor
+> lakeside/lakesides
+  | class natural outdoor
+> grassy plain/grassy plains
+  | class natural outdoor
+> crater/craters
+  | class natural outdoor
+> valley/valleys
+  | class natural outdoor
+> volcano/volcanoes
+  | class natural outdoor
+> island/islands
+  | class natural outdoor
+> farm/farms
+  | class outdoor
+> rooftop/rooftops
+  | class outdoor
+> dance floor/dance floors
+  | class outdoor
+> graveyard/graveyards
+  | class outdoor
+> cemetary/cemetaries
+  | class outdoor
+> field/fields
+  | class outdoor
+> street/streets
+  | class outdoor
+> battlefield/battlefields
+  | class outdoor
+> wasteland/wastelands
+  | class natural outdoor
+> playground/playgrounds
+  | class outdoor
+> amusement park/amusement parks
+  | class outdoor

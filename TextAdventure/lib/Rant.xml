@@ -1,0 +1,1771 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rant</name>
+    </assembly>
+    <members>
+        <member name="M:Rant.Arithmetic.Parser.GetPrecedence">
+            <summary>
+            Returns the precedence of the next infix operator, or 0 if there is none.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Rant.Blueprints.Blueprint">
+            <summary>
+            Represents an outline for an action that is queued by a state object and executed immediately before or after parsing.
+            </summary>
+        </member>
+        <member name="T:Rant.Blueprints.ReplacerBlueprint">
+            <summary>
+            To be used on the replacer tag state as a pre-blueprint.
+            </summary>
+        </member>
+        <member name="T:Rant.RantFormatStyle">
+            <summary>
+            Describes language-specific formatting instructions for localizing interpreter output.
+            </summary>
+        </member>
+        <member name="F:Rant.RantFormatStyle.English">
+            <summary>
+            US English formatting.
+            </summary>
+        </member>
+        <member name="P:Rant.RantFormatStyle.IndefiniteArticle">
+            <summary>
+            The indefinite article to use in the format.
+            </summary>
+        </member>
+        <member name="P:Rant.RantFormatStyle.TitleCaseExclusions">
+            <summary>
+            The words to exclude from Title Case capitalization.
+            </summary>
+        </member>
+        <member name="M:Rant.RantFormatStyle.#ctor(Rant.IndefiniteArticle,System.String[])">
+            <summary>
+            Creates a new RantFormatStyle instance with the specified arguments.
+            </summary>
+            <param name="indefiniteArticle">The indefinite article to use in the format.</param>
+            <param name="titleCaseExclusions">The words to exclude from Title Case capitalization.</param>
+        </member>
+        <member name="T:Rant.Vocabulary.Carrier">
+            <summary>
+            Represents information that can be used to synchronize query selections based on certain criteria.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.Carrier.SyncType">
+            <summary>
+            The type of synchronization to perform with the carrier.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.Carrier.ID">
+            <summary>
+            The ID assigned to the carrier.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.Carrier.SyllablesMin">
+            <summary>
+            (Unused) The minimum number of syllables the selected term should have.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.Carrier.SyllablesMax">
+            <summary>
+            (Unused) The maximum number of syllables the selected term should have.
+            </summary>
+        </member>
+        <member name="M:Rant.Vocabulary.Carrier.#ctor(Rant.Vocabulary.CarrierSyncType,System.String,System.Int32,System.Int32)">
+            <summary>
+            Creates a new Carrier instance with the specified parameters.
+            </summary>
+            <param name="syncType">The type of synchronization to perform with the carrier.</param>
+            <param name="id">The ID assigned to the carrier.</param>
+            <param name="syllablesMin">The minimum number of syllables the selected term should have.</param>
+            <param name="syllablesMax">The maximum number of syllables the selected term should have.</param>
+        </member>
+        <member name="T:Rant.Vocabulary.CarrierSyncType">
+            <summary>
+            Defines synchronization types for query carriers.
+            </summary>
+        </member>
+        <member name="F:Rant.Vocabulary.CarrierSyncType.None">
+            <summary>
+            Perform no synchronization.
+            </summary>
+        </member>
+        <member name="F:Rant.Vocabulary.CarrierSyncType.Match">
+            <summary>
+            Match with other carriers using the same ID.
+            </summary>
+        </member>
+        <member name="F:Rant.Vocabulary.CarrierSyncType.Unique">
+            <summary>
+            Be unique from other carriers using the same ID.
+            </summary>
+        </member>
+        <member name="F:Rant.Vocabulary.CarrierSyncType.Rhyme">
+            <summary>
+            Rhyme with previous carrier selections using the same ID.
+            </summary>
+        </member>
+        <member name="T:Rant.Vocabulary.CarrierSyncState">
+            <summary>
+            Maintains state information necessary for query synchronization (e.g. rhyming, uniqueness, matching).
+            </summary>
+        </member>
+        <member name="F:Rant.Vocabulary.CarrierSyncState._uniqueTable">
+            <summary>
+            Unique carrier table.
+            Wherein the KEY is the UNIQUE ID, and the VALUE is the collection of used entries.
+            </summary>
+        </member>
+        <member name="F:Rant.Vocabulary.CarrierSyncState._rhymeTable">
+            <summary>
+            Rhyme carrier table.
+            Wherein the KEY is the RHYME ID and SUBTYPE, and the VALUE is the ROOT TERM and USED TERMS.
+            </summary>
+        </member>
+        <member name="T:Rant.Vocabulary.RantDictionary">
+            <summary>
+            Stores a Rant dictionary.
+            </summary>
+        </member>
+        <member name="M:Rant.Vocabulary.RantDictionary.Save(System.String)">
+            <summary>
+            Saves the contents of the dictionary to a file at the specified path.
+            </summary>
+            <param name="path">The path to the file to save.</param>
+        </member>
+        <member name="M:Rant.Vocabulary.RantDictionary.FromFile(System.String,Rant.Vocabulary.NsfwFilter)">
+            <summary>
+            Loads a RantDictionary from the file at the specified path.
+            </summary>
+            <param name="path">The path to the file to load.</param>
+            <param name="nsfwFilter">Specifies whether to allow or disallow NSFW entries.</param>
+            <returns></returns>
+        </member>
+        <member name="F:Rant.Vocabulary.RantDictionary.Version">
+            <summary>
+            The current version number of the dictionary format.
+            </summary>
+        </member>
+        <member name="M:Rant.Vocabulary.RantDictionary.#ctor(System.String,System.String[],System.Collections.Generic.IEnumerable{Rant.Vocabulary.RantDictionaryEntry})">
+            <summary>
+            Creates a new WordList from the specified data.
+            </summary>
+            <param name="name">the name of the list.</param>
+            <param name="subtypes">The subtype names.</param>
+            <param name="words">The words to add to the list.</param>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionary.Entries">
+            <summary>
+            The entries stored in the dictionary.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionary.Subtypes">
+            <summary>
+            The subtypes in the dictionary.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionary.Name">
+            <summary>
+            The name of the dictionary.
+            </summary>
+        </member>
+        <member name="T:Rant.Vocabulary.IRantVocabulary">
+            <summary>
+            Represents a collection of named, queryable dictionaries.
+            </summary>
+        </member>
+        <member name="M:Rant.Vocabulary.IRantVocabulary.Query(Rant.RNG,Rant.Vocabulary.Query,Rant.Vocabulary.CarrierSyncState)">
+            <summary>
+            Queries the vocabulary according to the specified criteria and returns a random match.
+            </summary>
+            <param name="rng">The random number generator to randomize the match with.</param>
+            <param name="query">The search criteria to use.</param>
+            <param name="syncState">The state object to use for carrier synchronization.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Rant.Vocabulary.NsfwFilter">
+            <summary>
+            Used to instruct the dictionary loader if entries marked as NSFW should be loaded.
+            </summary>
+        </member>
+        <member name="F:Rant.Vocabulary.NsfwFilter.Allow">
+            <summary>
+            Allow NSFW entries.
+            </summary>
+        </member>
+        <member name="F:Rant.Vocabulary.NsfwFilter.Disallow">
+            <summary>
+            Disallow NSFW entries.
+            </summary>
+        </member>
+        <member name="T:Rant.Vocabulary.Query">
+            <summary>
+            Represents a set of search criteria for a Rant dictionary.
+            </summary>
+        </member>
+        <member name="M:Rant.Vocabulary.Query.#ctor(System.String,System.String,Rant.Vocabulary.Carrier,System.Boolean,System.Collections.Generic.IEnumerable{System.Tuple{System.Boolean,System.String}[]},System.Collections.Generic.IEnumerable{System.Tuple{System.Boolean,System.Text.RegularExpressions.Regex}})">
+            <summary>
+            Creates a new Query object with the specified arguments.
+            </summary>
+            <param name="name">The name of the dictionary to search.</param>
+            <param name="subtype">The subtype of the dictionary entry to use.</param>
+            <param name="carrier">The carrier for the query.</param>
+            <param name="exclusive">Specifies exclusivity of class filters.</param>
+            <param name="classFilters">The class filters to search by.</param>
+            <param name="regexFilters">The regex filters to search by.</param>
+        </member>
+        <member name="P:Rant.Vocabulary.Query.Carrier">
+            <summary>
+            The carrier for the query.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.Query.Name">
+            <summary>
+            The name of the dictionary to search.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.Query.Subtype">
+            <summary>
+            The subtype of the dictionary entry to use.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.Query.Exclusive">
+            <summary>
+            Specifies exclusivity of class filters.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.Query.ClassFilters">
+            <summary>
+            The class filters to search by.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.Query.RegexFilters">
+            <summary>
+            The regex filters to search by.
+            </summary>
+        </member>
+        <member name="T:Rant.Vocabulary.RantDictionaryEntry">
+            <summary>
+            Stores information about a dictionary entry.
+            </summary>
+        </member>
+        <member name="M:Rant.Vocabulary.RantDictionaryEntry.#ctor(System.String[],System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Int32)">
+            <summary>
+            Creates a new Word object from the specified data.
+            </summary>
+            <param name="terms">The terms in the entry.</param>
+            <param name="classes">The classes associated with the entry.</param>
+            <param name="weight">The weight of the entry.</param>
+            <param name="nsfw">Specified if the entry should be marked with a NSFW flag.</param>
+        </member>
+        <member name="M:Rant.Vocabulary.RantDictionaryEntry.#ctor(Rant.Vocabulary.RantDictionaryTerm[],System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Int32)">
+            <summary>
+            Creates a new Word object from the specified data.
+            </summary>
+            <param name="terms">The terms in the entry.</param>
+            <param name="classes">The classes associated with the entry.</param>
+            <param name="weight">The weight of the entry.</param>
+            <param name="nsfw">Specified if the entry should be marked with a NSFW flag.</param>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionaryEntry.Item(System.Int32)">
+            <summary>
+            Gets the value for the specified term index in the entry. If the index is out of range, [Missing Term] will be returned.
+            </summary>
+            <param name="index">The index of the term whose value to request.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionaryEntry.Terms">
+            <summary>
+            The terms in the entry.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionaryEntry.Classes">
+            <summary>
+            The classes associated with the entry.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionaryEntry.Weight">
+            <summary>
+            The weight of the entry.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionaryEntry.NSFW">
+            <summary>
+            Indicates if the entry is marked as "Not Safe For Work."
+            </summary>
+        </member>
+        <member name="T:Rant.Vocabulary.RantVocabulary">
+            <summary>
+            Represents a collection of named, queryable dictionaries. This is the default vocabulary type used by Rant.
+            </summary>
+        </member>
+        <member name="F:Rant.Vocabulary.RantVocabulary.ShowDebugOutput">
+            <summary>
+            Determines if the loader should display debug output when parsing files.
+            </summary>
+        </member>
+        <member name="M:Rant.Vocabulary.RantVocabulary.#ctor(System.Collections.Generic.IEnumerable{Rant.Vocabulary.RantDictionary})">
+            <summary>
+            Creates a new Vocabulary object from the specified dictionary collection.
+            </summary>
+            <param name="dics"></param>
+        </member>
+        <member name="M:Rant.Vocabulary.RantVocabulary.AddDictionary(Rant.Vocabulary.RantDictionary)">
+            <summary>
+            Adds a new Dictionary object to the collection.
+            </summary>
+            <param name="dictionary"></param>
+        </member>
+        <member name="M:Rant.Vocabulary.RantVocabulary.FromDirectory(System.String,Rant.Vocabulary.NsfwFilter)">
+            <summary>
+            Loads all dictionary (.dic) files from the specified directory and returns a Vocabulary object that contains the loaded dictionaries.
+            </summary>
+            <param name="directory">The directory from which to load dictionaries.</param>
+            <param name="filter">Indicates whether dictionary entries marked with the #nsfw flag should be loaded.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Vocabulary.RantVocabulary.FromMultiDirectory(System.String[])">
+            <summary>
+            Loads all dictionary (.dic) files from the specified directories and returns a Vocabulary object that contains the loaded dictionaries.
+            </summary>
+            <param name="directories">The directories from which to load dictionaries.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Vocabulary.RantVocabulary.FromMultiDirectory(System.String[],Rant.Vocabulary.NsfwFilter)">
+            <summary>
+            Loads all dictionary (.dic) files from the specified directories and returns a Vocabulary object that contains the loaded dictionaries.
+            </summary>
+            <param name="directories">The directories from which to load dictionaries.</param>
+            <param name="filter">Indicates whether dictionary entries marked with the #nsfw flag should be loaded.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Vocabulary.RantVocabulary.Query(Rant.RNG,Rant.Vocabulary.Query,Rant.Vocabulary.CarrierSyncState)">
+            <summary>
+            Queries the vocabulary according to the specified criteria and returns a random match.
+            </summary>
+            <param name="rng">The random number generator to randomize the match with.</param>
+            <param name="query">The search criteria to use.</param>
+            <param name="syncState">The state object to use for carrier synchronization.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Rant.Vocabulary.RantDictionaryTerm">
+            <summary>
+            Represents a Rant dictionary term. A dictionary entry will contain one term for every subtype.
+            </summary>
+        </member>
+        <member name="M:Rant.Vocabulary.RantDictionaryTerm.#ctor(System.String)">
+            <summary>
+            Creates a new dictionary term with the specified value.
+            </summary>
+            <param name="value">The value of the term.</param>
+        </member>
+        <member name="M:Rant.Vocabulary.RantDictionaryTerm.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new dictionary term with the specified value and pronunciation.
+            </summary>
+            <param name="value">The value of the term.</param>
+            <param name="pronunciation">The pronunciation of the term.</param>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionaryTerm.Value">
+            <summary>
+            The value of the term.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionaryTerm.Pronunciation">
+            <summary>
+            The pronunciation of the term.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionaryTerm.PronunciationParts">
+            <summary>
+            An array containing the individual elements of the pronunciation string. Used by the rhyming system.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionaryTerm.Syllables">
+            <summary>
+            An array containing the individual syllables of the pronunciation string.
+            </summary>
+        </member>
+        <member name="P:Rant.Vocabulary.RantDictionaryTerm.SyllableCount">
+            <summary>
+            The number of syllables in the pronunciation string.
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.Brackets.All">
+            <summary>
+            Used everywhere except for reading constant literals.
+            </summary>
+        </member>
+        <member name="T:Rant.Compiler.R">
+            <summary>
+            Contains all the token identifiers for the Rant lexer.
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Text">
+            <summary>
+            Regular text with no special function.
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.EscapeSequence">
+            <summary>
+            A format string used to output a reserved or random character.
+            Used by: Plaintext, arguments
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.LeftSquare">
+            <summary>
+            [
+            <para>
+            Used by: Tags (opening)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.RightSquare">
+            <summary>
+            ]
+            <para>
+            Used by: Tags (closure)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.LeftCurly">
+            <summary>
+            {
+            <para>
+            Used by: Blocks (opening)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.RightCurly">
+            <summary>
+            }
+            <para>
+            Used by: Blocks (closure)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.LeftAngle">
+            <summary>
+            &lt;
+            <para>
+            Used by: Queries (opening)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.RightAngle">
+            <summary>
+            &gt;
+            <para>
+            Used by: Queries (closure)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.LeftParen">
+            <summary>
+            (
+            <para>
+            Used by: Arithmetic (opening)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.RightParen">
+            <summary>
+            )
+            <para>
+            Used by: Arithmetic (closure)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Pipe">
+            <summary>
+            |
+            <para>
+            Used by: Blocks (item separator)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Colon">
+            <summary>
+            :
+            <para>
+            Used by: Tags (follows name)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Semicolon">
+            <summary>
+            ;
+            <para>
+            Used by: Tags (argument separator)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.DoubleColon">
+            <summary>
+            ::
+            <para>
+            Used by: Queries (carrier operator)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.At">
+            <summary>
+            @
+            <para>
+            Used by: Tags (constant arg notation), Arithmetic (statement modifier)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Question">
+            <summary>
+            ?
+            <para>
+            Used by: Tags (metapatterns), Queries (whitelist regex)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.ForwardSlash">
+            <summary>
+            /
+            <para>
+            Used by: Queries (regex filters)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Exclamation">
+            <summary>
+            !
+            <para>
+            Used by: Queries ('not' class constraint modifier)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Dollar">
+            <summary>
+            $
+            <para>
+            Used by: Queries ('only' modifier)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Hyphen">
+            <summary>
+            -
+            <para>
+            Used by: Queries (class constraint)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Comma">
+            <summary>
+            ,
+            <para>
+            Used by: Queries (subtype prefix)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Without">
+            <summary>
+            ?!
+            <para>
+            Used by: Queries (blacklist regex)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Regex">
+            <summary>
+            Javascript-style regular expression.
+            <para>
+            Used by: Queries (blacklist/whitelist)
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Ignore">
+            <summary>
+            Comments, whitespace, etc.
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.ConstantLiteral">
+            <summary>
+            " ... "
+            Used by: Tags
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Whitespace">
+            <summary>
+            Used by: Tags
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Equal">
+            <summary>
+            =
+            <para>
+            Used by: Carriers
+            </para> 
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Ampersand">
+            <summary>
+            &amp;
+            <para>
+            Used by: Carriers
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Percent">
+            <summary>
+            %
+            <para>
+            Used by: Lists
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Caret">
+            <summary>
+            ^
+            <para>
+            Used by: Lists
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Plus">
+            <summary>
+            +
+            <para>
+            Used by: Lists
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.Weight">
+            <summary>
+            *123:
+            <para>
+            Used by: Blocks
+            </para>
+            </summary>
+        </member>
+        <member name="F:Rant.Compiler.R.EOF">
+            <summary>
+            End of file.
+            </summary>
+        </member>
+        <member name="T:Rant.RantEngine">
+            <summary>
+            The central class of the Rant engine that allows the execution of patterns.
+            </summary>
+        </member>
+        <member name="F:Rant.RantEngine.DefaultNsfwFilter">
+            <summary>
+            The default NSFW filtering option to apply when creating Engine objects that load vocabulary from a directory.
+            </summary>
+        </member>
+        <member name="F:Rant.RantEngine.MaxStackSize">
+            <summary>
+            The maximum stack size allowed for a pattern.
+            </summary>
+        </member>
+        <member name="P:Rant.RantEngine.Flags">
+            <summary>
+            The currently set flags.
+            </summary>
+        </member>
+        <member name="P:Rant.RantEngine.FormatStyle">
+            <summary>
+            The current output formatting style for the engine.
+            </summary>
+        </member>
+        <member name="P:Rant.RantEngine.Vocabulary">
+            <summary>
+            The vocabulary associated with this instance.
+            </summary>
+        </member>
+        <member name="M:Rant.RantEngine.#ctor">
+            <summary>
+            Creates a new Engine object with no vocabulary.
+            </summary>
+        </member>
+        <member name="M:Rant.RantEngine.#ctor(System.String)">
+            <summary>
+            Creates a new Engine object that loads vocabulary from the specified path.
+            </summary>
+            <param name="vocabularyPath">The path to the dictionary files to load.</param>
+        </member>
+        <member name="M:Rant.RantEngine.#ctor(System.String,Rant.Vocabulary.NsfwFilter)">
+            <summary>
+            Creates a new Engine object that loads vocabulary from a path according to the specified filtering option.
+            </summary>
+            <param name="vocabularyPath">The path to the dictionary files to load.</param>
+            <param name="filter">The filtering option to apply when loading the files.</param>
+        </member>
+        <member name="M:Rant.RantEngine.#ctor(Rant.Vocabulary.IRantVocabulary)">
+            <summary>
+            Creates a new Engine object with the specified vocabulary.
+            </summary>
+            <param name="vocabulary">The vocabulary to load in this instance.</param>
+        </member>
+        <member name="M:Rant.RantEngine.Do(System.String,System.Int32)">
+            <summary>
+            Compiles the specified string into a pattern, executes it, and returns the resulting output.
+            </summary>
+            <param name="input">The input string to execute.</param>
+            <param name="charLimit">The maximum number of characters that can be printed. An exception will be thrown if the limit is exceeded. Set to zero or below for unlimited characters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantEngine.DoFile(System.String,System.Int32)">
+            <summary>
+            Loads the file located at the specified path and executes it, returning the resulting output.
+            </summary>
+            <param name="path">The path to the file to execute.</param>
+            <param name="charLimit">The maximum number of characters that can be printed. An exception will be thrown if the limit is exceeded. Set to zero or below for unlimited characters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantEngine.Do(System.String,System.Int64,System.Int32)">
+            <summary>
+            Compiles the specified string into a pattern, executes it using a custom seed, and returns the resulting output.
+            </summary>
+            <param name="input">The input string to execute.</param>
+            <param name="seed">The seed to generate output with.</param>
+            <param name="charLimit">The maximum number of characters that can be printed. An exception will be thrown if the limit is exceeded. Set to zero or below for unlimited characters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantEngine.DoFile(System.String,System.Int64,System.Int32)">
+            <summary>
+            Loads the file located at the specified path and executes it using a custom seed, returning the resulting output.
+            </summary>
+            <param name="path">The path to the file to execute.</param>
+            <param name="seed">The seed to generate output with.</param>
+            <param name="charLimit">The maximum number of characters that can be printed. An exception will be thrown if the limit is exceeded. Set to zero or below for unlimited characters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantEngine.Do(System.String,Rant.RNG,System.Int32)">
+            <summary>
+            Compiles the specified string into a pattern, executes it using a custom RNG, and returns the resulting output.
+            </summary>
+            <param name="input">The input string to execute.</param>
+            <param name="rng">The random number generator to use when generating output.</param>
+            <param name="charLimit">The maximum number of characters that can be printed. An exception will be thrown if the limit is exceeded. Set to zero or below for unlimited characters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantEngine.DoFile(System.String,Rant.RNG,System.Int32)">
+            <summary>
+            Loads the file located at the specified path and executes it using a custom seed, returning the resulting output.
+            </summary>
+            <param name="path">The path to the file to execute.</param>
+            <param name="rng">The random number generator to use when generating output.</param>
+            <param name="charLimit">The maximum number of characters that can be printed. An exception will be thrown if the limit is exceeded. Set to zero or below for unlimited characters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantEngine.Do(Rant.RantPattern,System.Int32)">
+            <summary>
+            Executes the specified pattern and returns the resulting output.
+            </summary>
+            <param name="input">The pattern to execute.</param>
+            <param name="charLimit">The maximum number of characters that can be printed. An exception will be thrown if the limit is exceeded. Set to zero or below for unlimited characters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantEngine.Do(Rant.RantPattern,System.Int64,System.Int32)">
+            <summary>
+            Executes the specified pattern using a custom seed and returns the resulting output.
+            </summary>
+            <param name="input">The pattern to execute.</param>
+            <param name="seed">The seed to generate output with.</param>
+            <param name="charLimit">The maximum number of characters that can be printed. An exception will be thrown if the limit is exceeded. Set to zero or below for unlimited characters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantEngine.Do(Rant.RantPattern,Rant.RNG,System.Int32)">
+            <summary>
+            Executes the specified pattern using a custom random number generator and returns the resulting output.
+            </summary>
+            <param name="input">The pattern to execute.</param>
+            <param name="rng">The random number generator to use when generating output.</param>
+            <param name="charLimit">The maximum number of characters that can be printed. An exception will be thrown if the limit is exceeded. Set to zero or below for unlimited characters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantEngine.AddHook(System.String,System.Func{System.String[],System.String})">
+            <summary>
+            Adds a function to the collection with the specified name. The hook name can only contain letters, decimal digits, and underscores.
+            </summary>
+            <param name="name">The name of the function hook.</param>
+            <param name="func">The function associated with the hook.</param>
+        </member>
+        <member name="M:Rant.RantEngine.HasHook(System.String)">
+            <summary>
+            Determines whether the HookCollection object contains a hook with the specified name.
+            </summary>
+            <param name="name">The name of the hook to search for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantEngine.HasHook(System.Func{System.String[],System.String})">
+            <summary>
+            Determines whether the HookCollection object contains a hook with the specified function.
+            </summary>
+            <param name="func">The function to search for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantEngine.RemoveHook(System.String)">
+            <summary>
+            Removes the hook with the specified name from the collection.
+            </summary>
+            <param name="name">The name of the hook to remove.</param>
+        </member>
+        <member name="T:Rant.IndefiniteArticle">
+            <summary>
+            Defines indefinite article (\a) formatting to use when executing Rant patterns.
+            </summary>
+        </member>
+        <member name="F:Rant.IndefiniteArticle.English">
+            <summary>
+            Indefinite articles for English.
+            </summary>
+        </member>
+        <member name="P:Rant.IndefiniteArticle.ConsonantForm">
+            <summary>
+            The consonant form of the current indefinite article.
+            </summary>
+        </member>
+        <member name="P:Rant.IndefiniteArticle.VowelForm">
+            <summary>
+            The vowel form of the current indefinite article.
+            </summary>
+        </member>
+        <member name="M:Rant.IndefiniteArticle.#ctor(System.String,System.String,Rant.IndefiniteArticleRules)">
+            <summary>
+            Creates a new IndefiniteArticle object with the specified values and rules.
+            </summary>
+            <param name="consonantForm">The consonant form of the article.</param>
+            <param name="vowelForm">The vowel form of the article.</param>
+            <param name="rules"></param>
+        </member>
+        <member name="T:Rant.IndefiniteArticleRules">
+            <summary>
+            Represents a rule set for determining the correct indefinite article to place before a word.
+            </summary>
+        </member>
+        <member name="F:Rant.IndefiniteArticleRules.English">
+            <summary>
+            Predefined article rules for English.
+            </summary>
+        </member>
+        <member name="M:Rant.IndefiniteArticleRules.#ctor(System.String[],System.String[],System.String[],System.String[])">
+            <summary>
+            Creates a new IndefiniteArticleRules instance with the specified parameters that uses default vowels (a, e, i, o, u).
+            </summary>
+            <param name="ignorePrefixes">The word prefixes that are to be excluded from vowel tests.</param>
+            <param name="allowPrefixes">The word prefixes that are to be included in vowel tests, which would normally test negative.</param>
+            <param name="ignoreWords">The words that should be ignored in vowel tests.</param>
+            <param name="allowWords">The words that should be included in vowel tests, which would normally test negative.</param>
+        </member>
+        <member name="M:Rant.IndefiniteArticleRules.#ctor(System.Char[],System.String[],System.String[],System.String[],System.String[])">
+            <summary>
+            Creates a new IndefiniteArticleRules instance with the specified parameters.
+            </summary>
+            <param name="vowels">The vowel characters that the rules should test for.</param>
+            <param name="ignorePrefixes">The word prefixes that are to be excluded from vowel tests.</param>
+            <param name="allowPrefixes">The word prefixes that are to be included in vowel tests, which would normally test negative.</param>
+            <param name="ignoreWords">The words that should be ignored in vowel tests.</param>
+            <param name="allowWords">The words that should be included in vowel tests, which would normally test negative.</param>
+        </member>
+        <member name="P:Rant.IndefiniteArticleRules.Vowels">
+            <summary>
+            The vowel characters that the rules should test for.
+            </summary>
+        </member>
+        <member name="P:Rant.IndefiniteArticleRules.IgnorePrefixes">
+            <summary>
+            The word prefixes that are to be excluded from vowel tests.
+            </summary>
+        </member>
+        <member name="P:Rant.IndefiniteArticleRules.AllowPrefixes">
+            <summary>
+            The word prefixes that are to be included in vowel tests, which would normally test negative.
+            </summary>
+        </member>
+        <member name="P:Rant.IndefiniteArticleRules.IgnoreWords">
+            <summary>
+            The words that should be ignored in vowel tests.
+            </summary>
+        </member>
+        <member name="P:Rant.IndefiniteArticleRules.AllowWords">
+            <summary>
+            The words that should be included in vowel tests, which would normally test negative.
+            </summary>
+        </member>
+        <member name="T:Rant.Interpreter.State">
+            <summary>
+            Maintains state information for a single stream of tokens.
+            </summary>
+        </member>
+        <member name="M:Rant.Interpreter.State.Pre(Rant.Blueprints.Blueprint)">
+            <summary>
+            Adds a pre-blueprint to this state.
+            </summary>
+            <param name="bp">The blueprint to set.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Interpreter.State.UsePreBlueprint">
+            <summary>
+            Consumes the available pre-blueprint, if any. Returns 'true' if either the blueprint hints at the interpreter to skip to the top of the stack, or another blueprint was set during execution.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Interpreter.State.UsePostBlueprint">
+            <summary>
+            Consumes the available post-blueprint, if any. Returns 'true' if another blueprint was set during execution.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Interpreter.State.Post(Rant.Blueprints.Blueprint)">
+            <summary>
+            Adds a post-blueprint to this state.
+            </summary>
+            <param name="bp">The blueprint to set.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Interpreter.State.Create(Rant.RantPattern,Rant.Interpreter)">
+            <summary>
+            Creates a state object that reads tokens from the specified source.
+            </summary>
+            <param name="source">The source from which to read tokens.</param>
+            <param name="interpreter">The interpreter that will read the tokens.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Interpreter.State.CreateSub(Rant.RantPattern,System.Collections.Generic.IEnumerable{Rant.Stringes.Tokens.Token{Rant.Compiler.R}},Rant.Interpreter,Rant.ChannelStack)">
+            <summary>
+            Creates a state object that reads tokens from a custom collection that is associated with the specified source. Specifying an output that is distinct from the one below it in the stack will cause the output to be pushed to the result stack when finished.
+            </summary>
+            <param name="derivedSource">The source with which to associate the tokens.</param>
+            <param name="tokens">The tokens to read.</param>
+            <param name="interpreter">The interpreter that will read the tokens.</param>
+            <param name="output">The output of the state. Excluding this will create a new output.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Rant.FuncDef">
+            <summary>
+            Represents a group of related Rant function signatures.
+            </summary>
+        </member>
+        <member name="T:Rant.FuncSig">
+            <summary>
+            Represents a Rant function signature with a specific set of parameters.
+            </summary>
+        </member>
+        <member name="F:Rant.ParamFlags.None">
+            <summary>
+            Parameter requires a string generated from the provided tokens.
+            </summary>
+        </member>
+        <member name="F:Rant.ParamFlags.Code">
+            <summary>
+            Parameter requires a series of tokens.
+            </summary>
+        </member>
+        <member name="F:Rant.ParamFlags.Multi">
+            <summary>
+            Any number of arguments may be specified beyond this point. Valid only on last parameter.
+            </summary>
+        </member>
+        <member name="T:Rant.RantException">
+            <summary>
+            Represents a runtime error raised by the Rant engine.
+            </summary>
+        </member>
+        <member name="P:Rant.RantException.Line">
+            <summary>
+            The line on which the error occurred.
+            </summary>
+        </member>
+        <member name="P:Rant.RantException.Column">
+            <summary>
+            The column on which the error occurred.
+            </summary>
+        </member>
+        <member name="P:Rant.RantException.Index">
+            <summary>
+            The character index on which the error occurred.
+            </summary>
+        </member>
+        <member name="P:Rant.RantException.Length">
+            <summary>
+            The length of the substring in which the error occurred.
+            </summary>
+        </member>
+        <member name="P:Rant.RantException.Code">
+            <summary>
+            The source of the error.
+            </summary>
+        </member>
+        <member name="T:Rant.Channel">
+            <summary>
+            Stores output from a pattern channel.
+            </summary>
+        </member>
+        <member name="P:Rant.Channel.Name">
+            <summary>
+            The name of the channel.
+            </summary>
+        </member>
+        <member name="P:Rant.Channel.Visiblity">
+            <summary>
+            The visibility of the channel.
+            </summary>
+        </member>
+        <member name="P:Rant.Channel.Length">
+            <summary>
+            The number of characters in the output.
+            </summary>
+        </member>
+        <member name="P:Rant.Channel.Value">
+            <summary>
+            The output string stored in the channel.
+            </summary>
+        </member>
+        <member name="M:Rant.Channel.ToString">
+            <summary>
+            Returns a string that identifies the channel by name and visibility.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Rant.Output">
+            <summary>
+            Represents a collection of strings generated by a pattern.
+            </summary>
+        </member>
+        <member name="P:Rant.Output.Item(System.String)">
+            <summary>
+            Retrieves the channel with the specified name.
+            </summary>
+            <param name="index">The name of the channel.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Rant.Output.Seed">
+            <summary>
+            The seed used to generate the output.
+            </summary>
+        </member>
+        <member name="P:Rant.Output.BaseGeneration">
+            <summary>
+            The generation at which the RNG was initially set before the pattern was run.
+            </summary>
+        </member>
+        <member name="P:Rant.Output.MainValue">
+            <summary>
+            The main output string.
+            </summary>
+        </member>
+        <member name="M:Rant.Output.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the channels in the collection.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Output.ToString">
+            <summary>
+            Returns the output from the "main" channel.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Output.op_Implicit(Rant.Output)~System.String">
+            <summary>
+            Returns the output from the "main" channel.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Rant.ChannelVisibility">
+            <summary>
+            Provides visibility settings for output channels.
+            </summary>
+        </member>
+        <member name="F:Rant.ChannelVisibility.Public">
+            <summary>
+            Channel outputs to itself and 'main'.
+            </summary>
+        </member>
+        <member name="F:Rant.ChannelVisibility.Private">
+            <summary>
+            Channel outputs only to itself.
+            </summary>
+        </member>
+        <member name="F:Rant.ChannelVisibility.Internal">
+            <summary>
+            Channel outputs only to itself and any parent channels also set to Internal.
+            </summary>
+        </member>
+        <member name="T:Rant.RNG">
+            <summary>
+            Represents a non-linear random number generator.
+            </summary>
+        </member>
+        <member name="P:Rant.RNG.BaseSeed">
+            <summary>
+            The root seed.
+            </summary>
+        </member>
+        <member name="P:Rant.RNG.Seed">
+            <summary>
+            The seed of the top branch.
+            </summary>
+        </member>
+        <member name="P:Rant.RNG.Generation">
+            <summary>
+            The current generation.
+            </summary>
+        </member>
+        <member name="M:Rant.RNG.#ctor(System.Int64)">
+            <summary>
+            Creates a new RNG instance with the specified seed.
+            </summary>
+            <param name="seed">The seed for the generator.</param>
+        </member>
+        <member name="M:Rant.RNG.#ctor(System.Int64,System.Int64)">
+            <summary>
+            Creates a new RNG instance with the specified seed and generation.
+            </summary>
+            <param name="seed">The seed for the generator.</param>
+            <param name="generation">The generation to start at.</param>
+        </member>
+        <member name="M:Rant.RNG.#ctor">
+            <summary>
+            Creates a new RNG instance seeded with the system tick count.
+            </summary>
+        </member>
+        <member name="M:Rant.RNG.GetRaw(System.Int64,System.Int64)">
+            <summary>
+            Calculates the raw 64-bit value for a given seed/generation pair.
+            </summary>
+            <param name="s">The seed.</param>
+            <param name="g">The generation.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Rant.RNG.Item(System.Int32)">
+            <summary>
+            Calculates the raw 64-bit value for a given generation.
+            </summary>
+            <param name="g">The generation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.NextRaw">
+            <summary>
+            Calculates the raw 64-bit value for the next generation, and increases the current generation by 1.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.PrevRaw">
+            <summary>
+            Calculates the raw 64-bit value for the previous generation, and decreases the current generation by 1.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.Reset">
+            <summary>
+            Sets the current generation to zero.
+            </summary>
+        </member>
+        <member name="M:Rant.RNG.Reset(System.Int64)">
+            <summary>
+            Sets the seed to the specified value and the current generation to zero.
+            </summary>
+            <param name="newSeed">The new seed to apply to the generator.</param>
+        </member>
+        <member name="M:Rant.RNG.Branch(System.Int64)">
+            <summary>
+            Creates a new branch based off the current seed and the specified seed.
+            </summary>
+            <param name="seed">The seed to create the branch with.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Rant.RNG.Depth">
+            <summary>
+            The current branching depth of the generator.
+            </summary>
+        </member>
+        <member name="M:Rant.RNG.Merge">
+            <summary>
+            Removes the topmost branch and resumes generation on the next one down.
+            </summary>
+        </member>
+        <member name="M:Rant.RNG.Peek">
+            <summary>
+            Calculates a 32-bit, non-negative integer for the current generation.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.PeekAt(System.Int64)">
+            <summary>
+            Calculates the 32-bitnon-negative integer for the specified generation.
+            </summary>
+            <param name="generation">The generation to peek at.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.NextDouble">
+            <summary>
+            Returns a double-precision floating point number between 0 and 1, and advances the generation by 1.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.NextDouble(System.Double)">
+            <summary>
+            Returns a double-precision floating point number between 0 and the specified maximum value, and advances the generation by 1.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.NextDouble(System.Double,System.Double)">
+            <summary>
+            Returns a double-precision floating point number between the specified minimum and maximum values, and advances the generation by 1.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.Next">
+            <summary>
+            Calculates a 32-bit, non-negative integer from the next generation and increases the current generation by 1.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.Prev">
+            <summary>
+            Calculates a 32-bit, non-negative integer from the previous generation and decreases the current generation by 1.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.Next(System.Int32)">
+            <summary>
+            Calculates a 32-bit integer between 0 and a specified upper bound for the current generation and increases the current generation by 1.
+            </summary>
+            <param name="max">The exclusive maximum value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.Prev(System.Int32)">
+            <summary>
+            Calculates a 32-bit integer between 0 and a specified upper bound from the previous generation and decreases the current generation by 1.
+            </summary>
+            <param name="max">The exclusive maximum value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.Peek(System.Int32)">
+            <summary>
+            Calculates a 32-bit integer between 0 and a specified upper bound for the current generation.
+            </summary>
+            <param name="max">The exclusive maximum value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.PeekAt(System.Int64,System.Int32)">
+            <summary>
+            Calculates a 32-bit integer between 0 and a specified upper bound for the specified generation.
+            </summary>
+            <param name="generation">The generation whose value to calculate.</param>
+            <param name="max">The exclusive maximum value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.Next(System.Int32,System.Int32)">
+            <summary>
+            Calculates a 32-bit integer between the specified minimum and maximum values for the current generation, and increases the current generation by 1.
+            </summary>
+            <param name="min">The inclusive minimum value.</param>
+            <param name="max">The exclusive maximum value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.Prev(System.Int32,System.Int32)">
+            <summary>
+            Calculates a 32-bit integer between the specified minimum and maximum values for the previous generation, and decreases the current generation by 1.
+            </summary>
+            <param name="min">The inclusive minimum value.</param>
+            <param name="max">The exclusive maximum value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.Peek(System.Int32,System.Int32)">
+            <summary>
+            Calculates a 32-bit integer between the specified minimum and maximum values for the current generation.
+            </summary>
+            <param name="min">The inclusive minimum value.</param>
+            <param name="max">The exclusive maximum value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RNG.PeekAt(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Calculates a 32-bit integer between the specified minimum and maximum values for the specified generation.
+            </summary>
+            <param name="min">The inclusive minimum value.</param>
+            <param name="max">The exclusive maximum value.</param>
+            <param name="generation">The generation whose value to calculate.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Rant.RantPattern">
+            <summary>
+            Represents a compiled pattern that can be executed by the engine. It is recommended to use this class when running the same patern multiple times.
+            </summary>
+        </member>
+        <member name="P:Rant.RantPattern.Name">
+            <summary>
+            The name of the source code.
+            </summary>
+        </member>
+        <member name="P:Rant.RantPattern.Type">
+            <summary>
+            Describes the origin of the source.
+            </summary>
+        </member>
+        <member name="P:Rant.RantPattern.Code">
+            <summary>
+            The code contained in the source.
+            </summary>
+        </member>
+        <member name="M:Rant.RantPattern.FromString(System.String)">
+            <summary>
+            Compiles a Source object from the specified string.
+            </summary>
+            <param name="code">The code to compile.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantPattern.FromString(System.String,System.String)">
+            <summary>
+            Compiles a Source object from a string with the specified name.
+            </summary>
+            <param name="name">The name to give the source.</param>
+            <param name="code">The code to compile.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantPattern.FromFile(System.String)">
+            <summary>
+            Loads the file located at the specified path and creates a Source object from its contents.
+            </summary>
+            <param name="path">The path to the file to load.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.RantPattern.ToString">
+            <summary>
+            Returns a string describing the source.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Rant.RantPatternSource">
+            <summary>
+            Indicates the manner in which a referenced code source was created.
+            </summary>
+        </member>
+        <member name="F:Rant.RantPatternSource.File">
+            <summary>
+            Source was loaded from a file.
+            </summary>
+        </member>
+        <member name="F:Rant.RantPatternSource.String">
+            <summary>
+            Source was loaded from a string.
+            </summary>
+        </member>
+        <member name="F:Rant.RantPatternSource.Metapattern">
+            <summary>
+            Source was generated from a metapattern.
+            </summary>
+        </member>
+        <member name="F:Rant.RantPatternSource.SelfGenerated">
+            <summary>
+            Source was generated from an interpreted subroutine definition.
+            </summary>
+        </member>
+        <member name="T:Rant.Stringes.Chare">
+            <summary>
+            Provides information about a character in a stringe.
+            </summary>
+        </member>
+        <member name="M:Rant.Stringes.Extensions.ToStringe(System.Object)">
+            <summary>
+            Converts the specified value into a stringe.
+            </summary>
+            <param name="value">The object to convert.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Rant.Stringes.Stringe">
+            <summary>
+            Describes a string or a substring in relation to its parent. Provides line number, column, offset, and other useful metadata.
+            </summary>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.Empty(Rant.Stringes.Stringe)">
+            <summary>
+            Returns an empty stringe based on the position of another stringe.
+            </summary>
+            <param name="basis">The basis stringe to get position info from.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.IsNullOrEmpty(Rant.Stringes.Stringe)">
+            <summary>
+            Indicates whether the specified stringe is null or empty.
+            </summary>
+            <param name="stringe">The stringe to test.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Rant.Stringes.Stringe.Offset">
+            <summary>
+            The offset of the stringe in the string.
+            </summary>
+        </member>
+        <member name="P:Rant.Stringes.Stringe.Length">
+            <summary>
+            The length of the string represented by the stringe.
+            </summary>
+        </member>
+        <member name="P:Rant.Stringes.Stringe.Line">
+            <summary>
+            The 1-based line number at which the stringe begins.
+            </summary>
+        </member>
+        <member name="P:Rant.Stringes.Stringe.Column">
+            <summary>
+            The 1-based column at which the stringe begins.
+            </summary>
+        </member>
+        <member name="P:Rant.Stringes.Stringe.IsSubstring">
+            <summary>
+            Indicates if the stringe is a substring.
+            </summary>
+        </member>
+        <member name="P:Rant.Stringes.Stringe.IsEmpty">
+            <summary>
+            Indicates if the stringe is empty.
+            </summary>
+        </member>
+        <member name="P:Rant.Stringes.Stringe.Value">
+            <summary>
+            The substring value represented by the stringe. If the stringe is the parent, this will provide the original string.
+            </summary>
+        </member>
+        <member name="P:Rant.Stringes.Stringe.ParentString">
+            <summary>
+            Gets the original string from which the stringe was originally derived.
+            </summary>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.#ctor(System.String)">
+            <summary>
+            Creates a new stringe from the specified string.
+            </summary>
+            <param name="value">The string to turn into a stringe.</param>
+        </member>
+        <member name="P:Rant.Stringes.Stringe.Item(System.Int32)">
+            <summary>
+            Gets the charactere at the specified index in the stringe.
+            </summary>
+            <param name="index">The index of the charactere to retrieve.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.IndexOf(System.String,System.Int32,System.StringComparison)">
+            <summary>
+            Returns the zero-based index at which the specified string first occurs, relative to the substringe. The search starts at the specified index.
+            </summary>
+            <param name="input">The string to search for.</param>
+            <param name="start">The index at which to begin the search.</param>
+            <param name="comparisonType">The string comparison rules to apply to the search.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.IndexOfTotal(System.String,System.Int32,System.StringComparison)">
+            <summary>
+            Returns the zero-based index at which the specified string first occurs, relative to the parent string. The search starts at the specified index.
+            </summary>
+            <param name="input">The string to search for.</param>
+            <param name="start">The index at which to begin the search.</param>
+            <param name="comparisonType">The string comparison rules to apply to the search.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.IndexOf(System.Char,System.Int32)">
+            <summary>
+            Returns the zero-based index at which the specified character first occurs, relative to the substringe. The search starts at the specified index.
+            </summary>
+            <param name="input">The character to search for.</param>
+            <param name="start">The index at which to begin the search.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.IndexOfTotal(System.Char,System.Int32)">
+            <summary>
+            Returns the zero-based index at which the specified character first occurs, relative to the parent string. The search starts at the specified index.
+            </summary>
+            <param name="input">The character to search for.</param>
+            <param name="start">The index at which to begin the search.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.Substringe(System.Int32,System.Int32)">
+            <summary>
+            Creates a substringe from the stringe, starting at the specified index and extending to the specified length.
+            </summary>
+            <param name="offset">The offset at which to begin the substringe.</param>
+            <param name="length">The length of the substringe.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.Substringe(System.Int32)">
+            <summary>
+            Create a substringe from the stringe, starting at the specified index and extending to the end.
+            </summary>
+            <param name="offset">The offset at which to begin the substringe.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.Slice(System.Int32,System.Int32)">
+            <summary>
+            Returns a substringe that contains all characters between the two specified positions in the stringe.
+            </summary>
+            <param name="a">The left side of the slice.</param>
+            <param name="b">The right side of the slice.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.Dilate(System.Int32,System.Int32)">
+            <summary>
+            Returns a new substringe whose left and right boundaries are offset by the specified values.
+            </summary>
+            <param name="left">The amount, in characters, to offset the left boundary to the left.</param>
+            <param name="right">The amount, in characters, to offset the right boundary to the right.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.Trim">
+            <summary>
+            Returns the stringe with all leading and trailing white space characters removed.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.Trim(System.Char[])">
+            <summary>
+            Returns the stringe with any occurrences of the specified characters stripped from the ends.
+            </summary>
+            <param name="trimChars">The characters to strip off the ends of the stringe.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Rant.Stringes.Stringe.LeftPadded">
+            <summary>
+            Indicates if the left side of the line on which the stringe exists is composed entirely of white space.
+            </summary>
+        </member>
+        <member name="P:Rant.Stringes.Stringe.RightPadded">
+            <summary>
+            Indicates whether the line context to the right side of the stringe is composed on uninterrupted white space.
+            </summary>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.ToString">
+            <summary>
+            Returns the string value of the stringe.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Rant.Stringes.Stringe.Stref">
+            <summary>
+            Stores cached character data for a Stringe.
+            </summary>
+        </member>
+        <member name="M:Rant.Stringes.Stringe.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the characteres in the stringe.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Rant.Stringes.StringeReader">
+            <summary>
+            Represents a reader that can read data from a stringe.
+            </summary>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.#ctor(System.String)">
+            <summary>
+            Creates a new StringeReader instance using the specified string as input.
+            </summary>
+            <param name="value">The string to use as input. This will be converted to a root-level stringe.</param>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.#ctor(Rant.Stringes.Stringe)">
+            <summary>
+            Creates a new StringeReader instance using the specified stringe as input.
+            </summary>
+            <param name="value">The stringe to use as input.</param>
+        </member>
+        <member name="P:Rant.Stringes.StringeReader.EndOfStringe">
+            <summary>
+            Indicates whether the reader position is at the end of the input string.
+            </summary>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.ReadChare">
+            <summary>
+            Reads a charactere from the input and advances the position by one.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.PeekChare">
+            <summary>
+            Returns the next charactere in the input, but does not consume it.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.ReadStringe(System.Int32)">
+            <summary>
+            Reads a stringe from the input and advances the position by the number of characters read.
+            </summary>
+            <param name="length">The number of characters to read.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.Eat(System.Char)">
+            <summary>
+            Indicates whether the specified character occurs at the reader's current position, and consumes it.
+            </summary>
+            <param name="value">The character to test for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.Eat(System.String)">
+            <summary>
+            Indicates whether the specified string occurs at the reader's current position, and consumes it.
+            </summary>
+            <param name="value">The string to test for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.Eat(System.Text.RegularExpressions.Regex)">
+            <summary>
+            Indicates whether the specified regular expression matches the input at the reader's current position. If a match is found, the reader consumes it.
+            </summary>
+            <param name="regex">The regular expression to test for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.Eat(System.Text.RegularExpressions.Regex,Rant.Stringes.Stringe@)">
+            <summary>
+            Indicates whether the specified regular expression matches the input at the reader's current position. If a match is found, the reader consumes it and outputs the result.
+            </summary>
+            <param name="regex">The regular expression to test for.</param>
+            <param name="result">The stringe to output the result to.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.IsNext(System.Char)">
+            <summary>
+            Indicates whether the specified character occurs at the reader's current position.
+            </summary>
+            <param name="value">The character to test for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.IsNext(System.String)">
+            <summary>
+            Indicates whether the specified string occurs at the reader's current position.
+            </summary>
+            <param name="value">The string to test for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.IsNext(System.Text.RegularExpressions.Regex)">
+            <summary>
+            Indicates whether the specified regular expression matches the input at the reader's current position.
+            </summary>
+            <param name="regex">The regular expression to test for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.IsNext(System.Text.RegularExpressions.Regex,Rant.Stringes.Stringe@)">
+            <summary>
+            Indicates whether the specified regular expression matches the input at the reader's current position, and outputs the result.
+            </summary>
+            <param name="regex">The regular expression to test for.</param>
+            <param name="result">The stringe to output the result to.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.SkipWhiteSpace">
+            <summary>
+            Advances the reader position past any immediate white space characters.
+            </summary>
+        </member>
+        <member name="M:Rant.Stringes.StringeReader.ReadToken``1(Rant.Stringes.Tokens.LexerRules{``0})">
+            <summary>
+            Reads the next token from the current position, then advances the position past it.
+            </summary>
+            <typeparam name="T">The token identifier type to use.</typeparam>
+            <param name="rules">The lexer rules to use.</param>
+            <returns></returns>
+        </member>
+        <member name="P:Rant.Stringes.StringeReader.Position">
+            <summary>
+            The current zero-based position of the reader.
+            </summary>
+        </member>
+        <member name="P:Rant.Stringes.StringeReader.Length">
+            <summary>
+            The total length, in characters, of the stringe being read.
+            </summary>
+        </member>
+        <member name="T:Rant.Stringes.Tokens.LexerRules`1">
+            <summary>
+            Represents a set of rules for creating tokens from a stringe.
+            </summary>
+            <typeparam name="T">The identifier type to use in tokens created from the context.</typeparam>
+        </member>
+        <member name="M:Rant.Stringes.Tokens.LexerRules`1.#ctor">
+            <summary>
+            Creates a new LexerRules instance.
+            </summary>
+        </member>
+        <member name="P:Rant.Stringes.Tokens.LexerRules`1.IgnoreRules">
+            <summary>
+            A list of token identifiers that should be ignored.
+            </summary>
+        </member>
+        <member name="M:Rant.Stringes.Tokens.LexerRules`1.GetSymbolForId(`0)">
+            <summary>
+            Returns the symbol that represents the specified identifier. If the identifier cannot be found, the method will return an empty string.
+            </summary>
+            <param name="id">The identifier to get the symbol for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rant.Stringes.Tokens.LexerRules`1.AddEndToken(`0)">
+            <summary>
+            Define a lexer rule that returns a token when the end of the input is reached.
+            </summary>
+            <param name="endTokenId">The token identifier to associate with this rule.</param>
+        </member>
+        <member name="M:Rant.Stringes.Tokens.LexerRules`1.AddUndefinedCaptureRule(`0,System.Func{Rant.Stringes.Stringe,Rant.Stringes.Stringe})">
+            <summary>
+            Define a lexer rule that captures unrecognized characters as a token.
+            </summary>
+            <param name="tokenId">The token identifier to associate with this rule.</param>
+            <param name="evalFunc">A function that processes the captured stringe.</param>
+        </member>
+        <member name="M:Rant.Stringes.Tokens.LexerRules`1.Add(System.String,`0,Rant.Stringes.Tokens.SymbolPriority)">
+            <summary>
+            Adds a constant rule to the context. This will throw an InvalidOperationException if called after the context is used to create tokens.
+            </summary>
+            <param name="symbol">The symbol to test for.</param>
+            <param name="value">The token identifier to associate with the symbol.</param>
+            <param name="priority">Determines whether the symbol should be tested before any regex rules.</param>
+        </member>
+        <member name="M:Rant.Stringes.Tokens.LexerRules`1.Add(System.String[],`0,Rant.Stringes.Tokens.SymbolPriority)">
+            <summary>
+            Adds a constant rule to the context that affects all symbols in the specified array. This will throw an InvalidOperationException if called after the context is used to create tokens.
+            </summary>
+            <param name="symbols">The symbols to test for.</param>
+            <param name="value">The token identifier to associate with the symbols.</param>
+            <param name="priority">Determines whether the symbol should be tested before any regex rules.</param>
+        </member>
+        <member name="M:Rant.Stringes.Tokens.LexerRules`1.Add(System.Text.RegularExpressions.Regex,`0,System.Int32)">
+            <summary>
+            Adds a regex rule to the context. This will throw an InvalidOperationException if called after the context is used to create tokens.
+            </summary>
+            <param name="regex">The regex to test for.</param>
+            <param name="value">The token identifier to associate with the symbol.</param>
+            <param name="priority">The priority of the rule. Higher values are checked first.</param>
+        </member>
+        <member name="M:Rant.Stringes.Tokens.LexerRules`1.Add(System.Text.RegularExpressions.Regex,System.Func{System.Text.RegularExpressions.Match,`0},System.Int32)">
+            <summary>
+            Adds a regex rule to the context. This will throw an InvalidOperationException if called after the context is used to create tokens.
+            </summary>
+            <param name="regex">The regex to test for.</param>
+            <param name="generator">A function that generates a token identifier from the match.</param>
+            <param name="priority">The priority of the rule. Higher values are checked first.</param>
+        </member>
+        <member name="T:Rant.Stringes.Tokens.SymbolPriority">
+            <summary>
+            Used to manipulate the order in which symbol (non-regex) rules are tested.
+            </summary>
+        </member>
+        <member name="F:Rant.Stringes.Tokens.SymbolPriority.Last">
+            <summary>
+            Test symbol after testing regex symbols. This is the default value for all symbols rules.
+            </summary>
+        </member>
+        <member name="F:Rant.Stringes.Tokens.SymbolPriority.First">
+            <summary>
+            Test symbol before testing any regex rules.
+            </summary>
+        </member>
+        <member name="T:Rant.Stringes.Tokens.Token`1">
+            <summary>
+            Represents a token that contains a custom identifier.
+            </summary>
+            <typeparam name="T">The identifier type.</typeparam>
+        </member>
+        <member name="P:Rant.Stringes.Tokens.Token`1.ID">
+            <summary>
+            The token identifier.
+            </summary>
+        </member>
+    </members>
+</doc>

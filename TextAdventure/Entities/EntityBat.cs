@@ -19,6 +19,7 @@ namespace TextAdventure.Entities
             BaseAttributes.Accuracy = 5;
             BaseAttributes.Dodge = 20;
             BaseAttributes.Speed = 1;
+            Experience = 10;
 
             Behaviors.Add(new BehaviorHostileToPlayers(this));
         }

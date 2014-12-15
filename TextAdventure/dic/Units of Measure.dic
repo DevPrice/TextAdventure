@@ -1,0 +1,86 @@
+#version 2
+#name unit
+#subs singular plural abbr
+
+> centimeter/centimeters/cm
+  | class length small factor
+> meter/meters/m
+  | class length
+> kilometer/kilometers/km
+  | class length large factor
+> inch/inches/in
+  | class length
+> foot/feet/ft
+  | class length
+> yard/yards/y
+  | class length
+> mile/miles/mi
+  | class length
+> light-year/light-years/ly
+  | class length
+> pound/pounds/lb
+  | class weight
+> gram/grams/g
+  | class weight
+> kilogram/kilograms/kg
+  | class weight large factor
+> ton/tons/t
+  | class weight
+> megaton/megatons/Mt
+  | class weight large factor
+> ounce/ounces/oz
+  | class weight
+> gallon/gallons/gal
+  | class volume
+> bucket/buckets/bucket
+  | class volume
+> liter/liters/L
+  | class volume
+> teaspoon/teaspoons/tsp
+  | class volume
+> cup/cups/c
+  | class volume
+> quart/quarts/qt
+  | class volume
+> pint/pints/pt
+  | class volume
+> milliliter/milliliters/mL
+  | class volume small factor
+> tablespoon/tablespoons/tbsp
+  | class volume
+> decibel/decibels/dB
+  | class pressure
+> pascal/pascals/Pa
+  | class pressure
+> kilopascal/kilopascals/kPa
+  | class pressure large factor
+> cubic centimeter/cubic centimeters/cc
+  | class volume
+> volt/volts/V
+  | class energy potential
+> millivolt/millivolts/mV
+  | class energy potential small factor
+> kilovolt/kilovolts/kV
+  | class energy potential large factor
+> farad/farads/F
+  | class energy capacitance
+> microfarad/microfarads/μF
+  | class energy capacitance small factor
+> joule/joules/J
+  | class energy
+> kilojoule/kilojoules/kJ
+  | class energy large factor
+> ampere/amperes/A
+  | class energy current
+> milliampere/milliamperes/mA
+  | class energy current small factor
+> watt/watts/W
+  | class energy power
+> kilowatt/kilowatts/kW
+  | class energy power large factor
+> milliwatt/milliwatts/mW
+  | class energy power small factor
+> megawatt/megawatts/MW
+  | class energy power large factor
+> henry/henries/H
+  | class energy inductance

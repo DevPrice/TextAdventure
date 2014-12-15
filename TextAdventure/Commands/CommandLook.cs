@@ -63,7 +63,7 @@ namespace TextAdventure.Commands
                 if (entity != Sender as Entity)
                     Sender.SendMessage("You see{0} [{1}].", entity is Player ? "" : " a", entity.Name);
             }
-
+            
             if (((IMapNode)Target).Entities.Count > 1)
             {
                 Sender.SendMessage();

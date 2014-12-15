@@ -1,0 +1,44 @@
+#version 2
+#name activity
+#subs default
+
+#class add game
+  #class add sport
+    > Football
+    > Soccer
+    > Tennis
+    > Basketball
+    > Baseball
+    > Golf
+  #class remove sport
+  
+  #class add board
+    > Chess
+    > Checkers
+    > Backgammon
+  #class remove board
+  
+  #class add video
+    > Pong
+    > Super Mario Bros.
+    > The Legend of Zelda
+    > Sonic the Hedgehog
+    > Call of Duty
+    > Battlefield
+    > Hitman
+    > Morrowind
+    > Oblivion
+    > Skyrim
+    > World of Warcraft
+    > Contra
+    > Halo
+    > Doom
+    > Half-Life
+    > Left 4 Dead
+    > Counter-Strike
+  #class remove video
+#class remove game
+
+#class add hobby
+	
+#class remove hobby

@@ -25,7 +25,7 @@ namespace TextAdventure.Commands
             if (Sender is Player)
             {
                 string message = String.Format("{0} says, \"{1}\"", ((Player)Sender).Name, Target);
-                World.Map.LocationOf((Player)Sender).Broadcast(message);
+                World.Map.LocationOf((Player)Sender).Broadcast(message, (Player)Sender);
 
                 Sender.SendMessage("You say, \"{0}\"", Target);
             }

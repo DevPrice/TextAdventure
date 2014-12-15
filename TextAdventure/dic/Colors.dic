@@ -1,0 +1,30 @@
+#version 2
+#name color
+#subs default ish
+
+> red/reddish
+  | class primary
+> green/greenish
+  | class primary
+> blue/bluish
+  | class primary
+> cyan/cyan-ish
+  | class secondary
+> magenta/magenta-ish
+  | class secondary
+> yellow/yellowish
+  | class secondary
+> orange/orangish
+> purple/purplish
+> turquoise/turquoise-ish
+> pink/pinkish
+> grey/greyish
+> black/blackish
+> white/whitish
+> brown/brownish
+> lime green/lime-green-ish
+> lavender/lavenderish
+> maroon/maroonish
+> gold/goldish
+> silver/silverish
+> crimson/crimsonish

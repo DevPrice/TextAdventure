@@ -26,6 +26,7 @@ namespace TextAdventure.Entities
             BaseAttributes.Strength = 1;
             BaseAttributes.Speed = .8;
             BaseAttributes.Accuracy = 15;
+            Experience = 15;
 
             Behaviors.Add(new BehaviorRetaliate(this));
             Behaviors.Add(new BehaviorHostileByName(this, "rat"));

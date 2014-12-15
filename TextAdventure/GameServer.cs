@@ -20,7 +20,7 @@ namespace TextAdventure
 
         public int Port { get; private set; }
         public UdpClient Client { get; private set; }
-        public List<RemotePlayer> Players { get; private set; }
+        public List<RemotePlayer> RemotePlayers { get; private set; }
         public GameWorld World { get; private set; }
         public CommandEngine CommandEngine { get; private set; }
         public int PlayerNum { get; private set; }
@@ -31,7 +31,7 @@ namespace TextAdventure
 
         public GameServer()
         {
-            Players = new List<RemotePlayer>();
+            RemotePlayers = new List<RemotePlayer>();
             PlayerNum = 1;
             Port = DEFAULT_PORT;
             TickRate = 20;
@@ -143,7 +143,7 @@ namespace TextAdventure
                         player = new RemotePlayer(World, Client, endPoint);
                         player.Name = String.Format("Player{0}", PlayerNum++);
 
-                        Players.Add(player);
+                        RemotePlayers.Add(player);
                         World.Players.Add(player);
                         World.Map.EntryNode.Add(player);
 
@@ -175,7 +175,7 @@ namespace TextAdventure
 
         private RemotePlayer GetPlayerFromEndPoint(IPEndPoint endPoint)
         {
-            foreach (RemotePlayer player in Players)
+            foreach (RemotePlayer player in RemotePlayers)
             {
                 if (player.EndPoint.Equals(endPoint))
                     return player;

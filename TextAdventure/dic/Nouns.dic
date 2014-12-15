@@ -1,0 +1,1056 @@
+#version 2
+#name noun
+#subs singular plural
+
+> wedgie/wedgies
+> zygote/zygotes
+> fetus/fetuses
+> mouth/mouths
+  | class body hole
+> peninsula/peninsulas
+> teen/teens
+  | class person
+> child/children
+  | class person
+> dude/dudes
+  | class person
+  | pron D OOD/D OODZ
+> truth/truths
+> pedestrian/pedestrians
+> afro/afros
+  | class body
+> disco ball/disco balls
+> rotisserie/rotisseries
+> pizza/pizzas
+> caboose/cabooses
+> frosting/frostings
+> giblet/giblets
+> handcuff/handcuffs
+  | class sex
+> avocado/avocados
+> banjo/banjos
+> bingo/bingos
+> nickel/nickels
+> dime/dimes
+> penny/pennies
+> cheeseburger/cheeseburgers
+> sponge/sponges
+> popsicle/popsicles
+> musket/muskets
+  | class weapon
+> credit card/credit cards
+> truffle/truffles
+> gearshift/gearshifts
+> ghost/ghosts
+> ridge/ridges
+> meat/meats
+  | weight 10
+> dictionary/dictionaries
+> asymptote/asymptotes
+> peppermint/peppermints
+> candy cane/candy canes
+> bulge/bulges
+> lump/lumps
+> garden/gardens
+> treasure/treasures
+> scuba/scubas
+> elf/elves
+  | class person
+> bass/basses
+  | class animal
+> football/footballs
+> dollar bill/dollar bills
+> log/logs
+> chicken wing/chicken wings
+> pylon/pylons
+> card/cards
+> rock/rocks
+> book/books
+> rabies/rabies
+> fan/fans
+> eraser/erasers
+> fart/farts
+> booger/boogers
+> monster/monsters
+> nerd/nerds
+> wheelbarrow/wheelbarrows
+  | class weapon tool
+> lemonade/lemonades
+> cramp/cramps
+> doodle/doodles
+> stone/stones
+> waffle/waffles
+> jelly bean/jelly beans
+> sofa/sofas
+> muffin/muffins
+> ragamuffin/ragamuffins
+> man/men
+  | class person
+> woman/women
+  | class person
+> puppet/puppets
+> swag/swag
+> bread/bread
+  | class food
+> magnifying glass/magnifying glasses
+> cocaine/cocaine
+  | class drug
+> diaper/diapers
+> dishrag/dishrags
+> needle/needles
+  | class weapon
+> pipe/pipes
+  | class weapon
+> money/money
+> car/cars
+> flowerpot/flowerpots
+> robot/robots
+  | class tool
+> lady/ladies
+  | class person
+> bra/bras
+  | class article
+> sharpie/sharpies
+> lawn mower/lawn mowers
+  | class tool weapon
+> carcass/carcasses
+> prune/prunes
+  | class fruit food
+> raisin/raisins
+> grape/grapes
+  | class fruit food
+  | pron g reyp/g reyps
+> kumquat/kumquats
+  | class fruit food
+> grass/grasses
+> garbage can/garbage cans
+  | class container
+> manure/manure
+> lampstand/lampstands
+  | class weapon
+> bottle/bottles
+  | class container weapon
+> carpet/carpets
+> earwax/earwax
+> fog/fogs
+> hemorroid/hemorroids
+> cork/corks
+> tuna/tuna
+  | class animal food
+> mirror/mirrors
+> urinal/urinals
+> hazelnut/hazelnuts
+  | class food
+> walnut/walnuts
+  | class food
+> ventricle/ventricles
+> brick/bricks
+  | class weapon
+  | pron b r ik/b r iks
+> cement/cement
+> shrub/shrubs
+> almond/almonds
+  | class food
+> laptop/laptops
+> wall/walls
+> cornea/corneas
+  | class body
+> cleat/cleats
+  | class weapon
+> globe/globes
+> kite/kites
+> dagger/daggers
+  | class weapon
+> horsewhip/horsewhips
+  | class weapon tool
+> radish/radishes
+> scab/scabs
+> leaf/leaves
+> bench/benches
+> nail/nails
+  | class weapon
+> rubber/rubbers
+> feces/feces
+> bone/bones
+  | class body
+> snorkel/snorkels
+> cocktail/cocktails
+> papaya/papayas
+> hole/holes
+> tunnel/tunnels
+  | class hole
+> bullet/bullets
+  | class weapon
+> dynamite/dynamites
+> kettle/kettles
+> enigma/enigmas
+> keyboard/keyboards
+> lube/lubes
+> mask/masks
+> duct tape/duct tape
+> chair/chairs
+  | class furniture
+> button/buttons
+> tuber/tubers
+> joint/joints
+> horseradish/horseradishes
+> onion/onions
+  | class food
+> cabbage/cabbages
+> wool/wool
+> grapefruit/grapefruits
+  | class fruit food
+> tea bag/tea bags
+> teapot/teapots
+  | pron TEE-pot/TEE-pots
+> canister/canisters
+> battery/batteries
+> clock/clocks
+> plug/plugs
+> towel/towels
+> peanut/peanuts
+  | class food
+> towelette/towelettes
+> moist towelette/moist towelettes
+> cuckoo/cuckoos
+> potato/potatoes
+  | class food
+> apricot/apricots
+  | class fruit food
+> doll/dolls
+> tampon/tampons
+> meatloaf/meatloaves
+  | class food
+> loaf/loaves
+> spinach/spinach
+  | class food
+> manhole/manholes
+> razor/razors
+  | class weapon tool
+> pretzel/pretzels
+  | class food
+> cornflake/cornflakes
+  | class food
+> corn/corns
+  | class food
+> marshmallow/marshmallows
+  | class food
+> salmon/salmon
+  | class animal food
+> barrel/barrels
+  | class container
+> fudge/fudge
+  | class food
+> basket/baskets
+> coffin/coffins
+  | class container
+> piano/pianos
+  | class instrument
+> trombone/trombones
+  | class instrument
+> accordion/accordions
+  | class instrument
+> biscuit/biscuits
+  | class food
+> pope/popes
+> flapjack/flapjacks
+> ointment/ointments
+> pumpkin/pumpkins
+  | class plant
+> fern/ferns
+  | class plant
+> maple tree/maple trees
+  | class plant
+> thistle/thistles
+  | class plant
+> daisy/daisies
+  | class plant
+> stinging nettle/stinging nettles
+  | class plant
+> dandelion/dandelions
+  | class plant
+> tulip/tulips
+  | class plant
+> clover/clovers
+  | class plant
+> marigold/marigolds
+  | class plant
+> square/squares
+  | class shape
+> triangle/triangles
+  | class shape
+> oval/ovals
+  | class shape
+> circle/circles
+  | class shape
+> basketball/basketballs
+  | class ball
+> baseball/baseballs
+  | class ball
+> beach ball/beach balls
+  | class ball
+> tennis ball/tennis balls
+  | class ball
+> boulder/boulders
+  | class ball
+
+#class add food
+  > meatball/meatballs
+    | class ball
+  > apple/apples
+    | class fruit
+  > lime/limes
+    | class fruit
+  > orange/oranges
+    | class fruit
+  > lemon/lemons
+    | class fruit
+  > watermelon/watermelons
+    | class fruit
+  > pineapple/pineapples
+    | class fruit
+  > coconut/coconuts
+    | class fruit
+  > blueberry/blueberries
+    | class fruit
+  > strawberry/strawberries
+    | class fruit
+  > raspberry/raspberries
+    | class fruit
+  > tangerine/tangerines
+    | class fruit
+  > kiwi/kiwis
+    | class fruit
+  > grape/grapes
+    | class fruit
+  > tomato/tomatoes
+    | class fruit
+  > nectarine/nectarines
+    | class fruit
+#class remove food
+
+> baby/babies
+  | class fruit person
+> floor/floors
+  | class surface
+> wall/walls
+  | class surface
+> ceiling/ceilings
+  | class surface
+> patio/patios
+  | class surface
+> bed/beds
+  | class furniture surface
+> bedsheet/bedsheets
+  | class surface
+> window/windows
+  | class surface
+> door/doors
+  | class surface
+> chair/chairs
+  | class furniture surface
+> carpet/carpets
+  | class surface
+> desk/desks
+  | class furniture surface
+> roof/roofs
+  | class surface
+> tabletop/tabletops
+  | class surface
+> coffee table/coffee tables
+  | class furniture
+> couch/couches
+  | class furniture
+> recliner/recliners
+  | class furniture
+> lawn chair/lawn chairs
+  | class furniture
+> rocking chair/rocking chairs
+  | class furniture
+> nightstand/nightstands
+  | class furniture
+
+#class add liquid
+  > saliva/saliva
+  > tar/tar
+  > water/water
+  > soup/soups
+  > soap/soaps
+  > slime/slime
+  > bleach/bleach
+  > pudding/puddings
+  > lotion/lotions
+  > sauce/sauces
+  > earwax/earwax
+  > snot/snots
+  > sweat/sweats
+  > acid/acids
+  > wine/wines
+  > oil/oils
+  > olive oil/olive oil
+  > urine/urine
+  > diarrhea/diarrhea
+  > beer/beers
+  > rain/rains
+  > toothpaste/toothpastes
+  > yogurt/yogurts
+  > cream/creams
+  > grease/grease
+  > vodka/vodka
+#class remove liquid
+
+#class add container
+  > pickle jar/pickle jars
+  > package/packages
+  > cup/cups
+  > wallet/wallets
+  > glass/glasses
+  > shot glass/shot glasses
+  > bowl/bowls
+  > container/containers
+  > flask/flasks
+  > bottle/bottles
+  > pitcher/pitchers
+  > pipe/pipes
+  > bong/bongs
+  > pouch/pouches
+  > purse/purses
+  > pocket/pockets
+  > jar/jars
+  > suitcase/suitcases
+  > box/boxes
+  > trunk/trunks
+  > package/packages
+  > case/cases
+  > packet/packets
+  > cell/cells
+  > test tube/test tubes
+  > vial/vials
+  > vat/vats
+  > pot/pots
+  > turkey baster/turkey basters
+  > trashcan/trashcans
+  > drawer/drawers
+  > chest/chests
+  > well/wells
+  > kettle/kettles
+  > bag/bags
+  > balloon/balloons
+  > sack/sacks
+  > basket/baskets
+  > carton/cartons
+  > oven/ovens
+  > tub/tubs
+  > toilet/toilets
+  > freezer/freezers
+#class remove container
+
+> toothpick/toothpicks
+  | class long
+  | pron too th p ik/too th p iks
+> turd/turds
+  | class long
+> rocket/rockets
+  | class long
+> flute/flutes
+  | class long instrument
+> clarinet/clarinets
+  | class long instrument
+> trumpet/trumpets
+  | class long instrument
+> arrow/arrows
+  | class long weapon tool
+> dart/darts
+  | class long weapon
+> pencil/pencils
+  | class long weapon tool
+> cigarette/cigarettes
+  | class long
+> pickle/pickles
+  | class long
+> ruler/rulers
+  | class long
+> cucumber/cucumbers
+  | class long
+> staple/staples
+  | class long
+> panhandle/panhandles
+  | class long
+> telephone pole/telephone poles
+  | class long weapon
+> extension cord/extension cords
+  | class long
+> candle/candles
+  | class long
+> tree/trees
+  | class long
+> knife/knives
+  | class long
+> torch/torches
+  | class long weapon
+> broom/brooms
+  | class long
+> broomstick/broomsticks
+  | class long weapon
+  | pron br oom-s t ik/br oom-s t iks
+> pole/poles
+  | class long
+> crack pipe/crack pipes
+  | class long
+> lightbulb/lightbulbs
+  | class long
+> umbrella/umbrellas
+  | class long
+> cannon/cannons
+  | class long
+> sausage/sausages
+  | class long
+> chain/chains
+  | class long
+> banana/bananas
+  | class long
+> plunger/plungers
+  | class long
+> spork/sporks
+  | class long
+> toothbrush/toothbrushes
+  | class long
+> banister/banisters
+  | class long
+> baton/batons
+  | class long weapon
+> drill/drills
+  | class long tool weapon
+> iron maiden/iron maidens
+  | class tool
+> leaf blower/leaf blowers
+  | class tool
+> pickaxe/pickaxes
+  | class tool weapon
+> pistol/pistols
+  | class tool
+> spoon/spoons
+  | class tool long
+> fork/forks
+  | class tool weapon long
+> blender/blenders
+  | class tool
+> squeegee/squeegees
+  | class tool
+> shovel/shovels
+  | class long tool weapon
+> loincloth/loincloths
+  | class tool
+> nutcracker/nutcrackers
+  | class tool
+> hammer/hammers
+  | class long tool
+> chainsaw/chainsaws
+  | class tool weapon
+> microscope/microscopes
+  | class tool
+> pot/pots
+  | class tool
+> pan/pans
+  | class tool
+> screwdriver/screwdrivers
+  | class tool long
+> jackhammer/jackhammers
+  | class tool long
+> jockstrap/jockstraps
+  | class tool
+> hacksaw/hacksaws
+  | class tool
+> ladder/ladders
+  | class tool
+> shopping cart/shopping carts
+  | class tool
+> bomb/bombs
+  | class tool weapon
+> firecracker/firecrackers
+  | class tool
+> drug/drugs
+  | class tool
+> sword/swords
+  | class tool weapon long
+> spear/spears
+  | class tool long weapon
+> cattle prod/cattle prods
+  | class tool
+> vacuum/vacuums
+  | class tool
+> wrench/wrenches
+  | class long tool
+> phone/phones
+  | class tool
+> can opener/can openers
+  | class tool
+> stapler/staplers
+  | class tool weapon
+> pitchfork/pitchforks
+  | class tool weapon long
+> blowtorch/blowtorches
+  | class tool long
+> machete/machetes
+  | class tool long weapon
+> rumpus/rumpuses
+  | class tool
+> flamethrower/flamethrowers
+  | class tool weapon long
+> garden hose/garden hoses
+  | class sex long tool
+
+#class add animal
+  > leech/leeches
+  > squid/squids
+  > octopus/octopi
+  > velociraptor/velociraptors
+  > tyrannosaurus rex/tyrannosaurus rexes
+  > sphinx/sphinxes
+  > viking/vikings
+  > tadpole/tadpoles
+  > skunk/skunks
+  > seagull/seagulls
+  > parrot/parrots
+  > weasel/weasels
+  > mammoth/mammoths
+  > bat/bats
+  > landlord/landlords
+  > moose/moose
+  > frog/frogs
+  > toad/toads
+  > ant/ants
+  > chihuahua/chihuahuas
+  > deer/deer
+  > rat/rats
+  > cat/cats
+  > mayor/mayors
+  > flamingo/flamingos
+  > turtle/turtles
+  > blowfish/blowfish
+  > snake/snakes
+    | class long
+  > anaconda/anacondas
+  > fish/fishes
+  > owl/owls
+  > otter/otters
+  > lemur/lemurs
+  > bull/bulls
+  > chicken/chickens
+  > peacock/peacocks
+  > gorilla/gorillas
+  > dove/doves
+  > pony/ponies
+  > squirrel/squirrels
+  > horse/horses
+  > donkey/donkeys
+  > baboon/baboon
+  > cockroach/cockroaches
+  > butler/butlers
+  > yeti/yetis
+  > demon/demons
+  > devil/devils
+  > ogre/ogres
+  > goat/goats
+  > llama/llamas
+  > porcupine/porcupines
+  > tiger/tigers
+  > lion/lions
+  > wolf/wolves
+  > hyena/hyenas
+  > titan/titans
+  > lizard/lizards
+  > hedgehog/hedgehogs
+  > zebra/zebras
+  > quokka/quokkas
+  > newt/newts
+  > vulture/vultures
+  > yak/yaks
+  > jaguar/jaguars
+  > xerus/xeruses
+
+  #class add dog
+    > dog/dogs
+    > bulldog/bulldogs
+    > beagle/beagles
+    > poodle/poodles
+    > rottweiler/rottweilers
+  #class remove dog
+
+#class remove animal
+
+#class add job
+
+  > carpenter/carpenters
+  > reporter/reporters
+  > journalist/journalists
+  > guitarist/guitarists
+  > archaeologist/archaeologists
+  > urologist/urologists
+  > circus performer/circus performers
+  > juggler/jugglers
+  > explorer/explorers
+  > artist/artists
+  > mechanic/mechanics
+  > hunter/hunters
+  > spelunker/spelunkers
+  > bartender/bartenders
+  > accountant/accountants
+  > movie star/movie stars
+  > mailman/mailmen
+  > construction worker/construction workers
+  > principal/principals
+  > prince/princes
+  > princess/princesses
+  > surgeon/surgeons
+  > gambler/gamblers
+  > dentist/dentists
+  > chef/chefs
+  > celebrity/celebrities
+  > waitress/waitresses
+  > burglar/burglars
+  > waiter/waiters
+  > doctor/doctors
+  > nurse/nurses
+  > lawyer/lawyers
+  > butler/butlers
+  > actor/actors
+  > athlete/athletes
+  > babysitter/babysitters
+  > golfer/golfers
+  > vampire/vampires
+  > fireman/firemen
+  > rapper/rappers
+  > gangster/gangsters
+  > hippie/hippies
+  > clown/clowns
+  > banker/bankers
+  > pianist/pianists
+  > politician/politicians
+  > president/presidents
+  > magician/magicians
+  > stock broker/stock brokers
+  > cop/cops
+  > sky diver/sky divers
+  > snake charmer/snake charmers
+  > fortune teller/fortune tellers
+  > serial killer/serial killers
+  > plumber/plumbers
+  > FBI agent/FBI agents
+  > assassin/assassins
+  > wizard/wizards
+  > salesman/salesmen
+  > singer/singers
+  > policeman/policemen
+  > physician/physicians
+  > paramedic/paramedics
+  > ninja/ninjas
+  > teacher/teachers
+  > senator/senators
+  > scientist/scientists
+  > constable/constables
+  > taxidermist/taxidermists
+  > biologist/biologists
+  > pope/popes
+  > bachelor/bachelors
+  > haberdasher/haberdashers
+  > armorer/armorers
+  > tanner/tanners
+  > hobbit/hobbits
+  > pirate/pirates
+
+  #nsfw
+    > stripper/strippers
+    > hooker/hookers
+    > pornstar/pornstars
+  #sfw
+
+#class remove job
+
+#class add body
+  > umbilical cord/umbilical cords
+    | class long
+  > fanny/fannies
+  > chin/chins
+  > nostril/nostrils
+  > unibrow/unibrows
+  > mustache/mustaches
+  > head/heads
+  > armpit/armpits
+  > rump/rumps
+  > throat/throats
+  > goatee/goatees
+  > nose/noses
+  > elbow/elbows
+  > esophagus/esophaguses
+  > toe/toes
+  > leg/legs
+    | class long
+  > pancreas/pancreases
+  > stinger/stingers
+  > scapula/scapulas
+  > gallbladder/gallbladders
+  > skin/skin
+  > neck/necks
+  > toenail/toenails
+  > horn/horns
+  > epidermis/epidermises
+  > duodenum/duodenums
+  > heart/hearts
+  > kidney/kidneys
+    | class round
+  > fibula/fibulas
+  > tentacle/tentacles
+    | class long
+  > knuckle/knuckles
+  > uvula/uvulas
+  > tongue/tongues
+    | class long
+  > finger/fingers
+    | class long
+  > lip/lips
+  > snout/snouts
+  > tooth/teeth
+  > body/bodies
+  > jowl/jowls
+  > whisker/whiskers
+  > beak/beaks
+  > navel/navels
+#class remove body
+
+> LSD/LSD
+  | class drug
+> PCP/PCP
+  | class drug
+> mescaline/mescaline
+  | class drug
+> marijuana/marijuana
+  | class drug
+> meth/meth
+  | class drug
+> crack/crack
+  | class drug
+> roofie/roofies
+  | class drug
+> heroin/heroin
+  | class drug
+> smack/smack
+  | class drug
+> shroom/shrooms
+  | class drug
+> bath salts/bath salts
+  | class drug
+> extacy/extacy
+  | class drug
+> vest/vests
+  | class article
+> boot/boots
+  | class clothes article
+> zipper/zippers
+  | class clothes article
+> sock/socks
+  | class clothes article
+> shoe/shoes
+  | class clothes article
+> slipper/slippers
+  | class clothes article
+> pants/pants
+  | class article
+> sweatshirt/sweatshirts
+  | class article
+> kilt/kilts
+  | class article
+> belt/belts
+  | class article
+> skirt/skirts
+  | class article
+> girdle/girdles
+  | class article
+> pantaloons/pantaloons
+  | class article
+> shirt/shirts
+  | class article
+> dress/dresses
+  | class article
+> jacket/jackets
+  | class article
+> hat/hats
+  | class article
+> top hat/top hats
+  | class article
+> underwear/underwear
+  | class article
+> tuxedo/tuxedoes
+  | class article
+> suit/suits
+  | class article
+> boxers/boxers
+  | class article
+> mandible/mandibles
+  | class body
+> kneecap/kneecaps
+  | class body
+> face/faces
+  | class body
+> loin/loins
+  | class body
+> wand/wands
+  | class tool long
+> stun gun/stun guns
+  | class tool weapon
+> train/trains
+  | class vehicle
+> minivan/minivans
+  | class vehicle
+> semi/semis
+  | class vehicle
+> hot rod/hot rods
+  | class vehicle
+> truck/trucks
+  | class vehicle
+> boat/boats
+  | class vehicle
+> submarine/submarines
+  | class vehicle
+> aircraft carrier/aircraft carriers
+  | class vehicle
+> airplane/airplanes
+  | class vehicle
+> blimp/blimps
+  | class vehicle
+> motorcycle/motorcycles
+  | class vehicle
+> bunsen burner/bunsen burners
+  | class tool long
+> wrinkle/wrinkles
+> jalapeno/jalapenos
+  | class long
+> hubcap/hubcaps
+> hedge/hedges
+  | class plant
+> golf ball/golf balls
+  | class ball round
+> wig/wigs
+> skillet/skillets
+  | class container
+> constitution/constitutions
+> femur/femurs
+  | class body
+> mohawk/mohawks
+> dingleberry/dingleberries
+> teddy bear/teddy bears
+> dimple/dimples
+  | class body
+> shotgun/shotguns
+  | class weapon long
+> grasshopper/grasshoppers
+  | class animal insect
+> locust/locusts
+  | class animal insect
+> cricket/crickets
+  | class animal insect
+> beetle/beetles
+  | class animal insect
+> harpoon/harpoons
+  | class long weapon
+> tire/tires
+> silo/silos
+  | class long
+> shuttlecock/shuttlecocks
+> Communist/Communists
+> Democrat/Democrats
+> Republican/Republicans
+> president/presidents
+> anthill/anthills
+
+#nsfw
+> battering ram/battering rams
+  | class long weapon tool
+> cuntrocket/cuntrockets
+  | class sex
+> micropenis/micropenises
+  | class sex body
+> cuntwaffle/cuntwaffles
+  | class sex
+> blue waffle/blue waffles
+  | class sex
+> dildo/dildos
+  | class sex
+> double dildo/double dildos
+  | class sex long
+> dinocock/dinococks
+  | class sex
+> pussy/pussies
+  | class body sex
+> vagflap/vagflaps
+  | class body sex
+> cuntflap/cuntflaps
+  | class body sex
+> cunt/cunts
+  | class body sex
+  | pron k unt/k unts
+> anus/anuses
+  | class body sex hole
+> sphincter/sphincters
+  | class body sex hole
+> tit/tits
+  | class body sex round
+> taint/taints
+  | class body sex
+> foreskin/foreskins
+  | class body sex
+> nipple clamp/nipple clamps
+  | class tool
+> goatse/goatses
+  | class sex hole
+> panties/panties
+  | class article
+> thong/thongs
+  | class article
+> shit/shits
+> boob/boobs
+  | class body sex round
+> butthair/butthairs
+  | class tool
+> poo-poo/poo-poos
+> boner/boners
+  | class body sex long
+> dick/dicks
+  | class body sex long
+  | pron d ik/d iks
+> cock/cocks
+  | class body sex long
+> asshole/assholes
+  | class body hole
+> ballsack/ballsacks
+  | class body sex
+> testicle/testicles
+  | class body sex
+> scrotum/scrotums
+  | class body sex
+> pube/pubes
+  | class body
+> penis/penises
+  | class body sex long
+> vagina/vaginas
+  | class body hole sex
+> pussy/pussies
+  | class body hole sex
+> yeast/yeast infections
+> poop/poops
+  | pron p oop/p oops
+> motherfucker/motherfuckers
+  | pron muhth-er-fuhk-er/muhth-er-fuhk-ers
+> bitch/bitches
+  | class animal
+> chesticle/chesticles
+  | class body
+> willy/willies
+  | class body sex long
+> prick/pricks
+  | class body sex long
+  | pron p r ik/p r iks
+> manhood/manhoods
+  | class body sex long
+
+#sfw
