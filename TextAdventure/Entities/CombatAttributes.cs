@@ -41,4 +41,10 @@ namespace TextAdventure.Entities
                 a1.CritChance + a2.CritChance, a1.CritMultiplier + a2.CritMultiplier);
         }
     }
+
+    public static class PerLevel
+    {
+        public static readonly CombatAttributes Human = new CombatAttributes(2.5, 2, 2, 2, 1, .04, 0, 0);
+        public static readonly CombatAttributes Elf =   new CombatAttributes(2.5, 1, 1, 3, 2, .06, 0, 0);
+    }
 }

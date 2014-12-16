@@ -16,6 +16,10 @@ namespace TextAdventure.Entities
     {
         public CommandPermission Permission { get; set; }
 
+        public int Level { get; private set; }
+
+        public event EventHandler<LevelUpEventArgs> LevelUp;
+
         public Player(GameWorld world)
             : base(world, 10)
         {
@@ -23,6 +27,8 @@ namespace TextAdventure.Entities
             Name = "You";
             Gender = Gender.Male;
             Permission = CommandPermission.User;
+            Level = 1;
+
             DamageTaken += OnDamageTaken;
             Death += OnDeath;
             AttackedEntity += OnAttackedEntity;
@@ -30,7 +36,20 @@ namespace TextAdventure.Entities
             KilledEntity += OnKilledEntity;
             Equipment.ItemEquipped += OnItemEquipped;
             Equipment.ItemUnequipped += OnItemUnequipped;
-            Inventory.Add(new ItemSword());
+            LevelUp += OnLevelUp;
+        }
+
+        public void GiveExperience(Entity killedEntity)
+        {
+            Experience += killedEntity.Experience;
+
+            while (global::TextAdventure.Entities.Experience.GetLevelFromExp(Experience) > Level)
+            {
+                Level++;
+
+                if (LevelUp != null)
+                    LevelUp(this, new LevelUpEventArgs(killedEntity, killedEntity.Experience));
+            }
         }
 
         private void OnDamageTaken(object sender, DamageTakenEventArgs e)
@@ -60,6 +79,13 @@ namespace TextAdventure.Entities
             SendMessage("You killed {0}.", e.AttackedEntity.Name);
 
             Experience += e.AttackedEntity.Experience;
+        }
+
+        private void OnLevelUp(object sender, LevelUpEventArgs e)
+        {
+            SendMessage("You leveled up!");
+
+            BaseAttributes = CombatAttributes.Combine(BaseAttributes, PerLevel.Human);
         }
 
         private void OnItemEquipped(object sender, ItemEquipEventArgs e)

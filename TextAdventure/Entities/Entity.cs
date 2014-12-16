@@ -73,12 +73,12 @@ namespace TextAdventure.Entities
 
         public virtual void Examine(ICommandSender examiner)
         {
-            examiner.SendMessage(RantEngine.RunPattern(this.GetFullName()).FirstCharToUpper());
+            examiner.SendMessage(this.GetFullName());
 
             if (!Alive)
             {
                 examiner.SendMessage();
-                examiner.SendMessage("{0}'s dead.", Pronoun.ToTitleCase());
+                examiner.SendMessage("{0}'s dead.", Pronoun.FirstCharToUpper());
             }
             else if (Hp < Attributes.MaxHp / 2)
             {
