@@ -86,9 +86,6 @@ namespace TextAdventure.World
             {
                 Map.GetRandomNode(random).Add(new EntityBat(this));
             }
-
-            Map.EntryNode.Add(new EntityCat(this));
-            Map.EntryNode.Add(new EntityRat(this));
         }
 
         public void Update(TimeSpan delta)

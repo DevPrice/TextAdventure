@@ -73,7 +73,7 @@ namespace TextAdventure.Entities
 
         public virtual void Examine(ICommandSender examiner)
         {
-            examiner.SendMessage(this.GetFullName());
+            examiner.SendMessage(this.GetFullName().FirstCharToUpper());
 
             if (!Alive)
             {
@@ -83,7 +83,7 @@ namespace TextAdventure.Entities
             else if (Hp < Attributes.MaxHp / 2)
             {
                 examiner.SendMessage();
-                examiner.SendMessage("{0} looks injured.", Pronoun);
+                examiner.SendMessage("{0} looks injured.", Pronoun.FirstCharToUpper());
             }
         }
 

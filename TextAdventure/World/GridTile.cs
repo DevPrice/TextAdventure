@@ -13,6 +13,7 @@ namespace TextAdventure.World
 {
     public class GridTile : IMapNode
     {
+        public string Adjective { get; private set; } // Just for fun. This is temporary.
         public bool Travelable { get; set; }
 
         private List<Entity> _Entities;
@@ -33,13 +34,15 @@ namespace TextAdventure.World
             _Entities = new List<Entity>();
             _Items = new List<Item>();
 
+            Adjective = RantEngine.RunPattern("<adj>");
+
             EntityEntered += OnEntityEntered;
             EntityLeft += OnEntityLeft;
         }
 
         public void Examine(ICommandSender examiner)
         {
-            examiner.SendMessage("You are on a tile.");
+            examiner.SendMessage(RantEngine.RunPattern("You are on \\a {0} tile.", Adjective));
         }
 
         public void Update(TimeSpan delta)

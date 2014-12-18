@@ -18,7 +18,7 @@ namespace TextAdventure.Entities
             BaseAttributes.Defense = 0;
             BaseAttributes.Dodge = 5;
             BaseAttributes.Speed = .4;
-            Experience = 10;
+            Experience = 20;
             
             Behaviors.Add(new BehaviorRetaliate(this));
         }

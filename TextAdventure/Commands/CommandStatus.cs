@@ -23,6 +23,9 @@ namespace TextAdventure.Commands
         {
             base.Execute();
 
+            if (Target is Player)
+                Sender.SendMessage("Level: {0}, {1}", ((Player)Target).Level, Target.Experience);
+
             Sender.SendMessage("HP: {0}", Math.Ceiling(Target.Hp));
             Sender.SendMessage();
 

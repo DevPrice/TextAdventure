@@ -46,14 +46,18 @@ namespace TextAdventure
         public void Start()
         {
             if (Running)
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Server already started.");
 
             Running = true;
-
             Client = new UdpClient(Port);
 
             Output.Write("Generating world... ");
+
             World = GameWorld.Generate();
+
+            Output.WriteLine("Done.");
+
+            Output.Write("Starting command engine... ");
 
             List<Command> commands = new List<Command>();
             commands.Add(new CommandHelp(World, null, commands, null));
@@ -74,6 +78,9 @@ namespace TextAdventure
 
             CommandParser parser = new CommandParser(commands);
             CommandEngine = new CommandEngine(parser);
+
+            RantEngine.RunPattern(""); // Run a blank pattern to initialize the rant engine.
+                                       // This avoids a discernible delay during gameplay if the engine is initialized later.
 
             Output.WriteLine("Done.");
 
@@ -120,7 +127,7 @@ namespace TextAdventure
         {
             World.Update(delta);
 
-            if (delta > TimeSpan.FromSeconds(1.0 / TickRate * 1.5))
+            if (delta > TimeSpan.FromSeconds(1.1 / TickRate))
             {
                 Output.WriteLine("Tick took {0}ms! Server could be overloaded.", delta.TotalMilliseconds);
             }

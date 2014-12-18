@@ -17,6 +17,11 @@ namespace TextAdventure
         {
             return Engine.Do(pattern);
         }
+
+        public static string RunPattern(string pattern, params object[] args)
+        {
+            return RunPattern(String.Format(pattern, args));
+        }
     }
 
     public class RantPatternAttribute : Attribute

@@ -78,7 +78,7 @@ namespace TextAdventure.Entities
         {
             SendMessage("You killed {0}.", e.AttackedEntity.Name);
 
-            Experience += e.AttackedEntity.Experience;
+            GiveExperience(e.AttackedEntity);
         }
 
         private void OnLevelUp(object sender, LevelUpEventArgs e)
@@ -86,6 +86,7 @@ namespace TextAdventure.Entities
             SendMessage("You leveled up!");
 
             BaseAttributes = CombatAttributes.Combine(BaseAttributes, PerLevel.Human);
+            Hp += PerLevel.Human.MaxHp;
         }
 
         private void OnItemEquipped(object sender, ItemEquipEventArgs e)
