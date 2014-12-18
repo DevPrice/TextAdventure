@@ -18,7 +18,7 @@ namespace TextAdventure.Items
 
                 foreach (var item in this)
                 {
-                    totalAttributes = CombatAttributes.Combine(totalAttributes, item.BonusAttributes);
+                    totalAttributes = totalAttributes + item.BonusAttributes;
                 }
 
                 return totalAttributes;

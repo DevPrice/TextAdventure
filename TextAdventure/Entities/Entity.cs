@@ -25,7 +25,7 @@ namespace TextAdventure.Entities
                 return RantEngine.RunPattern(String.Format("<pron-{0}>", Gender.GetRantPattern()));
             }
         }
-        public CombatAttributes Attributes { get { return CombatAttributes.Combine(BaseAttributes, Equipment.TotalAttributes); } }
+        public CombatAttributes Attributes { get { return BaseAttributes + Equipment.TotalAttributes; } }
         public CombatAttributes BaseAttributes { get; set; }
         public Gender Gender { get; set; }
         private double _Hp;

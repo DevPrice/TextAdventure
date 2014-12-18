@@ -33,12 +33,17 @@ namespace TextAdventure.Entities
             CritMultiplier = critMultiplier;
         }
 
-        public static CombatAttributes Combine(CombatAttributes a1, CombatAttributes a2)
+        public static CombatAttributes Add(CombatAttributes a1, CombatAttributes a2)
         {
             return new CombatAttributes(a1.MaxHp + a2.MaxHp,
                 a1.Strength + a2.Strength, a1.Defense + a2.Defense,
                 a1.Accuracy + a2.Accuracy, a1.Dodge + a2.Dodge, a1.Speed + a1.Speed,
                 a1.CritChance + a2.CritChance, a1.CritMultiplier + a2.CritMultiplier);
+        }
+
+        public static CombatAttributes operator +(CombatAttributes a1, CombatAttributes a2)
+        {
+            return Add(a1, a2);
         }
     }
 
