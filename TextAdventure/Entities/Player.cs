@@ -85,7 +85,7 @@ namespace TextAdventure.Entities
         {
             SendMessage("You leveled up!");
 
-            BaseAttributes = BaseAttributes + PerLevel.Human;
+            BaseAttributes += PerLevel.Human;
             Hp += PerLevel.Human.MaxHp;
         }
 

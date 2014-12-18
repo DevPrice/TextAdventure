@@ -18,7 +18,7 @@ namespace TextAdventure.Items
 
                 foreach (var item in this)
                 {
-                    totalAttributes = totalAttributes + item.BonusAttributes;
+                    totalAttributes += item.BonusAttributes;
                 }
 
                 return totalAttributes;
