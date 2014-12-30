@@ -9,9 +9,12 @@ using TextAdventure.World;
 
 namespace TextAdventure.Items
 {
-    public class Item : IExaminable, IUpdatable, INamed
-
+    public class Item : IExaminable, IUpdatable, INoun
     {
+
+        public Gender Gender { get; set; }
+
+        public Article Article { get; set; }
         public string Name { get; protected set; }
         public string Description { get; protected set; }
 
