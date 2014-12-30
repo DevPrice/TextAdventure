@@ -24,15 +24,15 @@ namespace TextAdventure.Commands
             }
             catch (CommandNotFoundException)
             {
-                sender.SendMessage("Invalid command.");
+                sender.SendLine("Invalid command.");
             }
             catch (UsageException)
             {
-                sender.SendMessage("Invalid usage.");
+                sender.SendLine("Invalid usage.");
             }
             catch (InsufficientPermissionException)
             {
-                sender.SendMessage("Invalid permissions.");
+                sender.SendLine("Invalid permissions.");
             }
         }
     }

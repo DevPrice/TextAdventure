@@ -31,7 +31,7 @@ namespace TextAdventure.Commands
 
             if (Target is IMapNode)
             {
-                Sender.SendMessage();
+                Sender.SendLine();
 
                 ListItems();
                 ListEntities();
@@ -47,12 +47,12 @@ namespace TextAdventure.Commands
         {
             foreach (Item item in ((IMapNode)Target).Items)
             {
-                Sender.SendMessage("You see a [{0}] on the ground.", item.Name);
+                Sender.SendLine("You see a [{0}] on the ground.", item.Name);
             }
 
             if (((IMapNode)Target).Items.Count > 0)
             {
-                Sender.SendMessage();
+                Sender.SendLine();
             }
         }
 
@@ -61,12 +61,12 @@ namespace TextAdventure.Commands
             foreach (Entity entity in ((IMapNode)Target).Entities)
             {
                 if (entity != Sender as Entity)
-                    Sender.SendMessage("You see{0} [{1}].", entity is Player ? "" : " a", entity.Name);
+                    Sender.SendLine("You see{0} [{1}].", entity is Player ? "" : " a", entity.Name);
             }
             
             if (((IMapNode)Target).Entities.Count > 1)
             {
-                Sender.SendMessage();
+                Sender.SendLine();
             }
         }
         

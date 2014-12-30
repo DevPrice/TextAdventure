@@ -200,19 +200,34 @@ namespace TextAdventure
             get { return CommandPermission.Admin; }
         }
 
-        public void SendMessage()
+        public void Send()
         {
-            SendMessage(String.Empty);
+            Send(String.Empty);
         }
 
-        public void SendMessage(string message)
+        public void Send(string message)
         {
-            Output.WriteLine(message);
+            Output.Write(message);
         }
 
-        public void SendMessage(string message, params object[] args)
+        public void Send(string message, params object[] args)
         {
-            SendMessage(String.Format(message, args));
+            Send(String.Format(message, args));
+        }
+
+        public void SendLine()
+        {
+            SendLine(String.Empty);
+        }
+
+        public void SendLine(string message)
+        {
+            Send(message + Environment.NewLine);
+        }
+
+        public void SendLine(string message, params object[] args)
+        {
+            SendLine(String.Format(message, args));
         }
     }
 }

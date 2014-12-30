@@ -29,7 +29,7 @@ namespace TextAdventure.Commands
             {
                 if (Target.Name.Equals("help"))
                 {
-                    Sender.SendMessage("Are you okay?");
+                    Sender.SendLine("Are you okay?");
                     return;
                 }
 
@@ -44,38 +44,38 @@ namespace TextAdventure.Commands
         private void HelpForCommand(ICommand command)
         {
             if (UsedAlias)
-                Sender.SendMessage("Alias for {0}.", command.Name);
+                Sender.SendLine("Alias for {0}.", command.Name);
 
-            Sender.SendMessage(command.Description);
-            Sender.SendMessage();
+            Sender.SendLine(command.Description);
+            Sender.SendLine();
 
             if (command.Aliases.Count > 0)
             {
-                Sender.SendMessage("Aliases: ");
+                Sender.SendLine("Aliases: ");
 
                 foreach (string alias in command.Aliases)
-                    Sender.SendMessage("{0} ", alias);
+                    Sender.SendLine("{0} ", alias);
 
-                Sender.SendMessage();
+                Sender.SendLine();
             }
 
-            Sender.SendMessage("Usage: {0}", command.Usage);
+            Sender.SendLine("Usage: {0}", command.Usage);
         }
 
         private void ListCommands()
         {
-            Sender.SendMessage("Available commands:");
+            Sender.SendLine("Available commands:");
 
             foreach (ICommand command in CommandList)
             {
                 if (command.Hidden || (int)Sender.Permission < (int)command.RequiredPermission)
                     continue;
 
-                Sender.SendMessage("{0}", command.Name);
+                Sender.SendLine("{0}", command.Name);
             }
 
-            Sender.SendMessage();
-            Sender.SendMessage("Type 'help [command]' for more information about a command.");
+            Sender.SendLine();
+            Sender.SendLine("Type 'help [command]' for more information about a command.");
         }
 
         public override ICommand Create(ICommandSender sender, string[] args)

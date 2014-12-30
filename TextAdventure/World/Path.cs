@@ -25,7 +25,7 @@ namespace TextAdventure.World
 
         public void Examine(ICommandSender examiner)
         {
-            examiner.SendMessage("[{0}]: {1}", Identifier, Description);
+            examiner.SendLine("[{0}]: {1}", Identifier, Description);
         }
 
         public static List<Path> Find(IGameMap map, IMapNode start, IMapNode goal)

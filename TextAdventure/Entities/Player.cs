@@ -55,35 +55,35 @@ namespace TextAdventure.Entities
         private void OnDamageTaken(object sender, DamageTakenEventArgs e)
         {
             int displayDamage = (int)Math.Min(Attributes.MaxHp, Hp + e.Amount) - (int)Hp;
-            SendMessage("{0} damage taken from {1}.", displayDamage, e.DamageSource);
+            SendLine("{0} damage taken from {1}.", displayDamage, e.DamageSource);
         }
 
         private void OnDeath(object sender, DamageTakenEventArgs e)
         {
-            SendMessage("YOU DIED");
+            SendLine("YOU DIED");
         }
 
         private void OnAttackedEntity(object sender, AttackedEntityEventArgs e)
         {
             int displayDamage = (int)(e.AttackedEntity.Hp + e.DamageDealt) - (int)e.AttackedEntity.Hp;
-            SendMessage("You attack {0} for {1} damage.", e.AttackedEntity.Name, displayDamage);
+            SendLine("You attack {0} for {1} damage.", e.AttackedEntity.Name, displayDamage);
         }
 
         private void OnAttackMissed(object sender, AttackMissedEventArgs e)
         {
-            SendMessage("You miss!");
+            SendLine("You miss!");
         }
 
         private void OnKilledEntity(object sender, AttackedEntityEventArgs e)
         {
-            SendMessage("You killed {0}.", e.AttackedEntity.Name);
+            SendLine("You killed {0}.", e.AttackedEntity.Name);
 
             GiveExperience(e.AttackedEntity);
         }
 
         private void OnLevelUp(object sender, LevelUpEventArgs e)
         {
-            SendMessage("You leveled up!");
+            SendLine("You leveled up!");
 
             BaseAttributes += PerLevel.Human;
             Hp += PerLevel.Human.MaxHp;
@@ -91,28 +91,43 @@ namespace TextAdventure.Entities
 
         private void OnItemEquipped(object sender, ItemEquipEventArgs e)
         {
-            SendMessage("{0} equipped.", e.Item.Name.ToTitleCase());
+            SendLine("{0} equipped.", e.Item.Name.ToTitleCase());
         }
 
         private void OnItemUnequipped(object sender, ItemEquipEventArgs e)
         {
-            SendMessage("{0} unequipped.", e.Item.Name.ToTitleCase());
+            SendLine("{0} unequipped.", e.Item.Name.ToTitleCase());
         }
 
-        public virtual void SendMessage(string message)
+        public void Send()
+        {
+            Send(String.Empty);
+        }
+
+        public virtual void Send(string message)
         {
             if (Alive)
                 Output.WriteLine(message);
         }
 
-        public void SendMessage()
+        public void Send(string message, params object[] args)
         {
-            SendMessage(String.Empty);
+            Send(String.Format(message, args));
         }
 
-        public void SendMessage(string value, params object[] args)
+        public void SendLine()
         {
-            SendMessage(String.Format(value, args));
+            SendLine(String.Empty);
+        }
+
+        public void SendLine(string message)
+        {
+            Send(message + Environment.NewLine);
+        }
+
+        public void SendLine(string value, params object[] args)
+        {
+            SendLine(String.Format(value, args));
         }
     }
 }

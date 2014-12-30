@@ -27,13 +27,13 @@ namespace TextAdventure.Commands
                 string message = String.Format("{0} says, \"{1}\"", ((Player)Sender).Name, Target);
                 World.Map.LocationOf((Player)Sender).Broadcast(message, (Player)Sender);
 
-                Sender.SendMessage("You say, \"{0}\"", Target);
+                Sender.SendLine("You say, \"{0}\"", Target);
             }
             else
             {
                 foreach (Player player in World.Players)
                 {
-                    player.SendMessage("SERVER: {0}", Target);
+                    player.SendLine("SERVER: {0}", Target);
                 }
             }
         }

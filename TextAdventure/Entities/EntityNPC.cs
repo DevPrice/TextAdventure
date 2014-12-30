@@ -35,7 +35,7 @@ namespace TextAdventure.Entities
             foreach (Entity entity in Location.Entities)
             {
                 if (entity is Player && entity != e.AttackedEntity)
-                    ((Player)entity).SendMessage("{0} attacks {1}.", ((Entity)sender).Name.ToTitleCase(), e.AttackedEntity.Name);
+                    ((Player)entity).SendLine("{0} attacks {1}.", ((Entity)sender).Name.ToTitleCase(), e.AttackedEntity.Name);
             }
         }
 
@@ -46,7 +46,7 @@ namespace TextAdventure.Entities
                 if (entity is Player)
                 {
                     if (!(e.DamageSource is EntityDamageSource) || ((EntityDamageSource)e.DamageSource).Source != entity)
-                        ((Player)entity).SendMessage("{0} was killed by {1}.", ((Entity)sender).Name.ToTitleCase(), e.DamageSource.ToString());
+                        ((Player)entity).SendLine("{0} was killed by {1}.", ((Entity)sender).Name.ToTitleCase(), e.DamageSource.ToString());
                 }
             }
         }

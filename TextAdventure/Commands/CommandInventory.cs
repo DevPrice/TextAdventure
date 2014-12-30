@@ -31,7 +31,7 @@ namespace TextAdventure.Commands
             {
                 foreach (Item item in Target.Inventory)
                 {
-                    Sender.SendMessage("{0} ", item.Name);
+                    Sender.SendLine("{0} ", item.Name);
                 }
             }
         }

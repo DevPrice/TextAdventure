@@ -23,7 +23,7 @@ namespace TextAdventure.Items
 
         public void Examine(ICommandSender examiner)
         {
-            examiner.SendMessage(Description);
+            examiner.SendLine(Description);
         }
 
         public virtual void Update(TimeSpan delta)

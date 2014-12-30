@@ -71,7 +71,6 @@ namespace TextAdventureClient
             
             while (!listenTask.IsCompleted)
             {
-                Console.WriteLine();
                 Console.Write(">");
                 string command = Console.ReadLine();
 

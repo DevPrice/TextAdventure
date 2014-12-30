@@ -10,8 +10,11 @@ namespace TextAdventure.Commands
     {
         CommandPermission Permission { get; }
 
-        void SendMessage();
-        void SendMessage(string message);
-        void SendMessage(string message, params object[] args);
+        void Send();
+        void Send(string message);
+        void Send(string message, params object[] args);
+        void SendLine();
+        void SendLine(string message);
+        void SendLine(string message, params object[] args);
     }
 }

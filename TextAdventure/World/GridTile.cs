@@ -42,7 +42,7 @@ namespace TextAdventure.World
 
         public void Examine(ICommandSender examiner)
         {
-            examiner.SendMessage(RantEngine.RunPattern("You are on \\a {0} tile.", Adjective));
+            examiner.SendLine(RantEngine.RunPattern("You are on \\a {0} tile.", Adjective));
         }
 
         public void Update(TimeSpan delta)
@@ -118,7 +118,7 @@ namespace TextAdventure.World
             foreach (Entity entity in Entities)
             {
                 if (entity is Player && entity != player)
-                    ((Player)entity).SendMessage(message);
+                    ((Player)entity).SendLine(message);
             }
         }
     }
