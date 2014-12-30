@@ -31,9 +31,11 @@ namespace TextAdventure.Commands
             {
                 foreach (Item item in Target.Inventory)
                 {
-                    Sender.SendLine("{0} ", item.Name);
+                    Sender.Send("{0} ", item.Name);
                 }
             }
+
+            Sender.SendLine();
         }
 
         public override ICommand Create(ICommandSender sender, string[] args)

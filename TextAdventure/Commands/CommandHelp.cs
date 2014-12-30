@@ -54,8 +54,9 @@ namespace TextAdventure.Commands
                 Sender.SendLine("Aliases: ");
 
                 foreach (string alias in command.Aliases)
-                    Sender.SendLine("{0} ", alias);
+                    Sender.Send("{0} ", alias);
 
+                Sender.SendLine();
                 Sender.SendLine();
             }
 
