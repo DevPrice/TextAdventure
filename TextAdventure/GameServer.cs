@@ -148,7 +148,11 @@ namespace TextAdventure
                     if (player == null)
                     {
                         player = new RemotePlayer(World, Client, endPoint);
-                        player.Name = String.Format("Player{0}", PlayerNum++);
+
+                        if (World.Random.Next(2) == 0)
+                            player.Gender = Gender.Female;
+
+                        player.Name = RantEngine.RunPattern(String.Format("<name-{0}>", player.Gender.GetRantPattern()));//String.Format("Player{0}", PlayerNum++);
 
                         RemotePlayers.Add(player);
                         World.Players.Add(player);

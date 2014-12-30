@@ -22,5 +22,17 @@ namespace TextAdventure.Entities
 
             return level;
         }
+
+        public static int GetTotalExpForLevel(int level)
+        {
+            int sum = 0;
+
+            for (int i = 0; i < level; i++)
+            {
+                sum += NeededForLevel[i];
+            }
+
+            return sum;
+        }
     }
 }

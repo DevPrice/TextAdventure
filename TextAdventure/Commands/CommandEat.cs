@@ -29,6 +29,9 @@ namespace TextAdventure.Commands
         {
             base.Execute();
 
+            if (Target == null)
+                throw new UsageException();
+
             if (Sender is Entity)
             {
                 Entity entity = (Entity)Sender;

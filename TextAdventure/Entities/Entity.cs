@@ -22,7 +22,7 @@ namespace TextAdventure.Entities
         {
             get
             {
-                return RantEngine.RunPattern(String.Format("<pron-{0}>", Gender.GetRantPattern()));
+                return RantEngine.RunPattern(String.Format("<pron.nom-{0}>", Gender.GetRantPattern()));
             }
         }
         public CombatAttributes Attributes { get { return BaseAttributes + Equipment.TotalAttributes; } }

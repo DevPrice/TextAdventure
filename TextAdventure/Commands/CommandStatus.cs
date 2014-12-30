@@ -23,10 +23,17 @@ namespace TextAdventure.Commands
         {
             base.Execute();
 
-            if (Target is Player)
-                Sender.SendMessage("Level: {0}, {1}", ((Player)Target).Level, Target.Experience);
+            int currentLevelXp = ((Player)Target).Experience - Experience.GetTotalExpForLevel(((Player)Target).Level);
+            int nextLevelXp = Experience.NeededForLevel[((Player)Target).Level + 1];
 
-            Sender.SendMessage("HP: {0}", Math.Ceiling(Target.Hp));
+            if (Target is Player)
+            {
+                Sender.SendMessage(((Player)Sender).Name);
+                Sender.SendMessage();
+                Sender.SendMessage("Level: {0}, {1}/{2}xp", ((Player)Target).Level, currentLevelXp, nextLevelXp);
+            }
+
+            Sender.SendMessage("HP: {0}/{1}", Math.Ceiling(Target.Hp), Target.Attributes.MaxHp);
             Sender.SendMessage();
 
             foreach (ItemWieldable item in Target.Equipment)
