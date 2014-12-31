@@ -73,8 +73,13 @@ namespace TextAdventure.Entities
 
         public virtual void Examine(ICommandSender examiner)
         {
-            examiner.SendLine(this.GetFullName().FirstCharToUpper() + ". " + Gender.ToSymbol());
+            ExamineBasic(examiner);
 
+            ExamineInjury(examiner);
+        }
+
+        protected void ExamineInjury(ICommandSender examiner)
+        {
             if (!Alive)
             {
                 examiner.SendLine();
@@ -85,6 +90,11 @@ namespace TextAdventure.Entities
                 examiner.SendLine();
                 examiner.SendLine("{0} looks injured.", Pronoun.FirstCharToUpper());
             }
+        }
+
+        protected void ExamineBasic(ICommandSender examiner)
+        {
+            examiner.SendLine(this.GetFullName().FirstCharToUpper() + ". " + Gender.ToSymbol());
         }
 
         public virtual void Update(TimeSpan delta)

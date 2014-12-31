@@ -46,10 +46,4 @@ namespace TextAdventure.Entities
             return Add(a1, a2);
         }
     }
-
-    public static class PerLevel
-    {
-        public static readonly CombatAttributes Human = new CombatAttributes(2.5, 2, 2, 2, 1, .04, 0, 0);
-        public static readonly CombatAttributes Elf =   new CombatAttributes(2.5, 1, 1, 3, 2, .06, 0, 0);
-    }
 }

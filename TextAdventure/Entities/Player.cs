@@ -15,7 +15,7 @@ namespace TextAdventure.Entities
     public class Player : Entity, ICommandSender
     {
         public CommandPermission Permission { get; set; }
-
+        public Race Race { get; private set; }
         public int Level { get; private set; }
 
         public event EventHandler<LevelUpEventArgs> LevelUp;
@@ -28,6 +28,8 @@ namespace TextAdventure.Entities
             Gender = Gender.Male;
             Permission = CommandPermission.User;
             Level = 1;
+            Race = Race.GetRandom(World.Random);
+            BaseAttributes = Race.BaseAttributes;
 
             DamageTaken += OnDamageTaken;
             Death += OnDeath;
@@ -85,8 +87,8 @@ namespace TextAdventure.Entities
         {
             SendLine("You leveled up!");
 
-            BaseAttributes += PerLevel.Human;
-            Hp += PerLevel.Human.MaxHp;
+            BaseAttributes += Race.AttributesPerLevel;
+            Hp += Race.AttributesPerLevel.MaxHp;
         }
 
         private void OnItemEquipped(object sender, ItemEquipEventArgs e)
@@ -97,6 +99,14 @@ namespace TextAdventure.Entities
         private void OnItemUnequipped(object sender, ItemEquipEventArgs e)
         {
             SendLine("{0} unequipped.", e.Item.Name.ToTitleCase());
+        }
+
+        public override void Examine(ICommandSender examiner)
+        {
+            ExamineBasic(examiner);
+            examiner.SendLine(Race.Name);
+
+            ExamineInjury(examiner);
         }
 
         public void Send()

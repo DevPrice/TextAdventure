@@ -102,6 +102,7 @@
     <Compile Include="Entities\EntityRat.cs" />
     <Compile Include="Entities\Experience.cs" />
     <Compile Include="Entities\Player.cs" />
+    <Compile Include="Entities\Race.cs" />
     <Compile Include="Entities\RemotePlayer.cs" />
     <Compile Include="EntityDamageSource.cs" />
     <Compile Include="Events\AttackedEntityEventArgs.cs" />
