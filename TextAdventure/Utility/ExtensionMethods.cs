@@ -86,7 +86,7 @@ namespace TextAdventure.Utility
                 case Gender.Female:
                     return "♀";
                 default:
-                    return "⚲";
+                    return " ";//"⚲";
             }
         }
     }

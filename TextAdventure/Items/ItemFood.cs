@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Entities;
+using TextAdventure.Utility;
 
 namespace TextAdventure.Items
 {
@@ -26,6 +27,15 @@ namespace TextAdventure.Items
         public virtual void Eat(Entity eater)
         {
             eater.Hp += HealAmount;
+
+            // TODO: Refactor this.
+            if (eater is Player)
+            {
+                ((Player)eater).SendLine("You eat {0}.", this.GetFullName());
+
+                if (HealAmount > 0)
+                    ((Player)eater).SendLine("{0} health restored.", Math.Round(HealAmount));
+            }
         }
     }
 }

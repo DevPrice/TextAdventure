@@ -36,7 +36,7 @@ namespace TextAdventure.Commands
                 Sender.SendLine("Level: {0}, {1}/{2}xp", ((Player)Target).Level, currentLevelXp, nextLevelXp);
             }
 
-            Sender.SendLine("HP: {0}/{1}", Math.Ceiling(Target.Hp), Target.Attributes.MaxHp);
+            Sender.SendLine("HP: {0}/{1}", Math.Ceiling(Target.Hp), Math.Ceiling(Target.Attributes.MaxHp));
             Sender.SendLine();
 
             foreach (ItemWieldable item in Target.Equipment)

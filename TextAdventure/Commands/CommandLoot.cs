@@ -19,8 +19,6 @@ namespace TextAdventure.Commands
             Aliases.Add("search");
         }
 
-
-
         public override void Execute()
         {
             base.Execute();
@@ -37,6 +35,11 @@ namespace TextAdventure.Commands
                 player.Inventory.Add(item);
 
                 player.SendLine("You take {0}.", item.GetFullName());
+            }
+
+            if (items.Count() == 0)
+            {
+                player.SendLine("You find nothing.");
             }
         }
 

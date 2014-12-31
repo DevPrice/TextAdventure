@@ -73,7 +73,7 @@ namespace TextAdventure.Entities
 
         public virtual void Examine(ICommandSender examiner)
         {
-            examiner.SendLine(this.GetFullName().FirstCharToUpper() + ".");
+            examiner.SendLine(this.GetFullName().FirstCharToUpper() + ". " + Gender.ToSymbol());
 
             if (!Alive)
             {
