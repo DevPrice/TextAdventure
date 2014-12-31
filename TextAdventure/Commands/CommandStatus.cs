@@ -28,7 +28,10 @@ namespace TextAdventure.Commands
 
             if (Target is Player)
             {
-                Sender.SendLine(((Player)Sender).Name);
+                Sender.Send(((Player)Sender).Name);
+                Sender.Send(" ");
+                Sender.Send(((Player)Sender).Gender.ToSymbol());
+
                 Sender.SendLine();
                 Sender.SendLine("Level: {0}, {1}/{2}xp", ((Player)Target).Level, currentLevelXp, nextLevelXp);
             }

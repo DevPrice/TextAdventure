@@ -28,11 +28,14 @@ namespace TextAdventure.World
             examiner.SendLine("[{0}]: {1}", Identifier, Description);
         }
 
+        /// <summary>
+        /// Generic path finding. Works on any map type.
+        /// </summary>
+        /// <returns>A list of paths to take to move from the start node to the goal node using the minimum number of paths, or null if no such list exists.</returns>
         public static List<Path> Find(IGameMap map, IMapNode start, IMapNode goal)
         {
             if (start == goal)
                 return new List<Path>();
-
             Dictionary<IMapNode, int> distance = new Dictionary<IMapNode, int>();
             Dictionary<IMapNode, Path> previous = new Dictionary<IMapNode, Path>();
 

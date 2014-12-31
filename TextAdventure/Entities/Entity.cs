@@ -180,5 +180,25 @@ namespace TextAdventure.Entities
             
             return amount;
         }
+
+        public bool UsePath(string pathId)
+        {
+            List<Path> paths = World.Map.GetPathsFrom(Location);
+
+            foreach (Path path in paths)
+            {
+                if (path.Identifier.Equals(pathId, StringComparison.CurrentCultureIgnoreCase))
+                    return UsePath(path);
+            }
+
+            return false;
+        }
+
+        public bool UsePath(Path path)
+        {
+            World.Map.MoveEntity(this, path);
+
+            return true;
+        }
     }
 }

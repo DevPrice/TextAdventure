@@ -83,6 +83,28 @@ namespace TextAdventure.World
             return null;
         }
 
+        private Point GetPosition(IMapNode node)
+        {
+            Point nodePos = new Point(-1, -1);
+
+            for (int y = 0; y < Height; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    if (Tiles[x, y] == node)
+                    {
+                        nodePos = new Point(x, y);
+                        break;
+                    }
+                }
+
+                if (nodePos.X >= 0)
+                    break;
+            }
+
+            return nodePos;
+        }
+
         public List<Path> GetPathsFrom(IMapNode node)
         {
             if (node == null || !(node is GridTile))
@@ -112,32 +134,18 @@ namespace TextAdventure.World
             return pathsFrom;
         }
 
-        private Point GetPosition(IMapNode node)
-        {
-            Point nodePos = new Point(-1, -1);
-
-            for (int y = 0; y < Height; y++)
-            {
-                for (int x = 0; x < Width; x++)
-                {
-                    if (Tiles[x, y] == node)
-                    {
-                        nodePos = new Point(x, y);
-                        break;
-                    }
-                }
-
-                if (nodePos.X >= 0)
-                    break;
-            }
-
-            return nodePos;
-        }
-
 
         public List<Path> FindPath(IMapNode from, IMapNode to)
         {
             return Path.Find(this, from, to);
+        }
+
+        public void MoveEntity(Entity entity, Path path)
+        {
+            if (path.From != null)
+                path.From.Remove(entity, path);
+
+            path.To.Add(entity, path);
         }
 
         public void Update(TimeSpan delta)

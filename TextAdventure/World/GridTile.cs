@@ -56,18 +56,28 @@ namespace TextAdventure.World
 
         public void Add(Entity entity)
         {
+            Add(entity, null);
+        }
+
+        public void Add(Entity entity, Path path)
+        {
             _Entities.Add(entity);
 
             if (EntityEntered != null)
-                EntityEntered(this, new EntityMovedEventArgs(entity, null, this));
+                EntityEntered(this, new EntityMovedEventArgs(entity, path));
         }
 
         public void Remove(Entity entity)
         {
+            Remove(entity, null);
+        }
+
+        public void Remove(Entity entity, Path path)
+        {
             bool success = _Entities.Remove(entity);
 
             if (success && EntityLeft != null)
-                EntityLeft(this, new EntityMovedEventArgs(entity, this, null));
+                EntityLeft(this, new EntityMovedEventArgs(entity, path));
         }
 
         public void Add(Item item)
@@ -82,7 +92,22 @@ namespace TextAdventure.World
 
         private void OnEntityEntered(object sender, EntityMovedEventArgs e)
         {
-            string message = String.Format("{0} entered the area.", e.Entity.Name.ToTitleCase());
+            // God this is so hacky but I don't want to fix things right now.
+            // TODO: Fix this.
+            // Seriously, please fix this.
+            // Please.
+            Dictionary<string, string> reverseDirection = new Dictionary<string,string>();
+            reverseDirection.Add("north", "south");
+            reverseDirection.Add("south", "north");
+            reverseDirection.Add("east", "west");
+            reverseDirection.Add("west", "east");
+
+            string message = String.Format("{0} entered the area", e.Entity.GetFullName().FirstCharToUpper());
+
+            if (e.Path != null && e.Path.From != null)
+                message += String.Format(" from the [{0}]", reverseDirection[e.Path.Identifier]);
+
+            message += ".";
             
             if (e.Entity is Player)
             {
@@ -96,7 +121,10 @@ namespace TextAdventure.World
 
         private void OnEntityLeft(object sender, EntityMovedEventArgs e)
         {
-            string message = String.Format("{0} left the area.", e.Entity.Name.ToTitleCase());
+            string message = String.Format("{0} left the area.", e.Entity.GetFullName().FirstCharToUpper());
+
+            if (e.Path != null && e.Path.To != null)
+                message = String.Format("{0} moved [{1}].", e.Entity.Name.FirstCharToUpper(), e.Path.Identifier);
 
             if (e.Entity is Player)
             {

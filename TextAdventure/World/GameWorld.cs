@@ -37,10 +37,10 @@ namespace TextAdventure.World
 
             GameWorld world = new GameWorld(map);
 
+            world.Random = new Random(random.Next());
+
             world.GenerateItems(random);
             world.GenerateEntities(random);
-
-            world.Random = new Random(random.Next());
 
             return world;
         }

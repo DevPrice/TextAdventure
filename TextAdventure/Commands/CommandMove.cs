@@ -27,8 +27,7 @@ namespace TextAdventure.Commands
 
             if (Target != null)
             {
-                Target.From.Remove((Player)Sender);
-                Target.To.Add((Player)Sender);
+                ((Player)Sender).UsePath(Target);
 
                 Sender.SendLine("You go {0}.", Target.Identifier);
             }

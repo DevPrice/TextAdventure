@@ -10,15 +10,13 @@ namespace TextAdventure.Events
 {
     public class EntityMovedEventArgs : EventArgs
     {
-        public Entity Entity { get; private set; }
-        public IMapNode MovedFrom { get; private set; }
-        public IMapNode MovedTo { get; private set; }
+        public readonly Entity Entity;
+        public readonly Path Path;
 
-        public EntityMovedEventArgs(Entity entity, IMapNode from, IMapNode to)
+        public EntityMovedEventArgs(Entity entity, Path path)
         {
             Entity = entity;
-            MovedFrom = from;
-            MovedTo = to;
+            Path = path;
         }
     }
 }

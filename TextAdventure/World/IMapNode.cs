@@ -18,7 +18,9 @@ namespace TextAdventure.World
         event EventHandler<EntityMovedEventArgs> EntityLeft;
 
         void Add(Entity entity);
+        void Add(Entity entity, Path path);
         void Remove(Entity entity);
+        void Remove(Entity entity, Path path);
         void Add(Item item);
         void Remove(Item item);
 

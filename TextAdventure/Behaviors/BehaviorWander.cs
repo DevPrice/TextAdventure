@@ -15,6 +15,7 @@ namespace TextAdventure.Behaviors
         /// </summary>
         public double MovementSpeed { get; private set; }
         public TimeSpan TimeSinceMoved { get; private set; }
+        private TimeSpan Variation { get; set; }
 
         public override bool ShouldUpdate
         {
@@ -29,6 +30,7 @@ namespace TextAdventure.Behaviors
         {
             MovementSpeed = moveSpeed;
             TimeSinceMoved = TimeSpan.Zero;
+            Variation = TimeSpan.FromMilliseconds(Entity.World.Random.NextDouble() * .25 / MovementSpeed);
             Mask = (int)BehaviorMask.Movement;
         }
 
@@ -38,15 +40,16 @@ namespace TextAdventure.Behaviors
 
             TimeSinceMoved += delta;
 
-            if (TimeSinceMoved > TimeSpan.FromMinutes(1 / MovementSpeed))
+            if (TimeSinceMoved > TimeSpan.FromMinutes(1 / MovementSpeed) + Variation)
             {
                 List<Path> paths = Entity.World.Map.GetPathsFrom(Entity.Location);
 
                 if (paths.Count > 0)
                 {
-                    Entity.Location.Remove(Entity);
-                    paths[Entity.World.Random.Next(paths.Count)].To.Add(Entity);
+                    Entity.UsePath(paths[Entity.World.Random.Next(paths.Count)]);
+
                     TimeSinceMoved = TimeSpan.Zero;
+                    Variation = TimeSpan.FromMilliseconds(Entity.World.Random.NextDouble() * .25 / MovementSpeed);
                 }
             }
         }

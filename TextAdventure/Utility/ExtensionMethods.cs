@@ -75,7 +75,19 @@ namespace TextAdventure.Utility
             }
 
             return enumerationValue.ToString().ToLower();
+        }
 
+        public static string ToSymbol(this Gender gender)
+        {
+            switch (gender)
+            {
+                case Gender.Male:
+                    return "♂";
+                case Gender.Female:
+                    return "♀";
+                default:
+                    return "⚲";
+            }
         }
     }
 }

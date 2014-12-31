@@ -23,5 +23,7 @@ namespace TextAdventure.World
         List<Path> GetPathsFrom(IMapNode node);
 
         List<Path> FindPath(IMapNode from, IMapNode to);
+
+        void MoveEntity(Entity entity, Path path);
     }
 }
