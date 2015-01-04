@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -126,12 +127,12 @@ namespace TextAdventure
 
         public void Update(TimeSpan delta)
         {
-            World.Update(delta);
-
             if (delta > TimeSpan.FromSeconds(1.1 / TickRate))
             {
                 Output.WriteLine("Tick took {0}ms! Server could be overloaded.", delta.TotalMilliseconds);
             }
+
+            World.Update(delta);
         }
 
         private void Listen()

@@ -11,7 +11,7 @@ namespace TextAdventure.Items
         public ItemShield()
             : base("shield", EquipmentSlot.LeftHand)
         {
-
+            BonusAttributes.Defense = 2;
         }
     }
 }

@@ -45,5 +45,5 @@ namespace TextAdventure.Behaviors
         }
     }
 
-    public enum BehaviorMask { None = 0, Combat = 1, Movement = 2 }
+    public enum BehaviorMask { None = 0, Combat = 1, Movement = 2, All = -1 }
 }

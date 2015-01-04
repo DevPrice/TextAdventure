@@ -24,7 +24,7 @@ namespace TextAdventure.Commands
             base.Execute();
 
             int currentLevelXp = ((Player)Target).Experience - Experience.GetTotalExpForLevel(((Player)Target).Level);
-            int nextLevelXp = Experience.NeededForLevel[((Player)Target).Level + 1];
+            int nextLevelXp = Experience.NeededForLevel[((Player)Target).Level];
 
             if (Target is Player)
             {
@@ -33,7 +33,7 @@ namespace TextAdventure.Commands
                 Sender.Send(((Player)Sender).Gender.ToSymbol());
                 Sender.SendLine();
 
-                Sender.SendLine(((Player)Sender).Race.Name);
+                Sender.SendLine(((Player)Sender).Race.Name.FirstCharToUpper());
                 Sender.SendLine("Level: {0}, {1}/{2}xp", ((Player)Target).Level, currentLevelXp, nextLevelXp);
             }
 

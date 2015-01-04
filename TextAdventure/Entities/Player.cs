@@ -93,18 +93,18 @@ namespace TextAdventure.Entities
 
         private void OnItemEquipped(object sender, ItemEquipEventArgs e)
         {
-            SendLine("{0} equipped.", e.Item.Name.ToTitleCase());
+            SendLine("{0} equipped.", e.Item.Name.FirstCharToUpper());
         }
 
         private void OnItemUnequipped(object sender, ItemEquipEventArgs e)
         {
-            SendLine("{0} unequipped.", e.Item.Name.ToTitleCase());
+            SendLine("{0} unequipped.", e.Item.Name.FirstCharToUpper());
         }
 
         public override void Examine(ICommandSender examiner)
         {
             ExamineBasic(examiner);
-            examiner.SendLine(Race.Name);
+            examiner.SendLine("Level {0} {1}.", Level, Race.Name);
 
             ExamineInjury(examiner);
         }

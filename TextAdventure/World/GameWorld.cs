@@ -54,6 +54,13 @@ namespace TextAdventure.World
                 Map.GetRandomNode(random).Add(new ItemSword());
             }
 
+            int numShields = (int)(Map.Nodes.Count() * .06);
+
+            for (int i = 0; i < numShields; i++)
+            {
+                Map.GetRandomNode(random).Add(new ItemShield());
+            }
+
             int numFood = (int)(Map.Nodes.Count() * .25);
 
             for (int i = 0; i < numFood; i++)

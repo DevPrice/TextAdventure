@@ -20,7 +20,12 @@ namespace TextAdventure.Utility
 
         public static string GetFullName(this INoun noun)
         {
-            return RantEngine.RunPattern(String.Format("{0}{1}", noun.Article == Article.None ? "" : noun.Article.GetRantPattern() + " ", noun.Name));
+            return GetFullName(noun, noun.Article);
+        }
+
+        public static string GetFullName(this INoun noun, Article article)
+        {
+            return RantEngine.RunPattern(String.Format("{0}{1}", article == Article.None ? "" : article.GetRantPattern() + " ", noun.Name));
         }
 
         public static string FirstCharToUpper(this string s)

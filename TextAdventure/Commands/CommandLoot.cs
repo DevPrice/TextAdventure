@@ -17,6 +17,9 @@ namespace TextAdventure.Commands
         {
             Name = "loot";
             Aliases.Add("search");
+
+            Description = "Search a body for items.";
+            Usage = "loot [entity]";
         }
 
         public override void Execute()
@@ -34,7 +37,7 @@ namespace TextAdventure.Commands
                 Target.Inventory.Remove(item);
                 player.Inventory.Add(item);
 
-                player.SendLine("You take {0}.", item.GetFullName());
+                player.SendLine("You take {0}.", item.GetFullName(Article.Definite));
             }
 
             if (items.Count() == 0)
