@@ -62,12 +62,23 @@ namespace TextAdventure.Entities
 
         private void OnDeath(object sender, DamageTakenEventArgs e)
         {
-            SendLine("YOU DIED");
+            if (Inventory.Exists(x => x is ItemPhoenixDown))
+            {
+                Hp = Attributes.MaxHp;
+
+                Inventory.RemoveAt(Inventory.FindIndex(x => x is ItemPhoenixDown));
+
+                SendLine("You were reinvigorated by phoenix down.");
+            }
+            else
+            {
+                SendLine("YOU DIED");
+            }
         }
 
         private void OnAttackedEntity(object sender, AttackedEntityEventArgs e)
         {
-            int displayDamage = (int)(e.AttackedEntity.Hp + e.DamageDealt) - (int)e.AttackedEntity.Hp;
+            int displayDamage = (int)Math.Min(e.AttackedEntity.Attributes.MaxHp, e.AttackedEntity.Hp + e.DamageDealt) - (int)e.AttackedEntity.Hp;
             SendLine("You attack {0} for {1} damage.", e.AttackedEntity.Name, displayDamage);
         }
 

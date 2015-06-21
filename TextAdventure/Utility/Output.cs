@@ -8,14 +8,15 @@ namespace TextAdventure.Utility
 {
     public static class Output
     {
-        public static void Write(string value)
+        public static void Write(object value)
         {
             Console.Write(value);
         }
 
-        public static void Write(string value, params object[] args)
+        public static void Write(object value, params object[] args)
         {
-            Write(String.Format(value, args));
+            value = value ?? String.Empty;
+            Write(String.Format(value.ToString(), args));
         }
 
         public static void WriteLine()
@@ -23,14 +24,15 @@ namespace TextAdventure.Utility
             WriteLine(String.Empty);
         }
 
-        public static void WriteLine(string value)
+        public static void WriteLine(object value)
         {
             Write(value + Environment.NewLine);
         }
 
-        public static void WriteLine(string value, params object[] args)
+        public static void WriteLine(object value, params object[] args)
         {
-            WriteLine(String.Format(value, args));
+            value = value ?? String.Empty;
+            WriteLine(String.Format(value.ToString(), args));
         }
     }
 }

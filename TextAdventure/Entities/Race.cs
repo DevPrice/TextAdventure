@@ -8,7 +8,7 @@ namespace TextAdventure.Entities
 {
     public class Race : INamed
     {
-        public static IReadOnlyCollection<Race> All { get { return new List<Race>() { Human, Elf, Dwarf }.AsReadOnly();  } }
+        public static IReadOnlyCollection<Race> All { get { return new List<Race>() { Human, Elf, Dwarf }.AsReadOnly(); } }
         public static readonly Race Human;
         public static readonly Race Elf;
         public static readonly Race Dwarf;

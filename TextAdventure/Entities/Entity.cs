@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 using TextAdventure.Commands;
 using TextAdventure.Events;
 using TextAdventure.Items;
+using TextAdventure.Sense;
 using TextAdventure.Utility;
 using TextAdventure.World;
 
 namespace TextAdventure.Entities
 {
-    public abstract class Entity : IExaminable, IUpdatable, INoun
+    public abstract class Entity : IExaminable, IUpdatable, INoun, IObserver
     {
         public GameWorld World { get; private set; }
         public IMapNode Location { get { return World.Map.LocationOf(this); } }
@@ -43,6 +44,7 @@ namespace TextAdventure.Entities
         public Entity CombatTarget { get; set; }
         public TimeSpan TimeSinceAttack { get; set; }
         public int Experience { get; protected set; }
+        public List<IObserver> Observers;
 
         #region events
 
@@ -51,6 +53,7 @@ namespace TextAdventure.Entities
         public event EventHandler<AttackedEntityEventArgs> AttackedEntity;
         public event EventHandler<AttackMissedEventArgs> AttackMissed;
         public event EventHandler<AttackedEntityEventArgs> KilledEntity;
+        public event EventHandler<EntityMovedEventArgs> Moved;
 
         #endregion
 
@@ -63,6 +66,7 @@ namespace TextAdventure.Entities
             Inventory = new List<Item>();
             TimeSinceAttack = TimeSpan.FromSeconds(30);
             Hp = BaseAttributes.MaxHp;
+            Observers = new List<IObserver>();
         }
 
         public Entity(GameWorld world, int hp)
@@ -138,7 +142,7 @@ namespace TextAdventure.Entities
                 chanceToHit = Attributes.Accuracy / (Attributes.Accuracy + target.Attributes.Dodge);
             }
 
-            Random rng = new Random(GetHashCode() + Environment.TickCount);
+            Random rng = new Random(GetHashCode() ^ Environment.TickCount);
 
             bool hit = rng.NextDouble() < chanceToHit;
 
@@ -208,7 +212,30 @@ namespace TextAdventure.Entities
         {
             World.Map.MoveEntity(this, path);
 
+            if (Moved != null)
+                Moved(this, new EntityMovedEventArgs(this, path));
+
             return true;
+        }
+
+        public bool CanObserve(IObservable observerable)
+        {
+            foreach (IObserver observer in Observers)
+            {
+                if (observer.CanObserve(observerable))
+                    return true;
+            }
+
+            return false;
+        }
+
+        public void Observe(IObservable observerable)
+        {
+            foreach (IObserver observer in Observers)
+            {
+                if (observer.CanObserve(observerable))
+                    observer.Observe(observerable);
+            }
         }
     }
 }

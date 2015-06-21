@@ -7,7 +7,7 @@ using TextAdventure.World;
 
 namespace TextAdventure.Commands
 {
-    public abstract class Command : ICommand, ICommandFactory
+    public abstract class Command : ICommand, ICommandFactory, INamed
     {
         public string Name { get; protected set; }
         public List<string> Aliases { get; protected set; }

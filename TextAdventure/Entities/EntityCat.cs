@@ -31,16 +31,7 @@ namespace TextAdventure.Entities
             Behaviors.Add(new BehaviorRetaliate(this));
             Behaviors.Add(new BehaviorHostileByName(this, "rat"));
             Behaviors.Add(new BehaviorWander(this, 3));
-        }
-
-        public override void Update(TimeSpan delta)
-        {
-            base.Update(delta);
-
-            if (Alive && World.Random.Next(750) == 0)
-            {
-                Location.Broadcast(String.Format("{0} says, \"{1}\"", Name.ToTitleCase(), Meows[World.Random.Next(Meows.Length)]));
-            }
+            Behaviors.Add(new BehaviorRant(this, Meows));
         }
     }
 }

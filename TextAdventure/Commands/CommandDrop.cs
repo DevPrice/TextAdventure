@@ -31,7 +31,9 @@ namespace TextAdventure.Commands
                 ((Player)Sender).Inventory.Remove(Target);
                 currentNode.Add(Target);
 
+                Sender.SendLine("Stealth cries to Coldplay.");
                 Sender.SendLine("You drop the {0}.", Target.Name);
+                
             }
             else
             {
@@ -47,16 +49,7 @@ namespace TextAdventure.Commands
                 Array.Copy(args, 1, itemNameArr, 0, itemNameArr.Length);
                 string itemName = String.Join(" ", itemNameArr);
 
-                Item droppedItem = null;
-
-                foreach (Item item in ((Player)sender).Inventory)
-                {
-                    if (item.Name.Equals(itemName, StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        droppedItem = item;
-                        break;
-                    }
-                }
+                Item droppedItem = ((Player)sender).Inventory.GetByName(itemName);
 
                 return new CommandDrop(World, sender, droppedItem);
             }

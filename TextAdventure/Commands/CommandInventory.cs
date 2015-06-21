@@ -29,10 +29,8 @@ namespace TextAdventure.Commands
 
             if (Target != null)
             {
-                foreach (Item item in Target.Inventory)
-                {
-                    Sender.Send("{0} ", item.Name);
-                }
+
+                Sender.SendLine(String.Join(", ", Target.Inventory.Select(i => i.Name)));
             }
 
             Sender.SendLine();

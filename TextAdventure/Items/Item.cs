@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextAdventure.Commands;
+using TextAdventure.Entities;
 using TextAdventure.Utility;
 using TextAdventure.World;
 
@@ -21,7 +22,7 @@ namespace TextAdventure.Items
         public Item(string name)
         {
             Name = name;
-            Description = String.Format("A {0}.", Name);
+            Description = RantEngine.RunPattern(String.Format("\\a {0}.", Name)).ToTitleCase();
         }
 
         public void Examine(ICommandSender examiner)
@@ -30,6 +31,11 @@ namespace TextAdventure.Items
         }
 
         public virtual void Update(TimeSpan delta)
+        {
+
+        }
+
+        public virtual void OnPickup(Entity entity)
         {
 
         }

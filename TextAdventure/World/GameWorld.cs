@@ -65,9 +65,31 @@ namespace TextAdventure.World
 
             for (int i = 0; i < numFood; i++)
             {
-                ItemFood food = random.NextDouble() < .2 ? new ItemFood("pizza", 10) : new ItemFood("hotdog", 4);
+                ItemFood food;
+
+                double rand = random.NextDouble();
+
+                if (rand < .2)
+                {
+                    food = new ItemFood("pizza", 10);
+                }
+                else if (rand < .25)
+                {
+                    food = new ItemFood("Taco Bell cheesy gordita crunch", 20);
+                }
+                else
+                {
+                    food = new ItemFood("hotdog", 4);
+                }
 
                 Map.GetRandomNode(random).Add(food);
+            }
+
+            int numPhoenixDown = (int)(Map.Nodes.Count() * .02);
+
+            for (int i = 0; i < numPhoenixDown; i++)
+            {
+                Map.GetRandomNode(random).Add(new ItemPhoenixDown());
             }
         }
 
@@ -93,6 +115,8 @@ namespace TextAdventure.World
             {
                 Map.GetRandomNode(random).Add(new EntityBat(this));
             }
+
+            Map.GetRandomNode(random).Add(new EntityBam(this));
         }
 
         public void Update(TimeSpan delta)

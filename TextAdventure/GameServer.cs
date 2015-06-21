@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using TextAdventure.Commands;
 using TextAdventure.Entities;
+using TextAdventure.Items;
 using TextAdventure.Utility;
 using TextAdventure.World;
 
@@ -28,7 +29,9 @@ namespace TextAdventure
         private volatile bool _Running;
         public bool Running { get { return _Running; } private set { _Running = value; } }
         public DateTime LastUpdate { get; private set; }
+        public bool UseRealTime { get; protected set; }
         public readonly int TickRate;
+        public readonly TimeSpan TickLength;
 
         public GameServer()
         {
@@ -36,6 +39,7 @@ namespace TextAdventure
             PlayerNum = 1;
             Port = DEFAULT_PORT;
             TickRate = 20;
+            TickLength = TimeSpan.FromMilliseconds(1000 / TickRate);
         }
 
         public GameServer(int port)
@@ -71,6 +75,7 @@ namespace TextAdventure
             commands.Add(new CommandDrop(World, null, null));
             commands.Add(new CommandEquip(World, null, null));
             commands.Add(new CommandUnequip(World, null, null));
+            commands.Add(new CommandUse(World, null, null));
             commands.Add(new CommandEat(World, null, null));
             commands.Add(new CommandAttack(World, null, null));
             commands.Add(new CommandTruce(World, null));
@@ -115,19 +120,31 @@ namespace TextAdventure
             while (Running)
             {
                 DateTime now = DateTime.Now;
-                Update(now - LastUpdate);
+
+                TimeSpan delta;
+
+                if (UseRealTime)
+                {
+                    delta = now - LastUpdate;
+                }
+                else
+                {
+                    delta = TickLength;
+                }
+
+                Update(delta);
                 LastUpdate = now;
 
-                TimeSpan tickLength = DateTime.Now - now;
+                TimeSpan actualTickLength = DateTime.Now - now;
 
-                if (tickLength < TimeSpan.FromMilliseconds(1000 / TickRate))
-                    Thread.Sleep(TimeSpan.FromMilliseconds(1000 / TickRate) - tickLength);
+                if (actualTickLength < TickLength)
+                    Thread.Sleep(TickLength - actualTickLength);
             }
         }
 
         public void Update(TimeSpan delta)
         {
-            if (delta > TimeSpan.FromSeconds(1.1 / TickRate))
+            if (delta > TimeSpan.FromSeconds(1.5 / TickRate))
             {
                 Output.WriteLine("Tick took {0}ms! Server could be overloaded.", delta.TotalMilliseconds);
             }
@@ -159,6 +176,9 @@ namespace TextAdventure
                         RemotePlayers.Add(player);
                         World.Players.Add(player);
                         World.Map.EntryNode.Add(player);
+                        ItemMap map = new ItemMap((GridMap)World.Map);
+                        player.Inventory.Add(map);
+                        map.OnPickup(player);
 
                         Output.WriteLine("Player connected from {0}:{1}.", endPoint.Address, endPoint.Port);
                     }
@@ -170,7 +190,13 @@ namespace TextAdventure
                 }
                 catch (SocketException)
                 {
+                    Output.WriteLine("Player disconnected from {0}:{1}.", endPoint.Address, endPoint.Port);
+                    RemotePlayer player = GetPlayerFromEndPoint(endPoint);
 
+                    if (player != null)
+                    {
+                        RemotePlayers.Remove(player);
+                    }
                 }
             }
         }

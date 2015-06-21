@@ -22,6 +22,19 @@ namespace TextAdventure.Entities
             Experience = 20;
 
             Behaviors.Add(new BehaviorHostileToPlayers(this));
+
+            Death += OnDeath;
+        }
+
+        private void OnDeath(object sender, Events.DamageTakenEventArgs e)
+        {
+            bool containsLivingBat = World.Map.Nodes.Any(x => x.Entities.Any(entity => entity is EntityBat && entity.Alive));
+
+            if (!containsLivingBat || World.Random.Next(20) == 0)
+            {
+                Location.Add(new EntityBatman(World));
+                Location.Broadcast("Batman shifts in the darkness.");
+            }
         }
     }
 }

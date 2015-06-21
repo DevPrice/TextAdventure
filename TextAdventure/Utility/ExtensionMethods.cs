@@ -50,13 +50,17 @@ namespace TextAdventure.Utility
         /// <returns>An item in the collection by the given name, or null if no such item exists.</returns>
         public static T GetByName<T>(this IEnumerable<T> collection, string name) where T : INamed
         {
-            foreach (T item in collection)
+            T t = collection.FirstOrDefault(x => x.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase));
+
+            if (t == null || t.Equals(default(T)))
             {
-                if (item.Name.Equals(name, StringComparison.CurrentCultureIgnoreCase))
-                    return item;
+                IEnumerable<T> possibleItems = collection.Where(x => x.Name.IndexOf(name, StringComparison.CurrentCultureIgnoreCase) >= 0);
+
+                if (possibleItems.Count() == 1)
+                    t = possibleItems.First();
             }
 
-            return default(T);
+            return t;
         }
 
         public static string GetRantPattern<T>(this T enumerationValue)

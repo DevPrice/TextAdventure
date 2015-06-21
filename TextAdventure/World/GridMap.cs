@@ -83,7 +83,7 @@ namespace TextAdventure.World
             return null;
         }
 
-        private Point GetPosition(IMapNode node)
+        public Point GetPosition(IMapNode node)
         {
             Point nodePos = new Point(-1, -1);
 
@@ -160,7 +160,7 @@ namespace TextAdventure.World
         }
     }
 
-    struct Point
+    public struct Point
     {
         public readonly int X;
         public readonly int Y;

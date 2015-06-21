@@ -35,8 +35,8 @@ namespace TextAdventure.Commands
                 node.Remove(Target);
 
                 ((Player)Sender).Inventory.Add(Target);
-
                 Sender.SendLine("You take the {0}.", Target.Name);
+                Target.OnPickup((Entity)Sender);
             }
             else
             {
@@ -54,16 +54,7 @@ namespace TextAdventure.Commands
 
                 IMapNode node = World.Map.LocationOf((Player)sender);
 
-                Item takenItem = null;
-
-                foreach (Item item in node.Items)
-                {
-                    if (item.Name.Equals(itemName, StringComparison.CurrentCultureIgnoreCase))
-                    {
-                        takenItem = item;
-                        break;
-                    }
-                }
+                Item takenItem = node.Items.GetByName(itemName);
 
                 return new CommandTake(World, sender, takenItem);
             }

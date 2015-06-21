@@ -6,9 +6,17 @@ using System.Threading.Tasks;
 
 namespace TextAdventure.Commands
 {
-    [Serializable]
     public class UsageException : Exception
     {
+        public UsageException()
+        {
 
+        }
+
+        public UsageException(string message)
+            : base(message)
+        {
+
+        }
     }
 }

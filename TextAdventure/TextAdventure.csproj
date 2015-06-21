@@ -63,6 +63,7 @@
     <Compile Include="Behaviors\Behavior.cs" />
     <Compile Include="Behaviors\BehaviorHostileByName.cs" />
     <Compile Include="Behaviors\BehaviorHostileToPlayers.cs" />
+    <Compile Include="Behaviors\BehaviorRant.cs" />
     <Compile Include="Behaviors\BehaviorRetaliate.cs" />
     <Compile Include="Behaviors\BehaviorWander.cs" />
     <Compile Include="Behaviors\BehaviorFollowEntity.cs" />
@@ -87,6 +88,7 @@
     <Compile Include="Commands\CommandTake.cs" />
     <Compile Include="Commands\CommandTruce.cs" />
     <Compile Include="Commands\CommandUnequip.cs" />
+    <Compile Include="Commands\CommandUse.cs" />
     <Compile Include="Commands\ICommand.cs" />
     <Compile Include="Commands\ICommandFactory.cs" />
     <Compile Include="Commands\ICommandSender.cs" />
@@ -94,9 +96,11 @@
     <Compile Include="Commands\SharedAliasException.cs" />
     <Compile Include="Commands\UsageException.cs" />
     <Compile Include="DamageSource.cs" />
-    <Compile Include="Entities\CombatAttributes.cs" />
+    <Compile Include="Attributes\CombatAttributes.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\EntityBam.cs" />
     <Compile Include="Entities\EntityBat.cs" />
+    <Compile Include="Entities\EntityBatman.cs" />
     <Compile Include="Entities\EntityCat.cs" />
     <Compile Include="Entities\EntityNPC.cs" />
     <Compile Include="Entities\EntityRat.cs" />
@@ -117,12 +121,18 @@
     <Compile Include="Items\Equipment.cs" />
     <Compile Include="Items\IEdible.cs" />
     <Compile Include="Items\Item.cs" />
+    <Compile Include="Items\ItemBattleStaff.cs" />
     <Compile Include="Items\ItemFood.cs" />
+    <Compile Include="Items\ItemMap.cs" />
+    <Compile Include="Items\ItemPhoenixDown.cs" />
     <Compile Include="Items\ItemShield.cs" />
     <Compile Include="Items\ItemSword.cs" />
     <Compile Include="Items\ItemWieldable.cs" />
     <Compile Include="Items\IUsable.cs" />
     <Compile Include="RantEngine.cs" />
+    <Compile Include="Sense\IObservable.cs" />
+    <Compile Include="Sense\IObserver.cs" />
+    <Compile Include="Sense\VisionObserver.cs" />
     <Compile Include="TextAdventure.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ExtensionMethods.cs" />

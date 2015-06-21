@@ -39,7 +39,10 @@ namespace TextAdventure.Commands
 
                 IMapNode node = World.Map.LocationOf((Player)sender);
 
-                Entity attackTarget = node.Entities.GetByName(entityName);
+                Entity attackTarget = node.Entities.Where(x => x.Alive).GetByName(entityName);
+
+                if (attackTarget == null)
+                    attackTarget = node.Entities.GetByName(entityName);
 
                 if (attackTarget == null)
                     throw new UsageException();
