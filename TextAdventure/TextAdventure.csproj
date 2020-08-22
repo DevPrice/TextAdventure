@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TextAdventure</RootNamespace>
     <AssemblyName>TextAdventure</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -96,7 +96,7 @@
     <Compile Include="Commands\SharedAliasException.cs" />
     <Compile Include="Commands\UsageException.cs" />
     <Compile Include="DamageSource.cs" />
-    <Compile Include="Attributes\CombatAttributes.cs" />
+    <Compile Include="Entities\CombatAttributes.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\EntityBam.cs" />
     <Compile Include="Entities\EntityBat.cs" />
@@ -265,6 +265,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Attributes" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
